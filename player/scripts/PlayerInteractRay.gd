@@ -7,5 +7,14 @@ func _ready():
 
 
 func _physics_process(_delta):
+	prompt_label.text = ""
 	if is_colliding():
-		prompt_label.text = "that something"
+		var detected = get_collider()
+
+		if detected is Interactable:
+			prompt_label.text = detected.get_prompt()
+			
+			if Input.is_action_just_pressed(detected.prompt_action):
+				detected.interact(owner)
+
+		

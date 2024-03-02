@@ -27,10 +27,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
 environment = SubResource("Environment_upsu4")
 
 [node name="Capsule" parent="." instance=ExtResource("1_j1io6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -4, -17)
 
 [node name="Player" parent="." instance=ExtResource("2_bileq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78303, 4.00712, 3.31484)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78303, -0.115605, -26.6852)
 
 [node name="Station" parent="." instance=ExtResource("2_ljqap")]
-transform = Transform3D(24.4322, 0, 0, 0, 24.4322, 0, 0, 0, 24.4322, -0.0248287, 0.0511665, -31.9602)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.0248287, 0.0511665, -28.4079)
+rotation_speed = null

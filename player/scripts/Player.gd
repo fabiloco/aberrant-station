@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-
+class_name Player
 
 @export_category("Speed variables")
 @export var walking_speed = 5.0
@@ -25,6 +25,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var direction = Vector3.ZERO
 
 var crouching_depth = 0.5
+var is_sitting = false
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -36,6 +37,11 @@ func _input(event):
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89),deg_to_rad(89))
 
 func _physics_process(delta):
+	if is_sitting: 
+		if Input.is_action_just_pressed("leave"):
+			is_sitting = false
+		return
+
 	# handling movement state
 	if Input.is_action_pressed("crouch"):
 		current_speed = crouching_speed
