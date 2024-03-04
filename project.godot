@@ -67,6 +67,10 @@ leave={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_5="landing"
+
 [physics]
 
 3d/physics_engine="JoltPhysics3D"

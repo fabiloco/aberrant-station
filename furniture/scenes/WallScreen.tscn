@@ -1,8 +1,45 @@
-[gd_scene load_steps=2 format=3 uid="uid://b3kkjuvtytsar"]
+[gd_scene load_steps=5 format=3 uid="uid://b3kkjuvtytsar"]
 
+[ext_resource type="Script" path="res://interactable/scripts/Interactable.gd" id="1_eo14c"]
 [ext_resource type="PackedScene" uid="uid://d1i1yhuqnqx81" path="res://art/models/furniture/wall_screen.glb" id="1_mhota"]
 
-[node name="WallScreen" type="Node3D"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_u88qc"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yctov"]
+size = Vector3(0.699158, 0.627808, 0.0793457)
+
+[node name="WallScreen" type="StaticBody3D"]
+script = ExtResource("1_eo14c")
 
 [node name="wall_screen" parent="." instance=ExtResource("1_mhota")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(632, 512)
+
+[node name="Label" type="Label" parent="SubViewport"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -208.5
+offset_top = -45.5
+offset_right = 208.5
+offset_bottom = 45.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 66
+text = "Access active"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.0923208, 0, 0, 0, 0.0923208, 0, 0, 0, 0.0923208, 0, 0, 0)
+texture = SubResource("ViewportTexture_u88qc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00088501, -6.10352e-05, -0.00183105)
+shape = SubResource("BoxShape3D_yctov")

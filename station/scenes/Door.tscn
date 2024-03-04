@@ -78,34 +78,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_4tpja")
 
-[sub_resource type="Animation" id="Animation_ajjb1"]
-resource_name = "move"
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("station_module_door/Station Module Door Right:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(0.482968, 1.68179),
-"update": 0,
-"values": [Vector3(0.408033, -0.00155153, 0), Vector3(1.40803, -0.00155153, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("station_module_door/Station Module Door Left:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(0.353554, 1.7411),
-"update": 0,
-"values": [Vector3(-0.410524, -0.0118099, 0.00540304), Vector3(-1.41052, -0.0118099, 0.00540304)]
-}
-
 [sub_resource type="Animation" id="Animation_r8lg6"]
 length = 0.001
 tracks/0/type = "value"
@@ -131,6 +103,33 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(-0.410524, -0.0118099, 0.00540304)]
+}
+
+[sub_resource type="Animation" id="Animation_ajjb1"]
+resource_name = "move"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("station_module_door/Station Module Door Right:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.482968, 1.68179),
+"update": 0,
+"values": [Vector3(0.408033, -0.00155153, 0), Vector3(1.40803, -0.00155153, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("station_module_door/Station Module Door Left:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.353554, 1.7411),
+"update": 0,
+"values": [Vector3(-0.410524, -0.0118099, 0.00540304), Vector3(-1.41052, -0.0118099, 0.00540304)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tnt4v"]

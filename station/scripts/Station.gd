@@ -1,10 +1,14 @@
-extends Node
+extends Node3D
 
 @onready var model = $Model
 
-@export var rotation_speed = 2
+@export var rotation_speed = 1.1
 
+var landed = false
 
 func _physics_process(delta):
-	pass
-	# model.rotate_z(rotation_speed * delta)
+	print(landed)
+	if landed:
+		rotate_z((-rotation_speed) * delta)
+	else:
+		rotate_z((rotation_speed) * delta)

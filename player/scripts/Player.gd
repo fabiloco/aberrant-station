@@ -25,7 +25,13 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var direction = Vector3.ZERO
 
 var crouching_depth = 0.5
+
+# sitting variables
 var is_sitting = false
+var active_chair: Chair
+
+@onready var space = get_node("/root/Space")
+@onready var capsule = get_node("/root/Space/Capsule")
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -37,9 +43,17 @@ func _input(event):
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89),deg_to_rad(89))
 
 func _physics_process(delta):
-	if is_sitting: 
+	if is_sitting and active_chair != null: 
+		global_position = active_chair.global_position
 		if Input.is_action_just_pressed("leave"):
 			is_sitting = false
+
+			get_parent().remove_child(self)
+			space.add_child(self)
+
+			global_position = active_chair.global_position
+
+			active_chair = null
 		return
 
 	# handling movement state
@@ -58,8 +72,9 @@ func _physics_process(delta):
 		else:
 			current_speed = walking_speed
 
+	var current_gravity_dir = (global_transform.origin - capsule.global_transform.origin).normalized() # Find gravity direction
 	if not is_on_floor():
-		velocity.y -= gravity * delta
+		velocity -= current_gravity_dir * gravity * delta
 
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_velocity

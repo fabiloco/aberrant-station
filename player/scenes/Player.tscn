@@ -50,6 +50,9 @@ grow_vertical = 2
 text = "Message [Key]"
 horizontal_alignment = 1
 
+[node name="Hand" type="Marker3D" parent="Head/InteractRay"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.39516)
+
 [node name="TextureRect" type="TextureRect" parent="."]
 anchors_preset = 8
 anchor_left = 0.5

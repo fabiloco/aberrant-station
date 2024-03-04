@@ -103,3 +103,6 @@ shape = SubResource("BoxShape3D_t1qqk")
 
 [node name="SitPosition" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.359347, -0.0737139)
+
+[node name="LeavePosition" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.857586, 0.337908, -0.0737139)
