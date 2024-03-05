@@ -5,13 +5,17 @@ extends RayCast3D
 
 @onready var capsule = get_node("/root/Space/Capsule")
 
-var pick_object = null
+var joystick = null
+var dragging_object = null
+var pull_power = 4
+
 
 func _ready():
 	add_exception(owner)
 
 func _physics_process(_delta):
 	prompt_label.text = ""
+
 	if is_colliding():
 		var detected = get_collider()
 
@@ -21,18 +25,40 @@ func _physics_process(_delta):
 			if Input.is_action_just_pressed(detected.prompt_action):
 				detected.interact(owner)
 
+		if detected is DraggableItem:
+			prompt_label.text = detected.get_prompt()
+			
+			if Input.is_action_just_pressed("drag"):
+				if dragging_object == null:
+					detected.sleeping = false
+					detected.freeze = false
+					
+					dragging_object = detected
+					
+					dragging_object.station_area.monitorable = false
+				else:
+					dragging_object.station_area.monitorable = true
+					dragging_object = null
+
 		if detected is InteractableJoystick:
 			prompt_label.text = detected.get_prompt()
 
 			if Input.is_action_pressed(detected.prompt_action):
-				pick_object = detected
+				joystick = detected
 				var b = get_collision_point()
 
-				pick_object.look_at(b, Vector3.FORWARD)
-				pick_object.rotation.z = 0
-				# pick_object.rotation.y = 0
-				capsule.velocity = pick_object.rotation
+				joystick.look_at(b, Vector3.FORWARD)
+				joystick.rotation.z = 0
+				# joystick.rotation.y = 0
+				capsule.velocity = joystick.rotation
 			else:
-				pick_object = null
+				joystick = null
 				# detected.interact(owner)
-		
+	
+	_drag_object()
+
+func _drag_object():
+	if dragging_object != null:
+		var a = dragging_object.global_transform.origin
+		var b = hand.global_transform.origin
+		dragging_object.set_linear_velocity((b - a) * pull_power)

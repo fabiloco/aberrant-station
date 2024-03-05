@@ -31,7 +31,6 @@ var is_sitting = false
 var active_chair: Chair
 
 @onready var space = get_node("/root/Space")
-@onready var capsule = get_node("/root/Space/Capsule")
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -72,9 +71,8 @@ func _physics_process(delta):
 		else:
 			current_speed = walking_speed
 
-	var current_gravity_dir = (global_transform.origin - capsule.global_transform.origin).normalized() # Find gravity direction
 	if not is_on_floor():
-		velocity -= current_gravity_dir * gravity * delta
+		velocity.y -= gravity * delta
 
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_velocity

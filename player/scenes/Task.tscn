@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4ol56tuww8p"]
+
+[ext_resource type="Theme" uid="uid://cyp75cmf481l" path="res://ui/themes/default_theme.tres" id="1_cfut6"]
+[ext_resource type="Script" path="res://player/scripts/TaskUI.gd" id="2_ymees"]
+
+[node name="Title" type="Label"]
+offset_right = 70.0
+offset_bottom = 18.0
+theme = ExtResource("1_cfut6")
+text = "test task"
+script = ExtResource("2_ymees")

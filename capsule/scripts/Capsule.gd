@@ -14,7 +14,11 @@ var landed = false
 
 var rotation_force = 1
 
+func add_landing_task():
+	TasksManager.add_task({"title": "Land the spachip into the station."})
+	
 func _ready():
+	get_tree().create_timer(3).timeout.connect(add_landing_task)
 	station_rotation_speed = station.rotation_speed
 
 func _physics_process(delta):
@@ -29,7 +33,7 @@ func _physics_process(delta):
 	position.z += velocity.x * delta
 	position.x -= velocity.y * delta
 
-	if (angular_velocity.z >= station_rotation_speed - 1 or angular_velocity.z <= station_rotation_speed + 1) and is_on_landing_area:
+	if (angular_velocity.z >= station_rotation_speed - 0.1 and angular_velocity.z <= station_rotation_speed + 0.1) and is_on_landing_area:
 		land_capsule()
 
 	rotation.x = 0
@@ -56,6 +60,7 @@ func _on_area_3d_area_exited(_area):
 
 
 func land_capsule():
+	TasksManager.add_task({"title": "Spaceship landed. Enter into the station."})
 	get_parent().remove_child(self)
 	station.add_child(self)
 	station.landed = true
@@ -64,3 +69,13 @@ func land_capsule():
 
 	global_position = Vector3(0, 0, -12.141)
 	rotation.y = deg_to_rad(180)
+
+
+func enter_station(_body):
+	# change in final build
+	#if landed:
+	#	Globals.stage = "Stage2"
+	#	get_tree().change_scene_to_file("res://ui/scenes/Loading.tscn")
+	Globals.stage = "Stage2"
+	get_tree().change_scene_to_file("res://ui/scenes/Loading.tscn")
+		

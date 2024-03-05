@@ -1,8 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://ge5io00mw5lv"]
+[gd_scene load_steps=8 format=3 uid="uid://ge5io00mw5lv"]
 
 [ext_resource type="Texture2D" uid="uid://be4lnmibnxoiq" path="res://art/models/furniture/round_monitor_1K-metal_1-normal.jpg" id="1_7qj0s"]
-[ext_resource type="Texture2D" uid="uid://b7e8bg8iw2nga" path="res://art/models/furniture/round_monitor_1K-metal_5-diffuse.jpg" id="2_w774x"]
-[ext_resource type="Texture2D" uid="uid://dm6htvelxlaub" path="res://art/models/furniture/round_monitor_1K-metal_5-normal.jpg" id="3_m7eg1"]
 [ext_resource type="Material" uid="uid://b5x1qyf6c8b8n" path="res://furniture/materials/ScreenMaterial.tres" id="4_b2iq4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eny5a"]
@@ -16,10 +14,8 @@ texture_filter = 2
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m7jl0"]
 resource_name = "Black Rust Metal"
 cull_mode = 2
-albedo_texture = ExtResource("2_w774x")
 roughness = 0.5
 normal_enabled = true
-normal_texture = ExtResource("3_m7eg1")
 texture_filter = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n6spn"]

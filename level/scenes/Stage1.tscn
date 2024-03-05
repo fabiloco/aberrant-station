@@ -1,0 +1,36 @@
+[gd_scene load_steps=8 format=3 uid="uid://uljarxje6a7k"]
+
+[ext_resource type="Texture2D" uid="uid://qk5f5ojlip5c" path="res://assets/hdri/full earth.hdr" id="1_4ocvt"]
+[ext_resource type="PackedScene" uid="uid://3ibqkjhnw7w5" path="res://capsule/scenes/Capsule.tscn" id="2_wqee8"]
+[ext_resource type="PackedScene" uid="uid://brvhjrhhnweeo" path="res://station/scenes/Station.tscn" id="3_v3lc1"]
+[ext_resource type="PackedScene" uid="uid://c4hpel84a8gbr" path="res://player/scenes/Player.tscn" id="4_1q7ic"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_sqxv3"]
+panorama = ExtResource("1_4ocvt")
+
+[sub_resource type="Sky" id="Sky_ab3oi"]
+sky_material = SubResource("PanoramaSkyMaterial_sqxv3")
+
+[sub_resource type="Environment" id="Environment_upsu4"]
+background_mode = 2
+background_energy_multiplier = 0.1
+sky = SubResource("Sky_ab3oi")
+tonemap_mode = 2
+ssr_enabled = true
+ssao_enabled = true
+glow_enabled = true
+
+[node name="Space" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_upsu4")
+
+[node name="Player" parent="." instance=ExtResource("4_1q7ic")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16.7)
+
+[node name="Capsule" parent="." instance=ExtResource("2_wqee8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16.195)
+
+[node name="Station" parent="." instance=ExtResource("3_v3lc1")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+rotation_speed = 1.1

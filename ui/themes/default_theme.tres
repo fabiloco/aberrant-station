@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cyp75cmf481l"]
+
+[ext_resource type="FontVariation" uid="uid://cc4m1ghws2pmp" path="res://ui/themes/default_font.tres" id="1_ob3we"]
+
+[resource]
+default_font = ExtResource("1_ob3we")
+Button/font_sizes/font_size = 24
+Label/font_sizes/font_size = 18

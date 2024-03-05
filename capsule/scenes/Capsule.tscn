@@ -1,6 +1,5 @@
-[gd_scene load_steps=30 format=3 uid="uid://3ibqkjhnw7w5"]
+[gd_scene load_steps=29 format=3 uid="uid://3ibqkjhnw7w5"]
 
-[ext_resource type="Script" path="res://capsule/scripts/Capsule.gd" id="1_2vyi2"]
 [ext_resource type="PackedScene" uid="uid://rvdp4svur2m8" path="res://interactable/scenes/Chair.tscn" id="2_hvgha"]
 [ext_resource type="Texture2D" uid="uid://bfp5muaklwln2" path="res://art/models/capsule/capsule_1K-metal_1-normal.jpg" id="3_c7lhq"]
 [ext_resource type="Texture2D" uid="uid://b121hw2vtbeuo" path="res://art/models/capsule/capsule_1K-metal_5-diffuse.jpg" id="4_ddncb"]
@@ -14,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://uoiwi1sm6h0o" path="res://art/models/capsule/capsule_Sci_fi_Metal_Panel_004_normal.jpg" id="11_6ax2i"]
 [ext_resource type="PackedScene" uid="uid://bqsmxk5xi3ama" path="res://interactable/scenes/Joystick.tscn" id="13_4k8t1"]
 [ext_resource type="PackedScene" uid="uid://cm4b6u7ykhqwi" path="res://interactable/scenes/Button.tscn" id="14_tlnte"]
-[ext_resource type="Script" path="res://capsule/scripts/CapsuleCamera.gd" id="15_mpx1u"]
+[ext_resource type="Script" path="res://capsule/scripts/Capsule.gd" id="15_mpx1u"]
 [ext_resource type="PackedScene" uid="uid://ge5io00mw5lv" path="res://furniture/scenes/RoundMonitor.tscn" id="16_geuos"]
 [ext_resource type="PackedScene" uid="uid://du60ow3enhrk6" path="res://furniture/scenes/Monitor.tscn" id="16_h4sbp"]
 
@@ -71,7 +70,7 @@ normal_enabled = true
 normal_texture = ExtResource("11_6ax2i")
 texture_filter = 2
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_ofaaj"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_ubgjv"]
 _surfaces = [{
 "aabb": AABB(-3.6, -29.1242, -3.6, 7.2, 29.032, 6.95),
 "format": 34896613377,
@@ -243,7 +242,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray(255, 127, 254, 255, 0, 0, 255, 191, 0, 0, 254, 255, 0, 0, 255, 191, 255, 255, 254, 255, 0, 0, 255, 191, 255, 255, 199, 133, 0, 0, 255, 191, 255, 127, 0, 0, 0, 0, 255, 191, 0, 0, 199, 133, 0, 0, 255, 191, 255, 127, 255, 127, 255, 127, 255, 127, 255, 127, 255, 127, 255, 127, 255, 127, 255, 127, 255, 127, 255, 127, 255, 127)
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_ofaaj")
+shadow_mesh = SubResource("ArrayMesh_ubgjv")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_4mrxe"]
 viewport_path = NodePath("Model/SubViewport")
@@ -258,7 +257,7 @@ viewport_path = NodePath("Model/ControlStation/SubViewport")
 mass = 3.16
 gravity_scale = 0.0
 angular_damp_mode = 1
-script = ExtResource("1_2vyi2")
+script = ExtResource("15_mpx1u")
 velocity_label = NodePath("Model/ControlStation/SubViewport/CapsuleVelocity")
 station_velocity_label = NodePath("Model/ControlStation/SubViewport2/StationVelocity")
 
@@ -308,6 +307,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.607645, -0.137896, 0)
 [node name="LeftRotButton" parent="Model/ControlStation" instance=ExtResource("14_tlnte")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.907645, -0.137896, 0)
 
+[node name="EnterStation" parent="Model/ControlStation" instance=ExtResource("14_tlnte")]
+transform = Transform3D(0.907602, 0, -0.419832, 0, 1, 0, 0.419832, 0, 0.907602, -1.26026, -0.137896, -0.168109)
+prompt_message = "Enter landed station"
+
 [node name="Monitor" parent="Model/ControlStation" instance=ExtResource("16_h4sbp")]
 transform = Transform3D(-0.392773, -0.059269, 0.0259395, -0.00134673, 0.167055, 0.361312, -0.0646829, 0.35642, -0.165035, -0.57422, -0.0908858, 0.118166)
 
@@ -316,6 +319,7 @@ transform = Transform3D(3.11, 0, 0, 0, 3.11, 0, 0, 0, 3.11, 0, 0, 0)
 
 [node name="Sprite3D" parent="Model/ControlStation/Monitor" index="1"]
 transform = Transform3D(0.765, -1.3411e-07, 0, -4.47035e-08, 1, 2.98023e-08, 2.98023e-08, -2.98023e-08, 1, -4.76837e-07, 9.53674e-07, 0.0994136)
+flip_h = false
 texture = SubResource("ViewportTexture_4mrxe")
 
 [node name="Monitor3" parent="Model/ControlStation" instance=ExtResource("16_geuos")]
@@ -366,11 +370,9 @@ vertical_alignment = 1
 size = Vector2i(192, 108)
 render_target_update_mode = 4
 
-[node name="Camera3D" type="Camera3D" parent="Model/SubViewport" node_paths=PackedStringArray("camera_position")]
+[node name="Camera3D" type="Camera3D" parent="Model/SubViewport"]
 transform = Transform3D(-1, 0, -8.74228e-08, -8.23501e-08, 0.335682, 0.941975, 2.93462e-08, 0.941975, -0.335682, 1.11676e-08, 2.55667, 4.16393)
 fov = 40.757
-script = ExtResource("15_mpx1u")
-camera_position = NodePath("../../CameraPosition")
 
 [node name="CameraPosition" type="Marker3D" parent="Model"]
 transform = Transform3D(-1, 3.51394e-08, -8.00498e-08, 0, 0.915663, 0.401948, 8.74228e-08, 0.401948, -0.915663, 0, 5.72541, 4.57995)
@@ -379,6 +381,7 @@ transform = Transform3D(-1, 3.51394e-08, -8.00498e-08, 0, 0.915663, 0.401948, 8.
 [connection signal="area_exited" from="Model/Area3D" to="." method="_on_area_3d_area_exited"]
 [connection signal="interacted" from="Model/ControlStation/RightRotButton" to="." method="_on_right_rot_button_interacted"]
 [connection signal="interacted" from="Model/ControlStation/LeftRotButton" to="." method="_on_left_rot_button_interacted"]
+[connection signal="interacted" from="Model/ControlStation/EnterStation" to="." method="enter_station"]
 
 [editable path="Model/ControlStation/Monitor"]
 [editable path="Model/ControlStation/Monitor3"]

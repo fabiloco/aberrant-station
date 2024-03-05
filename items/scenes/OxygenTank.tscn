@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://0o0kxc5kofq3"]
+
+[ext_resource type="PackedScene" uid="uid://b75p06a36laox" path="res://art/models/furniture/oxygen_tank.glb" id="1_a3ung"]
+[ext_resource type="Script" path="res://items/scripts/OxygenTank.gd" id="1_mhg5f"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_hwbq7"]
+height = 1.2307
+radius = 0.257175
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vc6d0"]
+bg_color = Color(0.415686, 0.65098, 0.309804, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ejqy1"]
+viewport_path = NodePath("SubViewport")
+
+[node name="OxygenTank" type="RigidBody3D"]
+script = ExtResource("1_mhg5f")
+prompt_message = "Drag Oxygen Tank"
+prompt_action = "drag"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.261034, 0)
+shape = SubResource("CylinderShape3D_hwbq7")
+
+[node name="oxygen_tank" parent="." instance=ExtResource("1_a3ung")]
+transform = Transform3D(0.388336, 0, -0.921518, 0, 1, 0, 0.921518, 0, 0.388336, 0, 0, 0)
+
+[node name="SubViewport" type="SubViewport" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_vc6d0")
+value = 50.0
+show_percentage = false
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1.99998e-16, 1.06475e-09, 0.245865, 0.104673, -1.06475e-09, 0, 4.57541e-09, 0.0243586, -1.07471e-08, -0.219539, -0.257462, -0.0188195)
+texture = SubResource("ViewportTexture_ejqy1")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.261034, 0)
+shape = SubResource("CylinderShape3D_hwbq7")
+
+[editable path="oxygen_tank"]
