@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjpdqfo6xvq6d"]
+
+[ext_resource type="PackedScene" uid="uid://j1nfo0ep08si" path="res://art/models/furniture/large_table.glb" id="1_hcohq"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_nmtwn"]
+points = PackedVector3Array(1.74819, 0.397004, -0.498858, 1.69548, 0.381108, 0.649732, 1.74819, 0.20017, -0.480417, -1.74819, 0.397004, -0.498858, 1.69548, -0.673759, 0.0679597, -1.69582, 0.381108, 0.649732, 1.69548, -0.923324, -0.356732, -1.74819, 0.20017, -0.480417, -1.69582, -0.673759, 0.0679597, -1.69582, -0.923324, -0.356732)
+
+[node name="LargeTable" type="Node3D"]
+
+[node name="large_table" parent="." instance=ExtResource("1_hcohq")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="large_table/Large Table" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="large_table/Large Table/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_nmtwn")
+
+[editable path="large_table"]

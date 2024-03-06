@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://uljarxje6a7k"]
+[gd_scene load_steps=9 format=3 uid="uid://uljarxje6a7k"]
 
 [ext_resource type="Texture2D" uid="uid://qk5f5ojlip5c" path="res://assets/hdri/full earth.hdr" id="1_4ocvt"]
+[ext_resource type="PackedScene" uid="uid://c3kp4ij2152tm" path="res://ui/scenes/PauseMenu.tscn" id="1_krmdq"]
 [ext_resource type="PackedScene" uid="uid://3ibqkjhnw7w5" path="res://capsule/scenes/Capsule.tscn" id="2_wqee8"]
 [ext_resource type="PackedScene" uid="uid://brvhjrhhnweeo" path="res://station/scenes/Station.tscn" id="3_v3lc1"]
 [ext_resource type="PackedScene" uid="uid://c4hpel84a8gbr" path="res://player/scenes/Player.tscn" id="4_1q7ic"]
@@ -21,6 +22,8 @@ ssao_enabled = true
 glow_enabled = true
 
 [node name="Space" type="Node3D"]
+
+[node name="PauseMenu" parent="." instance=ExtResource("1_krmdq")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_upsu4")

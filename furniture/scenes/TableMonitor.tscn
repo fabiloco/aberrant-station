@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://ct210yfirqi4d"]
+
+[ext_resource type="Script" path="res://furniture/scripts/StationVitalsMonitor.gd" id="1_k27xg"]
+[ext_resource type="PackedScene" uid="uid://buk7f8l82t2vt" path="res://art/models/furniture/table_monitor.glb" id="2_g2kna"]
+[ext_resource type="Material" uid="uid://b5x1qyf6c8b8n" path="res://furniture/materials/ScreenMaterial.tres" id="3_okvo6"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_0lpst"]
+viewport_path = NodePath("SubViewport")
+
+[node name="TableMonitor" type="Node3D"]
+script = ExtResource("1_k27xg")
+
+[node name="table_monitor" parent="." instance=ExtResource("2_g2kna")]
+
+[node name="Table Monitor" parent="table_monitor" index="0"]
+surface_material_override/2 = ExtResource("3_okvo6")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(817, 512)
+
+[node name="Label" type="Label" parent="SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
+text = "Oxygen levels: 400
+
+Radiation levels: unkown"
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.0753406, 0, 0, 0, 0.0753406, 0, 0, 0, 0.0753406, -2.78577e-05, 0.0847735, 0.0929241)
+texture = SubResource("ViewportTexture_0lpst")
+
+[editable path="table_monitor"]

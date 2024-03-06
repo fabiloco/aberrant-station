@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://jlaloj1ue0f7"]
+
+[ext_resource type="Material" uid="uid://b5x1qyf6c8b8n" path="res://furniture/materials/ScreenMaterial.tres" id="2_0riur"]
+[ext_resource type="PackedScene" uid="uid://bylxb00jn6eco" path="res://art/models/furniture/roof_monitor.glb" id="2_tg8wk"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_0lpst"]
+viewport_path = NodePath("SubViewport")
+
+[node name="TableMonitor" type="Node3D"]
+
+[node name="roof_monitor" parent="." instance=ExtResource("2_tg8wk")]
+
+[node name="Roof Monitor" parent="roof_monitor" index="0"]
+surface_material_override/2 = ExtResource("2_0riur")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(817, 512)
+
+[node name="Label" type="Label" parent="SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
+text = "root@root:~# ls
+footage
+docs
+aberration_files
+root@root:~# |"
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.0828747, 6.08058e-10, -5.13968e-11, -6.08058e-10, 0.0816989, -0.0139108, -5.13968e-11, 0.0139108, 0.0816989, -2.78577e-05, -0.089768, 0.271693)
+texture = SubResource("ViewportTexture_0lpst")
+
+[editable path="roof_monitor"]

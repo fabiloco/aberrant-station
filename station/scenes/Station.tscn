@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://brvhjrhhnweeo"]
+[gd_scene load_steps=13 format=3 uid="uid://brvhjrhhnweeo"]
 
 [ext_resource type="Script" path="res://station/scripts/Station.gd" id="1_0307d"]
 [ext_resource type="PackedScene" uid="uid://cfidjs41r6a7x" path="res://station/scenes/Door.tscn" id="2_8ulwo"]
@@ -6,11 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://0o0kxc5kofq3" path="res://items/scenes/OxygenTank.tscn" id="2_yomvn"]
 [ext_resource type="PackedScene" uid="uid://yu60w237vnvg" path="res://station/scenes/modules/station_module_lander.tscn" id="4_3vren"]
 [ext_resource type="PackedScene" uid="uid://b3pfg4h2xlh4j" path="res://station/scenes/modules/station_module_1.tscn" id="5_vq4en"]
-[ext_resource type="PackedScene" uid="uid://j1nfo0ep08si" path="res://art/models/furniture/large_table.glb" id="6_0nfwg"]
 [ext_resource type="PackedScene" uid="uid://b2drf50a1381v" path="res://station/scenes/modules/station_solar_panel_module.tscn" id="6_86qhq"]
-[ext_resource type="PackedScene" uid="uid://buk7f8l82t2vt" path="res://art/models/furniture/table_monitor.glb" id="6_qkwkb"]
-[ext_resource type="PackedScene" uid="uid://bjkcd8uxsojht" path="res://art/models/furniture/tubes_box.glb" id="6_wnurx"]
-[ext_resource type="PackedScene" uid="uid://bylxb00jn6eco" path="res://art/models/furniture/roof_monitor.glb" id="6_xaatj"]
+[ext_resource type="PackedScene" uid="uid://ct210yfirqi4d" path="res://furniture/scenes/TableMonitor.tscn" id="7_ki32k"]
+[ext_resource type="PackedScene" uid="uid://jlaloj1ue0f7" path="res://furniture/scenes/RoofMonitor.tscn" id="8_6qahr"]
+[ext_resource type="PackedScene" uid="uid://cjpdqfo6xvq6d" path="res://furniture/scenes/LargeTable.tscn" id="9_owet4"]
 [ext_resource type="PackedScene" uid="uid://l1uxm4lyrkd4" path="res://furniture/scenes/OxygenFillingStation.tscn" id="11_sjryr"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_70jk5"]
@@ -36,20 +35,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.14453, -0.271915, 0.859099
 [node name="OxygenTank4" parent="Model" instance=ExtResource("2_yomvn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0094, -0.271915, 0.859099)
 
-[node name="OxygenTank5" parent="Model" instance=ExtResource("2_yomvn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.531712, -0.169362, -9.57691)
-
 [node name="OxygenTank6" parent="Model" instance=ExtResource("2_yomvn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.531712, -0.169362, -9.57691)
-
-[node name="OxygenTank7" parent="Model" instance=ExtResource("2_yomvn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.531712, -0.169362, -9.57691)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.70467, -0.301704, -11.4307)
+random_amount = false
 
 [node name="OxygenTank8" parent="Model" instance=ExtResource("2_yomvn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.531712, -0.169362, -9.57691)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.78988, -0.376203, -10.2877)
+random_amount = false
 
 [node name="OxygenTank9" parent="Model" instance=ExtResource("2_yomvn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.531712, -0.169362, -9.57691)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.82251, -0.317125, -10.8692)
+random_amount = false
 
 [node name="DoorOpener" parent="Model" instance=ExtResource("2_fawf2")]
 transform = Transform3D(0.778155, 0.114576, -0.617533, 2.80301e-08, 0.98322, 0.182424, 0.628072, -0.141954, 0.765098, 1.93474, -0.432591, -3.39206)
@@ -65,20 +61,17 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.6, 0
 [node name="station_module1_2" parent="Model" instance=ExtResource("5_vq4en")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.87038e-07, 0.2, -11.9)
 
-[node name="tubes_box" parent="Model/station_module1_2" instance=ExtResource("6_wnurx")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.89908, 0.3, 3.07209)
-
-[node name="table_monitor" parent="Model/station_module1_2" instance=ExtResource("6_qkwkb")]
+[node name="TableMonitor" parent="Model/station_module1_2" instance=ExtResource("7_ki32k")]
 transform = Transform3D(-0.236296, 0, -0.971681, 0, 1, 0, 0.971681, 0, -0.236296, 2.01397, -0.529031, -1.939)
 
-[node name="roof_monitor" parent="Model/station_module1_2" instance=ExtResource("6_xaatj")]
+[node name="RoofMonitor" parent="Model/station_module1_2" instance=ExtResource("8_6qahr")]
 transform = Transform3D(0.161466, 0, -0.986878, 0, 1, 0, 0.986878, 0, 0.161466, 2.17314, 0, -3.1)
 
-[node name="large_table" parent="Model/station_module1_2" instance=ExtResource("6_0nfwg")]
+[node name="LargeTable" parent="Model/station_module1_2" instance=ExtResource("9_owet4")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.72835, -1.26444, -2.1)
 
 [node name="OxygenFillingStation" parent="Model/station_module1_2" instance=ExtResource("11_sjryr")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.8, -0.5, 1.3)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.8, -0.8, 1.3)
 
 [node name="station_solar_panel_module2" parent="Model" instance=ExtResource("6_86qhq")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.6, 0.029029, -0.400001)

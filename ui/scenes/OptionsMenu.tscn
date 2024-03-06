@@ -1,0 +1,127 @@
+[gd_scene load_steps=2 format=3 uid="uid://0lakan4yjax8"]
+
+[ext_resource type="Script" path="res://ui/scripts/OptionsMenu.gd" id="1_ds7i1"]
+
+[node name="OptionsMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -728.0
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("1_ds7i1")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -718.0
+offset_right = -369.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="SoundSettings" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/SoundSettings"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="VBoxContainer/SoundSettings/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Sound settings
+"
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/SoundSettings/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/SoundSettings/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Master:
+"
+
+[node name="MasterSoundSlider" type="HSlider" parent="VBoxContainer/SoundSettings/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="Label2" type="Label" parent="VBoxContainer/SoundSettings/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Music:
+"
+
+[node name="MusicSoundSlider" type="HSlider" parent="VBoxContainer/SoundSettings/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="Label3" type="Label" parent="VBoxContainer/SoundSettings/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Sound FX:"
+
+[node name="FXSoundSlider" type="HSlider" parent="VBoxContainer/SoundSettings/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="VideoSettings" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/VideoSettings"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="VBoxContainer/VideoSettings/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Video settings
+"
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/VideoSettings/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/VideoSettings/VBoxContainer2/GridContainer"]
+layout_mode = 2
+text = "Fullscreen:"
+
+[node name="FullscreenCheck" type="CheckBox" parent="VBoxContainer/VideoSettings/VBoxContainer2/GridContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="VBoxContainer/VideoSettings/VBoxContainer2/GridContainer"]
+layout_mode = 2
+text = "V-Sync:"
+
+[node name="VSyncCheck" type="CheckBox" parent="VBoxContainer/VideoSettings/VBoxContainer2/GridContainer"]
+layout_mode = 2
+
+[connection signal="value_changed" from="VBoxContainer/SoundSettings/VBoxContainer/GridContainer/MasterSoundSlider" to="." method="_on_master_sound_slider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/SoundSettings/VBoxContainer/GridContainer/MusicSoundSlider" to="." method="_on_music_sound_slider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/SoundSettings/VBoxContainer/GridContainer/FXSoundSlider" to="." method="_on_fx_sound_slider_value_changed"]
+[connection signal="toggled" from="VBoxContainer/VideoSettings/VBoxContainer2/GridContainer/FullscreenCheck" to="." method="_on_fullscreen_check_toggled"]
+[connection signal="toggled" from="VBoxContainer/VideoSettings/VBoxContainer2/GridContainer/VSyncCheck" to="." method="_on_v_sync_check_toggled"]

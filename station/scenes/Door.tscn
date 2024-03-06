@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cfidjs41r6a7x"]
+[gd_scene load_steps=14 format=3 uid="uid://cfidjs41r6a7x"]
 
 [ext_resource type="Script" path="res://station/scripts/Door.gd" id="1_mk6xe"]
 [ext_resource type="Texture2D" uid="uid://dws4oljo7c4df" path="res://art/models/station/station_module_door_Sci-Fi_Wall_014_basecolor.jpg" id="1_wsf2g"]
@@ -46,6 +46,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_kbc8q")
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4hmic"]
+points = PackedVector3Array(0.680617, 1.06004, -0.124683, -0.50428, -1.0122, 0.105713, 0.680617, -1.05814, -0.124683, 0.639928, 1.02195, 0.106572, -0.275956, 1.09428, -0.124683, 0.639928, -1.02005, 0.106572, -0.31015, 1.06004, 0.114483, -0.549383, -1.05814, -0.124683, -0.487508, -0.152672, -0.0818898, -0.51507, -1.09238, -0.124683, -0.465596, -0.146586, 0.0981914, 0.646423, 1.09428, -0.124683, 0.646423, -1.09238, -0.124683, -0.461526, -0.174627, -0.1076)
+
 [sub_resource type="ArrayMesh" id="ArrayMesh_4tpja"]
 _surfaces = [{
 "aabb": AABB(-0.668906, -1.07722, -0.107625, 1.20125, 2.1525, 0.21525),
@@ -77,6 +80,9 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_4tpja")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_14rwr"]
+points = PackedVector3Array(-0.668906, -1.0473, -0.0776425, -0.638922, -1.0473, -0.107625, -0.638922, -1.07722, -0.0776425, -0.668906, -1.0473, 0.0776215, -0.668906, 1.04515, -0.0776425, 0.252256, -1.0473, -0.107625, -0.638922, 1.04515, -0.107625, -0.638922, -1.07722, 0.0776215, 0.252256, -1.07722, -0.0776425, -0.638922, -1.0473, 0.107625, -0.668906, 1.04515, 0.0776215, -0.638922, 1.07528, -0.0776425, 0.28224, -1.0473, -0.0776425, 0.502242, 0.232274, -0.107625, 0.532344, 0.224478, -0.0776425, 0.502242, 1.04515, -0.107625, 0.252256, -1.07722, 0.0776215, 0.252256, -1.0473, 0.107625, -0.638922, 1.04515, 0.107625, -0.638922, 1.07528, 0.0776215, 0.502242, 1.07528, -0.0776425, 0.28224, -1.0473, 0.0776215, 0.532344, 0.224478, 0.0776215, 0.532344, 1.04515, -0.0776425, 0.502242, 0.232274, 0.107625, 0.502242, 1.04515, 0.107625, 0.502242, 1.07528, 0.0776215, 0.532344, 1.04515, 0.0776215)
 
 [sub_resource type="Animation" id="Animation_r8lg6"]
 length = 0.001
@@ -148,10 +154,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.408033, -0.00155153, 0)
 mesh = SubResource("ArrayMesh_l3to3")
 skeleton = NodePath("")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="station_module_door/Station Module Door Right"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="station_module_door/Station Module Door Right/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_4hmic")
+
 [node name="Station Module Door Left" type="MeshInstance3D" parent="station_module_door"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.410524, -0.0118099, 0.00540304)
 mesh = SubResource("ArrayMesh_b3a17")
 skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="station_module_door/Station Module Door Left"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="station_module_door/Station Module Door Left/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_14rwr")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -3,9 +3,9 @@ extends CharacterBody3D
 class_name Player
 
 @export_category("Speed variables")
-@export var walking_speed = 5.0
-@export var sprinting_speed = 8.0
-@export var crouching_speed = 3.0
+@export var walking_speed = 3.0
+@export var sprinting_speed = 4.5
+@export var crouching_speed = 1.0
 
 @export_category("Conrtol variables")
 @export var mouse_sens = 0.25 
@@ -15,6 +15,12 @@ class_name Player
 @onready var standing_collison_shape = $StandingCollisionShape	
 @onready var crouching_collison_shape = $CrouchingCollisionShape
 @onready var crouching_ray_cast = $CroucingRayCast
+
+@onready var walk_timer = $WalkTimer
+@onready var step_sound = $StepSound
+
+@onready var vitals: PlayerVitals = $CanvasLayer/Vitals
+
 
 var current_speed = walking_speed
 
@@ -42,9 +48,8 @@ func _input(event):
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89),deg_to_rad(89))
 
 func _physics_process(delta):
-	if is_sitting and active_chair != null: 
-		global_position = active_chair.global_position
-		if Input.is_action_just_pressed("leave"):
+	if is_sitting: 
+		if active_chair.can_stand_up && Input.is_action_just_pressed("crouch"):
 			is_sitting = false
 
 			get_parent().remove_child(self)
@@ -79,10 +84,19 @@ func _physics_process(delta):
 
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")
 	direction = lerp(direction, (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized(), delta * lerp_speed)
+	
+	if is_on_floor() and input_dir != Vector2.ZERO:
+		if walk_timer.time_left <= 0:
+				step_sound.pitch_scale = randf_range(0.8, 1)
+				step_sound.play()
+				walk_timer.start(0.6)
 
 	if direction:
 		velocity.x = direction.x * current_speed
 		velocity.z = direction.z * current_speed
+		
+		
+			
 	else:
 		velocity.x = move_toward(velocity.x, 0, current_speed)
 		velocity.z = move_toward(velocity.z, 0, current_speed)

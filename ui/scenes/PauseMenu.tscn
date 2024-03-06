@@ -1,0 +1,95 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3kp4ij2152tm"]
+
+[ext_resource type="Script" path="res://ui/scripts/PauseMenu.gd" id="1_6akdo"]
+[ext_resource type="Theme" uid="uid://cyp75cmf481l" path="res://ui/themes/default_theme.tres" id="2_qig86"]
+[ext_resource type="PackedScene" uid="uid://0lakan4yjax8" path="res://ui/scenes/OptionsMenu.tscn" id="3_mvb3q"]
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6akdo")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.196078)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 441.0
+grow_vertical = 2
+color = Color(1, 1, 1, 0.117647)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 64.0
+offset_top = -219.0
+offset_right = 580.0
+offset_bottom = 219.0
+grow_vertical = 2
+theme = ExtResource("2_qig86")
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("2_qig86")
+theme_override_colors/font_color = Color(0.545098, 0.545098, 0.545098, 1)
+theme_override_font_sizes/font_size = 32
+text = "Paused"
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("2_qig86")
+theme_override_font_sizes/font_size = 64
+text = "Station 
+Exploration"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("2_qig86")
+theme_override_constants/margin_top = 128
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme = ExtResource("2_qig86")
+theme_override_constants/separation = 16
+
+[node name="ResumeButton" type="Button" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_qig86")
+text = "Resume"
+
+[node name="OptionsButton" type="Button" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_qig86")
+text = "Options"
+
+[node name="MenuButton" type="Button" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_qig86")
+text = "Main menu"
+
+[node name="OptionsMenu" parent="." instance=ExtResource("3_mvb3q")]
+layout_mode = 1
+
+[connection signal="pressed" from="VBoxContainer/MarginContainer/VBoxContainer/ResumeButton" to="." method="resume_game"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer/VBoxContainer/OptionsButton" to="." method="toggle_options_menu"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer/VBoxContainer/MenuButton" to="." method="main_menu"]

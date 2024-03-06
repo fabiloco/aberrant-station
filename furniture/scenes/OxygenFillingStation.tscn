@@ -1,10 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://l1uxm4lyrkd4"]
+[gd_scene load_steps=8 format=3 uid="uid://l1uxm4lyrkd4"]
 
 [ext_resource type="PackedScene" uid="uid://wx3gdmg7apdi" path="res://art/models/furniture/oxygen_filling_station.glb" id="1_vyay6"]
 [ext_resource type="Script" path="res://furniture/scripts/OxygenFillingStation.gd" id="2_6qdfh"]
+[ext_resource type="PackedScene" uid="uid://bjkcd8uxsojht" path="res://art/models/furniture/tubes_box.glb" id="3_uw6xg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6g0ow"]
 size = Vector3(2.18994, 1.25854, 0.561157)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_lhayj"]
+points = PackedVector3Array(0.700481, -0.134715, 0.952105, -0.13421, -0.134715, 0.952105, 0.637955, -0.594314, 0.952105, 0.700481, -0.134715, -0.572881, 0.345288, 1.10827, 0.392923, 0.293744, 1.18208, 0.444572, 0.20713, 1.30543, 0.444572, -0.574519, -0.594314, 0.952105, 0.155586, 1.37924, 0.392923, 0.575428, -1.05359, 0.952105, 0.637955, -0.594314, -0.572881, 0.20713, 1.30543, -0.065498, 0.293744, 1.18208, -0.065498, 0.345288, 1.10827, -0.0138491, -0.13421, -0.134715, -0.572881, -0.574519, -0.594314, -0.572881, -0.574519, -1.97213, 0.952105, 0.155586, 1.37924, -0.0138491, 0.0597363, -1.97213, 0.952105, 0.575428, -1.05359, -0.572881, -0.574519, -1.97213, -0.572881, 0.0597363, -1.97213, -0.572881)
+
+[sub_resource type="Theme" id="Theme_uuokx"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_fujb6"]
+viewport_path = NodePath("tubes_box/SubViewport")
 
 [node name="OxygenFillingStation" instance=ExtResource("1_vyay6")]
 script = ExtResource("2_6qdfh")
@@ -34,5 +43,37 @@ collision_mask = 32
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14917, -0.520386, 0.0466919)
 shape = SubResource("BoxShape3D_6g0ow")
 
+[node name="ConsumeOxygenTimer" type="Timer" parent="." index="7"]
+autostart = true
+
+[node name="tubes_box" parent="." index="8" instance=ExtResource("3_uw6xg")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.89908, 1.02016, 0.154964)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="tubes_box/Tubes Box_001" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tubes_box/Tubes Box_001/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_lhayj")
+
+[node name="SubViewport" type="SubViewport" parent="tubes_box" index="1"]
+
+[node name="OxygenProgress" type="ProgressBar" parent="tubes_box/SubViewport" index="0"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_uuokx")
+theme_type_variation = &"OxygenProgress"
+max_value = 400.0
+value = 50.0
+show_percentage = false
+
+[node name="Sprite3D" type="Sprite3D" parent="tubes_box" index="2"]
+transform = Transform3D(0.0458334, 8.85694e-10, -0.0476229, 0.0476229, -2.08166e-09, 0.0458334, -8.85694e-10, -0.0660957, -2.08166e-09, -0.338631, -0.362286, -0.288158)
+texture = SubResource("ViewportTexture_fujb6")
+
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
 [connection signal="area_exited" from="Area3D" to="." method="_on_area_3d_area_exited"]
+[connection signal="timeout" from="ConsumeOxygenTimer" to="." method="_on_consume_oxygen_timer_timeout"]
+
+[editable path="tubes_box"]

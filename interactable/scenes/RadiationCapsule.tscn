@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=3 uid="uid://p3n2s1g1g1nu"]
+
+[ext_resource type="Script" path="res://interactable/scripts/Interactable.gd" id="1_3g1fs"]
+[ext_resource type="Script" path="res://interactable/scripts/RadiationCapsule.gd" id="1_hg2ck"]
+[ext_resource type="PackedScene" uid="uid://cvdhwcqsv32rn" path="res://art/models/furniture/radiation_capsule.glb" id="2_2wbx2"]
+[ext_resource type="Material" uid="uid://b5x1qyf6c8b8n" path="res://furniture/materials/ScreenMaterial.tres" id="3_a001b"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8g518"]
+points = PackedVector3Array(-1.12363, -0.464165, -0.696666, -1.12393, -0.477569, -0.686619, -1.13767, -0.463539, -0.681905, -1.12213, -0.114505, -0.59545, -0.514537, -0.464165, -0.696666, -1.12393, -0.477569, 0.560338, -0.514537, -0.477569, -0.686619, -1.13767, -0.463539, 0.555625, -1.13617, -0.11513, -0.580938, -1.11496, 0.167511, -0.474637, -0.516031, -0.114505, -0.59545, 1.46687, -0.116024, -0.569898, 1.46687, -0.462646, -0.663175, -1.12363, -0.464165, 0.570385, -0.514537, -0.477569, 0.560338, -0.514537, -0.464165, 0.570509, 1.48091, -0.476228, -0.649407, 1.79337, -0.476228, -0.347126, 1.9042, -0.476228, -0.159208, -1.13617, -0.11513, 0.454657, -1.12213, -0.114505, 0.46917, -1.129, 0.424684, -0.0665513, -1.129, 0.354359, -0.294161, -1.129, 0.160987, -0.461737, -1.11496, 0.355968, -0.311403, -0.404011, 0.178144, -0.465458, -0.418051, 0.167511, -0.474637, 1.27509, 0.160898, -0.444868, 1.29989, 0.154018, -0.438418, 1.48509, -0.102441, -0.549556, 1.49047, -0.119777, -0.560348, 1.49107, -0.462556, -0.653252, 1.9042, -0.476228, 0.0328033, 1.79337, -0.476228, 0.220721, 1.48091, -0.476228, 0.523126, 1.46687, -0.462646, 0.536895, -0.516031, -0.114505, 0.46917, 1.46687, -0.116024, 0.443618, 1.78799, -0.462735, -0.365608, 1.91375, -0.462824, -0.152634, 1.91405, -0.462824, -0.0632023, -1.129, 0.160987, 0.328635, -1.129, 0.354359, 0.161183, -1.11496, 0.167511, 0.341534, -1.00892, 0.0575103, 0.417694, -1.11496, 0.435318, -0.0530311, -1.11496, 0.435318, -0.0799475, -1.11496, 0.370712, -0.288704, -0.404011, 0.355968, -0.311403, 1.27509, 0.335505, -0.293665, 1.29989, 0.336041, -0.280641, 1.67478, -0.180451, -0.376647, 1.91375, -0.462824, 0.0263533, 1.78799, -0.462735, 0.239203, 1.49107, -0.462556, 0.526972, -0.512446, 0.0575103, 0.417694, 1.49047, -0.119777, 0.434067, 1.48509, -0.102441, 0.423276, 1.29989, 0.154018, 0.305315, 1.27509, 0.160898, 0.311889, -0.512446, 0.37098, 0.263142, 1.86088, -0.30457, -0.139858, 1.86088, -0.30457, 0.0134534, -1.11496, 0.355968, 0.1783, -1.11496, 0.370712, 0.155725, -1.00892, 0.37098, 0.263142, -1.00055, 0.363563, 0.266863, -1.00892, 0.373393, 0.256196, -0.404011, 0.435318, -0.0530311, -0.404011, 0.435318, -0.0799475, -0.404011, 0.370712, -0.288704, 1.27509, 0.350249, -0.270966, 1.27509, 0.409315, -0.0799475, 1.29959, 0.402256, -0.0665513, 1.47673, 0.216658, -0.0665513, 1.47673, 0.169477, -0.218994, 1.67179, -0.164992, -0.360522, 1.67478, -0.180451, 0.250366, -0.520512, 0.363563, 0.266863, 1.29989, 0.336041, 0.147663, 1.27509, 0.335505, 0.160563, -0.512446, 0.373393, 0.256196, 1.27509, 0.350249, 0.137988, 1.8558, -0.290005, -0.124353, 1.8558, -0.290005, -0.00192738, 1.67179, -0.164992, 0.234241, 1.27509, 0.409315, -0.0530311, 1.47673, 0.169477, 0.0858917)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ipy0k"]
+viewport_path = NodePath("SubViewport")
+
+[node name="RadiationCapsule" type="Node3D"]
+script = ExtResource("1_hg2ck")
+
+[node name="Interactable" type="StaticBody3D" parent="."]
+script = ExtResource("1_3g1fs")
+prompt_message = "Enter radiation capsule"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable"]
+shape = SubResource("ConvexPolygonShape3D_8g518")
+
+[node name="Model" parent="." instance=ExtResource("2_2wbx2")]
+
+[node name="Radiation Capsule" parent="Model" index="0"]
+surface_material_override/2 = ExtResource("3_a001b")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(817, 512)
+
+[node name="Label" type="Label" parent="SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
+text = "root@root:#~ raise_down_radiation_leves.sh
+
+Raise down your radiation
+here!
+
+"
+autowrap_mode = 1
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.0537769, 0, 0, 0, 0.0484311, 0.023375, 0, -0.023375, 0.0484311, -0.75977, 0.211832, 0.329674)
+texture = SubResource("ViewportTexture_ipy0k")
+
+[node name="SitPosition" type="Marker3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0954447, -1.45895, -0.0681752)
+
+[node name="RestoreRadiationTimer" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="timeout" from="RestoreRadiationTimer" to="." method="_on_restore_radiation_timer_timeout"]
+
+[editable path="Model"]

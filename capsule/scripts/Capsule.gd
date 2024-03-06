@@ -14,6 +14,12 @@ var landed = false
 
 var rotation_force = 1
 
+var angular_vel = 0
+var angular_acc = 0
+# var velocity = Vector3.ZERO
+var acceleration = Vector3.ZERO
+
+
 func add_landing_task():
 	TasksManager.add_task({"title": "Land the spachip into the station."})
 	

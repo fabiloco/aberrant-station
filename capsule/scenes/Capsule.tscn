@@ -1,9 +1,9 @@
 [gd_scene load_steps=29 format=3 uid="uid://3ibqkjhnw7w5"]
 
 [ext_resource type="PackedScene" uid="uid://rvdp4svur2m8" path="res://interactable/scenes/Chair.tscn" id="2_hvgha"]
+[ext_resource type="PackedScene" uid="uid://p3n2s1g1g1nu" path="res://interactable/scenes/RadiationCapsule.tscn" id="2_jlstc"]
 [ext_resource type="Texture2D" uid="uid://bfp5muaklwln2" path="res://art/models/capsule/capsule_1K-metal_1-normal.jpg" id="3_c7lhq"]
 [ext_resource type="Texture2D" uid="uid://b121hw2vtbeuo" path="res://art/models/capsule/capsule_1K-metal_5-diffuse.jpg" id="4_ddncb"]
-[ext_resource type="PackedScene" uid="uid://b7g3y3872lit5" path="res://art/models/bed/bed.glb" id="4_e43xe"]
 [ext_resource type="Texture2D" uid="uid://bh8hxi3fpkhts" path="res://art/models/capsule/capsule_1K-metal_5-normal.jpg" id="5_myxs4"]
 [ext_resource type="Texture2D" uid="uid://28ry0xohin7i" path="res://art/models/capsule/capsule_green_metal_rust_nor_gl_1k.png" id="6_r6jm7"]
 [ext_resource type="Texture2D" uid="uid://cnwtw41p3dcc4" path="res://art/models/capsule/capsule_metal_plate_diff_1k.jpg" id="7_grfts"]
@@ -254,9 +254,9 @@ viewport_path = NodePath("Model/ControlStation/SubViewport2")
 viewport_path = NodePath("Model/ControlStation/SubViewport")
 
 [node name="Capsule" type="RigidBody3D" node_paths=PackedStringArray("velocity_label", "station_velocity_label")]
-mass = 3.16
+collision_layer = 9
+collision_mask = 9
 gravity_scale = 0.0
-angular_damp_mode = 1
 script = ExtResource("15_mpx1u")
 velocity_label = NodePath("Model/ControlStation/SubViewport/CapsuleVelocity")
 station_velocity_label = NodePath("Model/ControlStation/SubViewport2/StationVelocity")
@@ -281,8 +281,8 @@ collision_mask = 16
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.033062)
 shape = SubResource("CylinderShape3D_mbvmb")
 
-[node name="bed" parent="Model" instance=ExtResource("4_e43xe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0537596, 4.4, -2.45389)
+[node name="RadiationCapsule" parent="Model" instance=ExtResource("2_jlstc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.108705, 4.85929, -2.08724)
 
 [node name="capsule2" type="Node3D" parent="Model"]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
