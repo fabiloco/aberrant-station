@@ -28,7 +28,9 @@ func _ready():
 	station_rotation_speed = station.rotation_speed
 
 func _physics_process(delta):
-	if landed: return
+	if landed:
+		rotation.z = lerpf(rotation.z, 0, station.rotation_speed * delta)
+		return
 
 	var velocity_text = "\n %.1f m/s" % angular_velocity.z
 
@@ -73,7 +75,7 @@ func land_capsule():
 	landed = true
 	freeze = true
 
-	global_position = Vector3(0, 0, -12.141)
+	global_position = Vector3(0, 0, -7.8)
 	rotation.y = deg_to_rad(180)
 
 
@@ -85,3 +87,7 @@ func enter_station(_body):
 	Globals.stage = "Stage2"
 	get_tree().change_scene_to_file("res://ui/scenes/Loading.tscn")
 		
+func eject(body):
+	body.is_sitting = false
+	body.velocity = Vector3(0, 1, 0) * 200
+	

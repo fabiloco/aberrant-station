@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=3 uid="uid://cj7i0nrtae7in"]
+
+[ext_resource type="PackedScene" uid="uid://dbjkfcd6cxrb8" path="res://ui/scenes/InventorySlot.tscn" id="1_mdqa5"]
+[ext_resource type="Script" path="res://ui/scripts/InventoryUI.gd" id="1_vihft"]
+
+[sub_resource type="Theme" id="Theme_28yow"]
+
+[node name="InventoryUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vihft")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -140.0
+offset_top = -92.0
+offset_right = 140.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = SubResource("Theme_28yow")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="GridContainer" type="GridContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 4
+
+[node name="Slot" parent="Panel/MarginContainer/GridContainer" instance=ExtResource("1_mdqa5")]
+layout_mode = 2
+
+[node name="Slot2" parent="Panel/MarginContainer/GridContainer" instance=ExtResource("1_mdqa5")]
+layout_mode = 2
+
+[node name="Slot3" parent="Panel/MarginContainer/GridContainer" instance=ExtResource("1_mdqa5")]
+layout_mode = 2
+
+[node name="Slot4" parent="Panel/MarginContainer/GridContainer" instance=ExtResource("1_mdqa5")]
+layout_mode = 2

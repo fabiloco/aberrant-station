@@ -11,7 +11,7 @@ class_name Player
 @export var mouse_sens = 0.25 
 @export var lerp_speed = 10 
 
-@onready var head = $Head	
+@onready var head = $Head
 @onready var standing_collison_shape = $StandingCollisionShape	
 @onready var crouching_collison_shape = $CrouchingCollisionShape
 @onready var crouching_ray_cast = $CroucingRayCast
@@ -19,7 +19,20 @@ class_name Player
 @onready var walk_timer = $WalkTimer
 @onready var step_sound = $StepSound
 
+@export var inventory: Inventory
+
 @onready var vitals: PlayerVitals = $CanvasLayer/Vitals
+@onready var inventory_ui: InventoryUI = $CanvasLayer/InventoryUI
+
+@onready var item_holder = $Head/ItemHolder
+@onready var cam_holder = $Head/CamHolder
+var item_sway_amount: float = 1
+var item_rotation_amount: float = 0.005
+var cam_rotation_amount = 0.02
+var def_item_holder_pos: Vector3
+var invert_item_sway : bool = true
+var mouse_input: Vector2
+
 
 
 var current_speed = walking_speed
@@ -46,6 +59,7 @@ func _input(event):
 		rotate_y(deg_to_rad(-event.relative.x * mouse_sens))
 		head.rotate_x(deg_to_rad(-event.relative.y * mouse_sens))
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89),deg_to_rad(89))
+		mouse_input = event.relative
 
 func _physics_process(delta):
 	if is_sitting: 
@@ -102,3 +116,33 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, current_speed)
 
 	move_and_slide()
+	cam_tilt(input_dir.x, delta)
+	item_tilt(input_dir.x, delta)
+	item_sway(delta)
+	if input_dir.length() != 0:
+		weapon_bob(velocity.length(), delta)
+
+func cam_tilt(input_x, delta):
+	if cam_holder:
+		cam_holder.rotation.z = lerp(cam_holder.rotation.z, -input_x * cam_rotation_amount, 10 * delta)
+
+func item_tilt(input_x, delta):
+	if item_holder:
+		item_holder.rotation.z = lerp(item_holder.rotation.z, -input_x * item_rotation_amount, 10 * delta)
+
+func item_sway(delta):
+	mouse_input = lerp(mouse_input, Vector2.ZERO, 10 * delta)
+	item_holder.rotation.x = lerp(item_holder.rotation.x, mouse_input.y * item_rotation_amount * (-1 if invert_item_sway else 1), 10 * delta)
+	item_holder.rotation.y = lerp(item_holder.rotation.y, mouse_input.x * item_rotation_amount * (-1 if invert_item_sway else 1), 10 * delta)
+
+func weapon_bob(vel : float, delta):
+	if item_holder:
+		if vel > 0 and is_on_floor():
+			var bob_amount : float = 0.01
+			var bob_freq : float = 0.01
+			item_holder.position.y = lerp(item_holder.position.y, def_item_holder_pos.y + sin(Time.get_ticks_msec() * bob_freq) * bob_amount, 10 * delta)
+			item_holder.position.x = lerp(item_holder.position.x, def_item_holder_pos.x + sin(Time.get_ticks_msec() * bob_freq * 0.5) * bob_amount, 10 * delta)
+			
+		else:
+			item_holder.position.y = lerp(item_holder.position.y, def_item_holder_pos.y, 10 * delta)
+			item_holder.position.x = lerp(item_holder.position.x, def_item_holder_pos.x, 10 * delta)

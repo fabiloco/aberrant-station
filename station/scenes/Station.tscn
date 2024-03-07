@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://brvhjrhhnweeo"]
+[gd_scene load_steps=14 format=3 uid="uid://brvhjrhhnweeo"]
 
 [ext_resource type="Script" path="res://station/scripts/Station.gd" id="1_0307d"]
 [ext_resource type="PackedScene" uid="uid://cfidjs41r6a7x" path="res://station/scenes/Door.tscn" id="2_8ulwo"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://yu60w237vnvg" path="res://station/scenes/modules/station_module_lander.tscn" id="4_3vren"]
 [ext_resource type="PackedScene" uid="uid://b3pfg4h2xlh4j" path="res://station/scenes/modules/station_module_1.tscn" id="5_vq4en"]
 [ext_resource type="PackedScene" uid="uid://b2drf50a1381v" path="res://station/scenes/modules/station_solar_panel_module.tscn" id="6_86qhq"]
+[ext_resource type="PackedScene" uid="uid://bpcn0tgwimnfe" path="res://items/scenes/Key.tscn" id="7_7ad8h"]
 [ext_resource type="PackedScene" uid="uid://ct210yfirqi4d" path="res://furniture/scenes/TableMonitor.tscn" id="7_ki32k"]
 [ext_resource type="PackedScene" uid="uid://jlaloj1ue0f7" path="res://furniture/scenes/RoofMonitor.tscn" id="8_6qahr"]
 [ext_resource type="PackedScene" uid="uid://cjpdqfo6xvq6d" path="res://furniture/scenes/LargeTable.tscn" id="9_owet4"]
@@ -60,6 +61,10 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.6, 0
 
 [node name="station_module1_2" parent="Model" instance=ExtResource("5_vq4en")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.87038e-07, 0.2, -11.9)
+
+[node name="Key" parent="Model/station_module1_2" instance=ExtResource("7_7ad8h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.54345, -0.715363, -0.952364)
+gravity_scale = 9.0
 
 [node name="TableMonitor" parent="Model/station_module1_2" instance=ExtResource("7_ki32k")]
 transform = Transform3D(-0.236296, 0, -0.971681, 0, 1, 0, 0.971681, 0, -0.236296, 2.01397, -0.529031, -1.939)

@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://bpcn0tgwimnfe"]
+
+[ext_resource type="PackedScene" uid="uid://bpjo4vhke52g5" path="res://art/models/items/key.glb" id="1_7u8on"]
+[ext_resource type="Script" path="res://items/scripts/Item.gd" id="1_upwfq"]
+[ext_resource type="Resource" uid="uid://bt7a2pdcqq5k" path="res://items/res/Key.tres" id="2_7dljk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g0xh4"]
+size = Vector3(0.0975952, 0.0267944, 0.237061)
+
+[node name="Key" type="RigidBody3D"]
+script = ExtResource("1_upwfq")
+inventory_item = ExtResource("2_7dljk")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00991821, 0.000152588, -0.00769043)
+shape = SubResource("BoxShape3D_g0xh4")
+
+[node name="model" parent="." instance=ExtResource("1_7u8on")]
+
+[editable path="model"]

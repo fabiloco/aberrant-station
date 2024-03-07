@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://uljarxje6a7k"]
+[gd_scene load_steps=11 format=3 uid="uid://uljarxje6a7k"]
 
 [ext_resource type="Texture2D" uid="uid://qk5f5ojlip5c" path="res://assets/hdri/full earth.hdr" id="1_4ocvt"]
+[ext_resource type="Script" path="res://level/scripts/Stage1.gd" id="1_bx6lq"]
 [ext_resource type="PackedScene" uid="uid://c3kp4ij2152tm" path="res://ui/scenes/PauseMenu.tscn" id="1_krmdq"]
 [ext_resource type="PackedScene" uid="uid://3ibqkjhnw7w5" path="res://capsule/scenes/Capsule.tscn" id="2_wqee8"]
 [ext_resource type="PackedScene" uid="uid://brvhjrhhnweeo" path="res://station/scenes/Station.tscn" id="3_v3lc1"]
@@ -21,9 +22,11 @@ ssr_enabled = true
 ssao_enabled = true
 glow_enabled = true
 
-[node name="Space" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_hc0rh"]
+size = Vector3(100, 100, 100)
 
-[node name="PauseMenu" parent="." instance=ExtResource("1_krmdq")]
+[node name="Space" type="Node3D"]
+script = ExtResource("1_bx6lq")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_upsu4")
@@ -35,5 +38,40 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16.7)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16.195)
 
 [node name="Station" parent="." instance=ExtResource("3_v3lc1")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 rotation_speed = 1.1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("1_krmdq")]
+
+[node name="DeathArea" type="Area3D" parent="."]
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 100)
+shape = SubResource("BoxShape3D_hc0rh")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="DeathArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -100)
+shape = SubResource("BoxShape3D_hc0rh")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="DeathArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0)
+shape = SubResource("BoxShape3D_hc0rh")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="DeathArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -100, 0)
+shape = SubResource("BoxShape3D_hc0rh")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="DeathArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 0, 0)
+shape = SubResource("BoxShape3D_hc0rh")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="DeathArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100, 0, 0)
+shape = SubResource("BoxShape3D_hc0rh")
+
+[connection signal="body_entered" from="DeathArea" to="." method="_on_death_area_body_entered"]
+[connection signal="body_exited" from="DeathArea" to="." method="_on_death_area_body_exited"]

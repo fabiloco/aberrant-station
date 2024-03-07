@@ -55,6 +55,12 @@ func _physics_process(_delta):
 				joystick = null
 				# detected.interact(owner)
 	
+		if detected is Item:
+			prompt_label.text = detected.get_prompt()
+			
+			if Input.is_action_just_pressed(detected.prompt_action):
+				detected.interact(owner)
+			
 	_drag_object()
 
 func _drag_object():
