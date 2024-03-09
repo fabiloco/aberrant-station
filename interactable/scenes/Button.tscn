@@ -1,26 +1,186 @@
-[gd_scene load_steps=5 format=3 uid="uid://cm4b6u7ykhqwi"]
+[gd_scene load_steps=17 format=3 uid="uid://cm4b6u7ykhqwi"]
 
-[ext_resource type="Script" path="res://interactable/scripts/Interactable.gd" id="1_ra5iy"]
+[ext_resource type="Script" path="res://interactable/scripts/Button.gd" id="1_x7wes"]
+[ext_resource type="Texture2D" uid="uid://c7ivhnsbnh3ph" path="res://art/models/furniture/button_1K-brushed_metal_1-diffuse.jpg" id="2_j3n26"]
+[ext_resource type="Texture2D" uid="uid://ccy2gedsup20u" path="res://art/models/furniture/button_1K-brushed_metal_1-normal.jpg" id="3_oo2so"]
+[ext_resource type="Texture2D" uid="uid://donfpv027c8l4" path="res://art/models/furniture/button_green_metal_rust_diff_1k.jpg" id="4_am81v"]
+[ext_resource type="Texture2D" uid="uid://gagdqv7uh065" path="res://art/models/furniture/button_green_metal_rust_nor_gl_1k.png" id="5_fjto6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o11c7"]
+resource_name = "Gray Metal"
+cull_mode = 2
+albedo_texture = ExtResource("2_j3n26")
+metallic = 0.75
+roughness = 0.386364
+normal_enabled = true
+normal_texture = ExtResource("3_oo2so")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_pooy1"]
+_surfaces = [{
+"aabb": AABB(-0.15, -0.09, -0.15, 0.3, 0.18, 0.30001),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0, 2, 0, 7, 0, 3, 0, 2, 0, 6, 0, 7, 0, 6, 0, 5, 0, 7, 0, 6, 0, 4, 0, 5, 0, 4, 0, 1, 0, 5, 0, 4, 0, 0, 0, 1, 0, 2, 0, 4, 0, 6, 0, 2, 0, 0, 0, 4, 0, 7, 0, 1, 0, 3, 0, 7, 0, 5, 0, 1, 0),
+"name": "Gray Metal",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 252, 255, 0, 0, 0, 0, 255, 255, 252, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 255, 255, 0, 0, 252, 255, 0, 0, 255, 255, 255, 255, 252, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_04yft"]
+resource_name = "button_Cube_021"
+_surfaces = [{
+"aabb": AABB(-0.15, -0.09, -0.15, 0.3, 0.18, 0.30001),
+"attribute_data": PackedByteArray(22, 221, 208, 197, 255, 127, 255, 255, 22, 221, 162, 139, 45, 186, 208, 197, 255, 255, 162, 139, 255, 127, 162, 139, 22, 221, 255, 255, 45, 186, 255, 255, 22, 221, 162, 139, 45, 186, 255, 255, 45, 186, 162, 139, 45, 186, 162, 139, 255, 127, 208, 197, 22, 221, 208, 197, 22, 221, 208, 197, 255, 255, 208, 197, 255, 127, 208, 197, 255, 255, 208, 197, 45, 186, 208, 197, 22, 221, 208, 197, 22, 221, 255, 255, 45, 186, 208, 197, 45, 186, 208, 197, 255, 255, 255, 255),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray(0, 0, 9, 0, 3, 0, 0, 0, 6, 0, 9, 0, 8, 0, 21, 0, 10, 0, 8, 0, 19, 0, 21, 0, 20, 0, 17, 0, 23, 0, 20, 0, 14, 0, 17, 0, 13, 0, 4, 0, 15, 0, 13, 0, 2, 0, 4, 0, 7, 0, 12, 0, 18, 0, 7, 0, 1, 0, 12, 0, 22, 0, 5, 0, 11, 0, 22, 0, 16, 0, 5, 0),
+"material": SubResource("StandardMaterial3D_o11c7"),
+"name": "Gray Metal",
+"primitive": 3,
+"uv_scale": Vector4(2, 2, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 252, 255, 84, 213, 0, 0, 0, 0, 252, 255, 84, 213, 0, 0, 0, 0, 252, 255, 255, 191, 0, 0, 255, 255, 252, 255, 84, 213, 0, 0, 255, 255, 252, 255, 255, 191, 0, 0, 255, 255, 252, 255, 84, 213, 0, 0, 0, 0, 0, 0, 84, 213, 0, 0, 0, 0, 0, 0, 84, 213, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 84, 213, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 84, 213, 255, 255, 0, 0, 252, 255, 84, 213, 255, 255, 0, 0, 252, 255, 255, 191, 255, 255, 0, 0, 252, 255, 84, 213, 255, 255, 255, 255, 252, 255, 255, 191, 255, 255, 255, 255, 252, 255, 84, 213, 255, 255, 255, 255, 252, 255, 84, 213, 255, 255, 0, 0, 0, 0, 84, 213, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 84, 213, 255, 255, 255, 255, 0, 0, 255, 255, 255, 255, 255, 255, 0, 0, 84, 213, 255, 255, 255, 255, 0, 0, 84, 213, 84, 85, 170, 170, 85, 85, 84, 85, 255, 255, 255, 255, 84, 85, 170, 170, 255, 255, 255, 255, 84, 213, 170, 42, 84, 85, 170, 170, 85, 85, 84, 85, 255, 63, 255, 191, 84, 85, 170, 170, 255, 63, 255, 191, 84, 213, 170, 42, 85, 85, 84, 85, 255, 255, 255, 255, 170, 42, 170, 42, 255, 255, 255, 255, 84, 213, 170, 42, 170, 42, 170, 42, 85, 85, 84, 85, 255, 63, 255, 191, 170, 42, 170, 42, 255, 63, 255, 191, 84, 213, 170, 42, 170, 42, 170, 42)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_pooy1")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1aigc"]
+resource_name = "Green Metal"
+cull_mode = 2
+albedo_texture = ExtResource("4_am81v")
+roughness = 0.5
+emission_enabled = true
+emission = Color(0.0156863, 0.156863, 0.0235294, 1)
+normal_enabled = true
+normal_texture = ExtResource("5_fjto6")
+texture_filter = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bj58k"]
+resource_name = "Glass"
+transparency = 4
+cull_mode = 2
+albedo_color = Color(1, 1, 1, 0.1)
+albedo_texture = ExtResource("5_fjto6")
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_y3dng"]
+_surfaces = [{
+"aabb": AABB(-0.1125, -0.0685785, -0.1125, 0.225, 0.135, 0.22501),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0, 2, 0, 7, 0, 3, 0, 2, 0, 6, 0, 7, 0, 6, 0, 5, 0, 7, 0, 6, 0, 4, 0, 5, 0, 4, 0, 1, 0, 5, 0, 4, 0, 0, 0, 1, 0, 2, 0, 4, 0, 6, 0, 2, 0, 0, 0, 4, 0, 7, 0, 1, 0, 3, 0, 7, 0, 5, 0, 1, 0),
+"name": "Green Metal",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 252, 255, 0, 0, 0, 0, 255, 255, 252, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 255, 255, 0, 0, 252, 255, 0, 0, 255, 255, 255, 255, 252, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0)
+}, {
+"aabb": AABB(-0.116903, -0.0690631, -0.116903, 0.233806, 0.140283, 0.233816),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0, 2, 0, 7, 0, 3, 0, 2, 0, 6, 0, 7, 0, 6, 0, 5, 0, 7, 0, 6, 0, 4, 0, 5, 0, 4, 0, 1, 0, 5, 0, 4, 0, 0, 0, 1, 0, 2, 0, 4, 0, 6, 0, 2, 0, 0, 0, 4, 0, 7, 0, 1, 0, 3, 0, 7, 0, 5, 0, 1, 0),
+"name": "Glass",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 252, 255, 0, 0, 0, 0, 255, 255, 252, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 255, 255, 0, 0, 252, 255, 0, 0, 255, 255, 255, 255, 252, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_edbtw"]
+resource_name = "button_Cube_022"
+_surfaces = [{
+"aabb": AABB(-0.1125, -0.0685785, -0.1125, 0.225, 0.135, 0.22501),
+"attribute_data": PackedByteArray(255, 127, 169, 170, 255, 191, 255, 255, 255, 191, 169, 170, 255, 191, 169, 170, 255, 255, 170, 170, 255, 191, 84, 213, 255, 127, 255, 127, 255, 255, 255, 255, 254, 255, 255, 127, 255, 191, 255, 127, 255, 191, 255, 127, 255, 191, 255, 255, 255, 191, 84, 213, 255, 191, 84, 213, 255, 127, 169, 170, 254, 255, 84, 213, 255, 127, 84, 213, 255, 191, 170, 170, 255, 255, 84, 213, 254, 255, 170, 170, 255, 127, 84, 213, 255, 191, 169, 170, 255, 127, 255, 255, 255, 191, 84, 213),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray(0, 0, 9, 0, 3, 0, 0, 0, 6, 0, 9, 0, 8, 0, 21, 0, 10, 0, 8, 0, 19, 0, 21, 0, 20, 0, 17, 0, 23, 0, 20, 0, 14, 0, 17, 0, 13, 0, 4, 0, 15, 0, 13, 0, 2, 0, 4, 0, 7, 0, 12, 0, 18, 0, 7, 0, 1, 0, 12, 0, 22, 0, 5, 0, 11, 0, 22, 0, 16, 0, 5, 0),
+"material": SubResource("StandardMaterial3D_1aigc"),
+"name": "Green Metal",
+"primitive": 3,
+"uv_scale": Vector4(1.33333, 2, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 252, 255, 84, 213, 0, 0, 0, 0, 252, 255, 84, 213, 0, 0, 0, 0, 252, 255, 255, 191, 0, 0, 255, 255, 252, 255, 84, 213, 0, 0, 255, 255, 252, 255, 255, 191, 0, 0, 255, 255, 252, 255, 255, 255, 0, 0, 0, 0, 0, 0, 84, 213, 0, 0, 0, 0, 0, 0, 84, 213, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 84, 213, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 255, 255, 0, 0, 252, 255, 84, 213, 255, 255, 0, 0, 252, 255, 255, 191, 255, 255, 0, 0, 252, 255, 84, 213, 255, 255, 255, 255, 252, 255, 255, 191, 255, 255, 255, 255, 252, 255, 255, 255, 255, 255, 255, 255, 252, 255, 84, 213, 255, 255, 0, 0, 0, 0, 84, 213, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 84, 213, 255, 255, 255, 255, 0, 0, 255, 255, 255, 255, 255, 255, 0, 0, 255, 255, 255, 255, 255, 255, 0, 0, 84, 213, 84, 213, 84, 213, 84, 85, 84, 85, 255, 255, 255, 255, 84, 213, 84, 213, 255, 255, 255, 255, 255, 127, 255, 191, 84, 213, 84, 213, 84, 85, 84, 85, 255, 63, 255, 191, 84, 213, 84, 213, 255, 63, 255, 191, 255, 127, 255, 191, 84, 85, 84, 85, 255, 255, 255, 255, 170, 42, 170, 42, 255, 255, 255, 255, 255, 127, 255, 191, 170, 42, 170, 42, 84, 85, 84, 85, 255, 63, 255, 191, 170, 42, 170, 42, 255, 63, 255, 191, 255, 127, 255, 191, 170, 42, 170, 42)
+}, {
+"aabb": AABB(-0.116903, -0.0690631, -0.116903, 0.233806, 0.140283, 0.233816),
+"attribute_data": PackedByteArray(255, 255, 208, 197, 45, 186, 208, 197, 45, 186, 162, 139, 22, 221, 208, 197, 22, 221, 162, 139, 255, 127, 255, 255, 255, 255, 255, 255, 45, 186, 162, 139, 254, 255, 162, 139, 22, 221, 255, 255, 22, 221, 162, 139, 255, 127, 208, 197, 255, 127, 208, 197, 45, 186, 208, 197, 45, 186, 208, 197, 22, 221, 208, 197, 45, 186, 255, 255, 22, 221, 208, 197, 255, 127, 162, 139, 254, 255, 208, 197, 45, 186, 255, 255, 22, 221, 208, 197, 45, 186, 208, 197, 22, 221, 255, 255),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray(0, 0, 9, 0, 3, 0, 0, 0, 6, 0, 9, 0, 8, 0, 21, 0, 10, 0, 8, 0, 19, 0, 21, 0, 20, 0, 17, 0, 23, 0, 20, 0, 14, 0, 17, 0, 13, 0, 4, 0, 15, 0, 13, 0, 2, 0, 4, 0, 7, 0, 12, 0, 18, 0, 7, 0, 1, 0, 12, 0, 22, 0, 5, 0, 11, 0, 22, 0, 16, 0, 5, 0),
+"material": SubResource("StandardMaterial3D_bj58k"),
+"name": "Glass",
+"primitive": 3,
+"uv_scale": Vector4(2, 2, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 252, 255, 84, 213, 0, 0, 0, 0, 252, 255, 255, 255, 0, 0, 0, 0, 252, 255, 255, 191, 0, 0, 255, 255, 252, 255, 84, 213, 0, 0, 255, 255, 252, 255, 255, 191, 0, 0, 255, 255, 252, 255, 255, 191, 0, 0, 0, 0, 0, 0, 84, 213, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 84, 213, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 191, 255, 255, 0, 0, 252, 255, 255, 255, 255, 255, 0, 0, 252, 255, 255, 191, 255, 255, 0, 0, 252, 255, 84, 213, 255, 255, 255, 255, 252, 255, 255, 191, 255, 255, 255, 255, 252, 255, 255, 191, 255, 255, 255, 255, 252, 255, 84, 213, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 84, 213, 255, 255, 255, 255, 0, 0, 255, 255, 255, 255, 255, 255, 0, 0, 255, 191, 255, 255, 255, 255, 0, 0, 84, 213, 84, 85, 170, 170, 255, 127, 255, 63, 255, 255, 255, 255, 84, 85, 170, 170, 255, 255, 255, 255, 255, 255, 255, 127, 84, 85, 170, 170, 255, 127, 255, 63, 255, 63, 255, 191, 84, 85, 170, 170, 255, 63, 255, 191, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 255, 170, 42, 170, 42, 255, 255, 255, 255, 255, 255, 255, 127, 170, 42, 170, 42, 255, 127, 255, 63, 255, 63, 255, 191, 170, 42, 170, 42, 255, 63, 255, 191, 255, 255, 255, 127, 170, 42, 170, 42)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_y3dng")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c15xp"]
 size = Vector3(0.201569, 0.200897, 0.200623)
 
-[sub_resource type="BoxMesh" id="BoxMesh_jx56f"]
+[sub_resource type="Animation" id="Animation_gxwum"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("button/Button:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.0823285, 0)]
+}
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yyidq"]
-albedo_color = Color(0.854902, 0.156863, 0.286275, 1)
+[sub_resource type="Animation" id="Animation_4knjx"]
+resource_name = "click"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("button/Button:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(0.31864, 0.450625, 1),
+"update": 0,
+"values": [Vector3(0, 0.0823285, 0), Vector3(0, 0.0383686, 0), Vector3(0, 0.0823285, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yy0eo"]
+_data = {
+"RESET": SubResource("Animation_gxwum"),
+"click": SubResource("Animation_4knjx")
+}
 
 [node name="Button" type="StaticBody3D"]
-script = ExtResource("1_ra5iy")
+script = ExtResource("1_x7wes")
+
+[node name="button" type="Node3D" parent="."]
+transform = Transform3D(0.691159, 0, 0, 0, 0.691159, 0, 0, 0, 0.691159, 0, 0, 0)
+
+[node name="ButtonBase" type="MeshInstance3D" parent="button"]
+mesh = SubResource("ArrayMesh_04yft")
+skeleton = NodePath("")
+
+[node name="Button" type="MeshInstance3D" parent="button"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0823285, 0)
+mesh = SubResource("ArrayMesh_edbtw")
+skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00160228, 4.58658e-05, 9.15825e-05)
 shape = SubResource("BoxShape3D_c15xp")
 
-[node name="Model" type="Node3D" parent="."]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Model"]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
-mesh = SubResource("BoxMesh_jx56f")
-skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_yyidq")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_yy0eo")
+}

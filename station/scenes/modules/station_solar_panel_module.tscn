@@ -9,6 +9,8 @@ data = PackedVector3Array(2.9245, 0.2165, 2.7141, 8.7868, 0.1344, 2.7141, 2.9245
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.170971, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Station Solar Panel Module" index="0"]
+collision_layer = 129
+collision_mask = 129
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Station Solar Panel Module/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_l384p")

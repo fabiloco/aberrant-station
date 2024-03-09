@@ -1,0 +1,68 @@
+[gd_scene load_steps=6 format=3 uid="uid://cdhfd0cd0b7l4"]
+
+[ext_resource type="Script" path="res://player/scripts/NoticeUI.gd" id="1_vcffu"]
+[ext_resource type="Texture2D" uid="uid://dgsx6quggtytl" path="res://assets/tile_0031.png" id="2_sdwqw"]
+
+[sub_resource type="Animation" id="Animation_vgohl"]
+resource_name = "show"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.31864, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_q20u8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gfvu5"]
+_data = {
+"RESET": SubResource("Animation_q20u8"),
+"show": SubResource("Animation_vgohl")
+}
+
+[node name="HBoxContainer" type="HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+offset_right = 21.0
+offset_bottom = 16.0
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(50, 8)
+script = ExtResource("1_vcffu")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_sdwqw")
+
+[node name="Text" type="RichTextLabel" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "test notice"
+fit_content = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gfvu5")
+}
+autoplay = "show"

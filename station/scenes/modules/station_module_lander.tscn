@@ -8,6 +8,8 @@ data = PackedVector3Array(-2.032, 1.3536, -0.4461, -2.9211, 1.4327, -0.1088, -2.
 [node name="station_module_lander" instance=ExtResource("1_f57mc")]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Station Module Lander" index="0"]
+collision_layer = 129
+collision_mask = 129
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Station Module Lander/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_ibs43")

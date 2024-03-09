@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://3q1rhlvp8dxh"]
+
+[resource]
+emission_enabled = true
+emission = Color(0.709804, 0.376471, 0.32549, 1)
+emission_energy_multiplier = 3.0
+emission_on_uv2 = true
+uv1_scale = Vector3(10, 10, 10)
+uv1_offset = Vector3(-0.02, 0, 0)

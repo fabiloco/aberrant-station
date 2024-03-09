@@ -38,7 +38,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16.7)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16.195)
 
 [node name="Station" parent="." instance=ExtResource("3_v3lc1")]
-rotation_speed = 1.1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 2

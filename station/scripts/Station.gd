@@ -4,7 +4,7 @@ extends Node3D
 
 @export var rotation_speed = 1.1
 
-@export var landed = false		
+@export var landed = false			
 
 func _physics_process(delta):
 	if landed:

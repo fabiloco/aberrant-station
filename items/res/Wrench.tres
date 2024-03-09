@@ -1,11 +1,12 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://u8lehujloxew"]
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://n5helg1tavak"]
 
 [ext_resource type="Script" path="res://items/scripts/InventoryItem.gd" id="1_c5pul"]
-[ext_resource type="PackedScene" uid="uid://dn1oqhfj4xaa5" path="res://items/scenes/WrenchItem.tscn" id="1_clqt4"]
+[ext_resource type="PackedScene" uid="uid://dn1oqhfj4xaa5" path="res://items/scenes/WrenchUsuableItem.tscn" id="1_qdvi1"]
 [ext_resource type="Texture2D" uid="uid://qph0s7nileki" path="res://art/items_icons/wrench.png" id="2_vjqfm"]
 
 [resource]
 script = ExtResource("1_c5pul")
 texture = ExtResource("2_vjqfm")
 name = "Wrench"
-scene = ExtResource("1_clqt4")
+scene = ExtResource("1_qdvi1")
+physic_scene_path = "res://items/scenes/WrenchPhysicsItem.tscn"

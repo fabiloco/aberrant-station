@@ -20,4 +20,6 @@ func interact(body):
 	if body is Player:
 		if not body.inventory.insert(inventory_item):
 			print("inventory full")
+		
+		queue_free()
 			

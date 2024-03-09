@@ -1,8 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://cfidjs41r6a7x"]
+[gd_scene load_steps=17 format=3 uid="uid://cfidjs41r6a7x"]
 
 [ext_resource type="Script" path="res://station/scripts/Door.gd" id="1_mk6xe"]
 [ext_resource type="Texture2D" uid="uid://dws4oljo7c4df" path="res://art/models/station/station_module_door_Sci-Fi_Wall_014_basecolor.jpg" id="1_wsf2g"]
 [ext_resource type="Texture2D" uid="uid://c56xlc6igglmq" path="res://art/models/station/station_module_door_Sci-Fi_Wall_014_normal.jpg" id="2_bs07r"]
+[ext_resource type="AudioStream" uid="uid://bbbrton8c0x3t" path="res://assets/sounds/door_open.ogg" id="4_cotg8"]
+[ext_resource type="AudioStream" uid="uid://daw6ivme5gdgv" path="res://assets/sounds/door_close.ogg" id="5_twsuk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_73te4"]
 resource_name = "Scifi Wall"
@@ -111,8 +113,49 @@ tracks/1/keys = {
 "values": [Vector3(-0.410524, -0.0118099, 0.00540304)]
 }
 
+[sub_resource type="Animation" id="Animation_4y7qh"]
+resource_name = "close"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("station_module_door/Station Module Door Right:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1.40803, -0.00155153, 0), Vector3(0.408033, -0.00155153, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("station_module_door/Station Module Door Left:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-1.41052, -0.0118099, 0.00540304), Vector3(-0.410524, -0.0118099, 0.00540304)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Close")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_ajjb1"]
-resource_name = "move"
+resource_name = "open"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -137,11 +180,26 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(-0.410524, -0.0118099, 0.00540304), Vector3(-1.41052, -0.0118099, 0.00540304)]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Open")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tnt4v"]
 _data = {
 "RESET": SubResource("Animation_r8lg6"),
-"move": SubResource("Animation_ajjb1")
+"close": SubResource("Animation_4y7qh"),
+"open": SubResource("Animation_ajjb1")
 }
 
 [node name="Door" type="Node3D"]
@@ -173,3 +231,11 @@ shape = SubResource("ConvexPolygonShape3D_14rwr")
 libraries = {
 "": SubResource("AnimationLibrary_tnt4v")
 }
+
+[node name="Open" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_cotg8")
+bus = &"SFX"
+
+[node name="Close" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_twsuk")
+bus = &"SFX"

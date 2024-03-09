@@ -28,7 +28,7 @@ sky_material = SubResource("PanoramaSkyMaterial_sqxv3")
 
 [sub_resource type="Environment" id="Environment_upsu4"]
 background_mode = 2
-background_energy_multiplier = 0.1
+background_energy_multiplier = 0.05
 sky = SubResource("Sky_ab3oi")
 tonemap_mode = 2
 ssr_enabled = true
@@ -281,6 +281,7 @@ landed = true
 
 [node name="Player" parent="Station" instance=ExtResource("4_lb5g1")]
 transform = Transform3D(-0.416383, 0, 0.520643, 0, 0.666667, 0, -0.520643, 0, -0.416383, -0.113932, -1.14527, -1.85769)
+is_in_capsule = false
 
 [node name="Capsule" type="StaticBody3D" parent="Station"]
 transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, 0, -2.93333, -6.79667)
@@ -345,7 +346,7 @@ texture = SubResource("ViewportTexture_mu4n3")
 [node name="Monitor3" parent="Station/Capsule/ControlStation" instance=ExtResource("17_xq1kw")]
 transform = Transform3D(0.391048, 0.0693877, 0.0268976, 0.00506584, -0.168361, 0.360672, 0.0742462, -0.353971, -0.166276, -1.02249, -0.0243262, 0.191131)
 
-[node name="Sprite3D" parent="Station/Capsule/ControlStation/Monitor3" index="1"]
+[node name="Sprite3D" parent="Station/Capsule/ControlStation/Monitor3" index="2"]
 transform = Transform3D(0.1076, -9.31323e-09, 1.86265e-09, -5.58794e-09, 0.1076, 0, 5.58794e-09, -2.6077e-08, 0.1076, -9.53674e-07, 3.8147e-06, 0.0530245)
 flip_v = true
 texture = SubResource("ViewportTexture_nvtjk")
@@ -353,7 +354,7 @@ texture = SubResource("ViewportTexture_nvtjk")
 [node name="Monitor4" parent="Station/Capsule/ControlStation" instance=ExtResource("17_xq1kw")]
 transform = Transform3D(0.396134, -0.0387185, -0.00595036, -0.0104304, -0.162535, 0.363221, -0.037759, -0.361302, -0.16276, 0.259668, -0.191047, -0.0381184)
 
-[node name="Sprite3D" parent="Station/Capsule/ControlStation/Monitor4" index="1"]
+[node name="Sprite3D" parent="Station/Capsule/ControlStation/Monitor4" index="2"]
 transform = Transform3D(0.1076, -9.31323e-09, 1.86265e-09, -5.58794e-09, 0.1076, 0, 5.58794e-09, -2.6077e-08, 0.1076, -9.53674e-07, 3.8147e-06, 0.0530245)
 flip_v = true
 texture = SubResource("ViewportTexture_fuqs2")

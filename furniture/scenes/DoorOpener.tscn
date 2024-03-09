@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bo50a3el53n7g" path="res://art/models/furniture/door_opener_1K-metal_5-diffuse.jpg" id="2_saa5q"]
 [ext_resource type="Texture2D" uid="uid://bmn0tyf22e50g" path="res://art/models/furniture/door_opener_1K-metal_5-normal.jpg" id="3_wbmtt"]
 [ext_resource type="Material" uid="uid://b5x1qyf6c8b8n" path="res://furniture/materials/ScreenMaterial.tres" id="5_piwwp"]
+[ext_resource type="Material" uid="uid://dd6c2r1lw3i7h" path="res://furniture/res/AccessMaterial.tres" id="6_30101"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mlog8"]
 resource_name = "White Metal"
@@ -137,18 +138,10 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_44k87")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_786k1"]
-emission_enabled = true
-emission = Color(0.356863, 0.541176, 0.337255, 1)
-emission_energy_multiplier = 3.0
-emission_on_uv2 = true
-uv1_scale = Vector3(10, 10, 10)
-uv1_offset = Vector3(-0.02, 0, 0)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_80p1j"]
 size = Vector3(0.684741, 0.423096, 0.260071)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_b0g8n"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_k4wlg"]
 viewport_path = NodePath("SubViewport")
 
 [node name="DoorOpener" type="StaticBody3D"]
@@ -160,7 +153,7 @@ script = ExtResource("1_k25sb")
 mesh = SubResource("ArrayMesh_i3i51")
 skeleton = NodePath("")
 surface_material_override/2 = ExtResource("5_piwwp")
-surface_material_override/3 = SubResource("StandardMaterial3D_786k1")
+surface_material_override/3 = ExtResource("6_30101")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00587156, -0.00012207, -0.0412903)
@@ -185,10 +178,10 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
 text = "Permission to open: 
-granted"
+Granted"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(0.0923208, 0, 0, 0, 0.0923208, 0, 0, 0, 0.0923208, 0.12412, -0.0355448, 0.0518254)
-texture = SubResource("ViewportTexture_b0g8n")
+transform = Transform3D(0.120319, 0, 0, 0, 0.120319, 0, 0, 0, 0.120319, 0.12412, -0.0355448, 0.0518254)
+texture = SubResource("ViewportTexture_k4wlg")

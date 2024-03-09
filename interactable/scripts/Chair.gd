@@ -6,7 +6,7 @@ class_name Chair
 @onready var sit_position: Marker3D = $SitPosition
 @onready var leave_position: Marker3D = $LeavePosition
 
-var can_stand_up = true
+var can_stand_up = false
 
 func _ready():
 	interactable.interacted.connect(move_player)

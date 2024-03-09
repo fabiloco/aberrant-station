@@ -1,15 +1,18 @@
-[gd_scene load_steps=14 format=3 uid="uid://brvhjrhhnweeo"]
+[gd_scene load_steps=17 format=3 uid="uid://brvhjrhhnweeo"]
 
 [ext_resource type="Script" path="res://station/scripts/Station.gd" id="1_0307d"]
 [ext_resource type="PackedScene" uid="uid://cfidjs41r6a7x" path="res://station/scenes/Door.tscn" id="2_8ulwo"]
 [ext_resource type="PackedScene" uid="uid://bx5nyscrgtgsn" path="res://furniture/scenes/DoorOpener.tscn" id="2_fawf2"]
 [ext_resource type="PackedScene" uid="uid://0o0kxc5kofq3" path="res://items/scenes/OxygenTank.tscn" id="2_yomvn"]
 [ext_resource type="PackedScene" uid="uid://yu60w237vnvg" path="res://station/scenes/modules/station_module_lander.tscn" id="4_3vren"]
+[ext_resource type="PackedScene" uid="uid://cpu6xgbb71cdv" path="res://furniture/scenes/DoorOpenerWithKey.tscn" id="5_262wk"]
 [ext_resource type="PackedScene" uid="uid://b3pfg4h2xlh4j" path="res://station/scenes/modules/station_module_1.tscn" id="5_vq4en"]
 [ext_resource type="PackedScene" uid="uid://b2drf50a1381v" path="res://station/scenes/modules/station_solar_panel_module.tscn" id="6_86qhq"]
-[ext_resource type="PackedScene" uid="uid://bpcn0tgwimnfe" path="res://items/scenes/Key.tscn" id="7_7ad8h"]
+[ext_resource type="PackedScene" uid="uid://bpcn0tgwimnfe" path="res://items/scenes/KeyPhysicsItem.tscn" id="7_7ad8h"]
 [ext_resource type="PackedScene" uid="uid://ct210yfirqi4d" path="res://furniture/scenes/TableMonitor.tscn" id="7_ki32k"]
 [ext_resource type="PackedScene" uid="uid://jlaloj1ue0f7" path="res://furniture/scenes/RoofMonitor.tscn" id="8_6qahr"]
+[ext_resource type="PackedScene" uid="uid://brg2do3oo0bq6" path="res://enemy/scenes/Enemy.tscn" id="8_sr3dp"]
+[ext_resource type="PackedScene" uid="uid://cqta5wy3ksjb8" path="res://station/scenes/Light.tscn" id="8_tovdn"]
 [ext_resource type="PackedScene" uid="uid://cjpdqfo6xvq6d" path="res://furniture/scenes/LargeTable.tscn" id="9_owet4"]
 [ext_resource type="PackedScene" uid="uid://l1uxm4lyrkd4" path="res://furniture/scenes/OxygenFillingStation.tscn" id="11_sjryr"]
 
@@ -48,11 +51,17 @@ random_amount = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.82251, -0.317125, -10.8692)
 random_amount = false
 
-[node name="DoorOpener" parent="Model" instance=ExtResource("2_fawf2")]
+[node name="DoorOpener1" parent="Model" instance=ExtResource("2_fawf2")]
 transform = Transform3D(0.778155, 0.114576, -0.617533, 2.80301e-08, 0.98322, 0.182424, 0.628072, -0.141954, 0.765098, 1.93474, -0.432591, -3.39206)
 
-[node name="Door" parent="Model" instance=ExtResource("2_8ulwo")]
+[node name="Door1" parent="Model" instance=ExtResource("2_8ulwo")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.3, -4.2)
+
+[node name="DoorOpenerWithKey" parent="Model" instance=ExtResource("5_262wk")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.4, -0.3, -2.2)
+
+[node name="Door2" parent="Model" instance=ExtResource("2_8ulwo")]
+transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -2.8, 0.3, -0.5)
 
 [node name="station_module_lander" parent="Model" instance=ExtResource("4_3vren")]
 
@@ -61,6 +70,12 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.6, 0
 
 [node name="station_module1_2" parent="Model" instance=ExtResource("5_vq4en")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.87038e-07, 0.2, -11.9)
+
+[node name="Enemy" parent="Model/station_module1_2" instance=ExtResource("8_sr3dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.870213, -1.68483, -6.60596)
+
+[node name="Light" parent="Model/station_module1_2" instance=ExtResource("8_tovdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.34723, 0)
 
 [node name="Key" parent="Model/station_module1_2" instance=ExtResource("7_7ad8h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.54345, -0.715363, -0.952364)
@@ -93,4 +108,5 @@ collision_mask = 16
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.0477867, -0.445093)
 shape = SubResource("CylinderShape3D_70jk5")
 
-[connection signal="interacted" from="Model/DoorOpener" to="Model/Door" method="toggle_door"]
+[connection signal="interacted" from="Model/DoorOpener1" to="Model/Door1" method="toggle_door"]
+[connection signal="interacted" from="Model/DoorOpenerWithKey" to="Model/Door2" method="toggle_door"]

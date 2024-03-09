@@ -7,6 +7,8 @@ class_name PlayerVitals
 
 @onready var increase_radiation_timer = $IncreaseRadiationTimer
 
+@onready var player = $"../.."
+
 var consume_oxygen = false
 
 var oxygen = 100
@@ -22,9 +24,7 @@ func _ready():
 func on_oxygen_change(oxygen: int):
 	if oxygen <= 0:
 		consume_oxygen = true
-		TasksManager.add_task({"title": "You're consuming your oxygen. Reestore the oxygen levels of the station."})
 	else:
-		TasksManager.add_task({"title": "Oxygen in station reestablished."})
 		consume_oxygen = false
 	
 func set_radiation(val: int):
@@ -35,6 +35,7 @@ func set_radiation(val: int):
 	
 
 func _on_consume_oxygen_timer_timeout():
+	if player.is_in_capsule: return
 	if consume_oxygen:
 		oxygen -= oxygen_per_seconds
 		oxygen_bar.value = oxygen

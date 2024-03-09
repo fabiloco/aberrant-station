@@ -48,9 +48,15 @@ func _physics_process(_delta):
 				var b = get_collision_point()
 
 				joystick.look_at(b, Vector3.FORWARD)
+				
 				joystick.rotation.z = 0
-				# joystick.rotation.y = 0
-				capsule.velocity = joystick.rotation
+				joystick.rotation.x = clamp(joystick.rotation.x, -0.3, 1.4)
+				joystick.rotation.y = clamp(joystick.rotation.y, -1.4, 1.4)
+				
+				var dir_x = remap(joystick.rotation.x, -0.3, 1.4, -1, 1)
+				var dir_y = remap(joystick.rotation.y, -1.4, 1.4, -1, 1)
+				
+				capsule.dir = Vector2(dir_x, dir_y)
 			else:
 				joystick = null
 				# detected.interact(owner)

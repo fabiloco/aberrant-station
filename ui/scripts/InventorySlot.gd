@@ -10,5 +10,7 @@ var active = false
 func update(texture: Texture2D):
 	if texture:
 		texture_rect.texture = texture
+	else:
+		texture_rect.texture = null
 	
 	panel.visible = active

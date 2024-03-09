@@ -22,14 +22,15 @@ func _process(delta):
 			active_index -= 1
 			slots[active_index].active = true
 			update_slots()
-			equip_item()
+			# equip_item()
 			
 	if Input.is_action_just_pressed("scroll_down"):
 		if active_index != slots.size() - 1: 
 			active_index += 1
 			slots[active_index].active = true
 			update_slots()
-			equip_item()
+			# equip_item()
+
 			
 func remove_items():
 	for item in item_holder.get_children():
@@ -39,8 +40,12 @@ func equip_item():
 	remove_items()
 	if inventory.items[active_index] != null:
 		var item_instance = inventory.items[active_index].scene.instantiate()
+		item_instance.dropped.connect(on_item_dropped)
 		item_holder.add_child(item_instance)
-	
+
+func on_item_dropped():
+	inventory.items[active_index] = null
+	update_slots()
 
 func update_slots():
 	for i in range(min(inventory.items.size(), slots.size())):
@@ -49,3 +54,6 @@ func update_slots():
 		
 		if inventory.items[i]:
 			slots[i].update(inventory.items[i].texture)
+		else:
+			slots[i].update(null)
+	equip_item()

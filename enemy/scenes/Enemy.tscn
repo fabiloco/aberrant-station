@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://brg2do3oo0bq6"]
+
+[ext_resource type="PackedScene" uid="uid://ch72fgnn0bd8l" path="res://art/models/enemy/enemy.glb" id="1_5fqrk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5qond"]
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iew78"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 5.56
+
+[node name="Enemy" type="Node3D"]
+
+[node name="enemy" parent="." instance=ExtResource("1_5fqrk")]
+
+[node name="Cube_005" parent="enemy" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_5qond")
+surface_material_override/1 = SubResource("StandardMaterial3D_iew78")
+
+[editable path="enemy"]

@@ -12,7 +12,7 @@ class_name OxygenTank
 
 func _ready():
 	if random_amount:
-		oxygen_amount = randi_range(0, 100)
+		oxygen_amount = randi_range(80, 100)
 	
 	oxygen_bar.value = oxygen_amount
 

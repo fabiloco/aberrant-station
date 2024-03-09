@@ -11,12 +11,14 @@ extends Node3D
 
 @onready var consume_oxygen_timer = $ConsumeOxygenTimer
 
-
-
-var oxygen_consumed_per_second = 10
+var oxygen_consumed_per_second = 1
 var oxygen_in_station = 0
 
 var slots: Array[OxygenTank] = [null, null, null, null]
+
+func _ready():
+	if Globals.stage == "Stage2":
+		TasksManager.add_task({"title": "You're consuming your oxygen. Reestore the oxygen levels of the station."})
 
 func set_oxygen_in_station(val: int):
 	oxygen_in_station = val
@@ -39,7 +41,10 @@ func _on_area_3d_area_entered(area):
 		body.rotation = Vector3.ZERO
 		
 		slots[pos_index] = body
-		
+
+		if oxygen_in_station <= 0 and body.oxygen_amount > 0:
+			TasksManager.add_task({"title": "Oxygen in station reestablished."})
+			
 		set_oxygen_in_station(oxygen_in_station + body.oxygen_amount)
 
 func _on_area_3d_area_exited(area):
@@ -64,9 +69,10 @@ func _on_consume_oxygen_timer_timeout():
 				
 				if oxygen_in_station - oxygen_consumed_per_second < 0: 
 					set_oxygen_in_station(0)
+					TasksManager.add_task({"title": "You're consuming your oxygen. Reestore the oxygen levels of the station."})
 				else:
 					set_oxygen_in_station(oxygen_in_station - oxygen_consumed_per_second)
-				
+
 				slots[pos_index].decrease_oxygen_amount(oxygen_consumed_per_second)
 				break
 		pos_index += 1

@@ -22,6 +22,7 @@ class_name Player
 @export var inventory: Inventory
 
 @onready var vitals: PlayerVitals = $CanvasLayer/Vitals
+@export var is_in_capsule = true
 @onready var inventory_ui: InventoryUI = $CanvasLayer/InventoryUI
 
 @onready var item_holder = $Head/ItemHolder
@@ -49,6 +50,8 @@ var crouching_depth = 0.5
 var is_sitting = false
 var active_chair: Chair
 
+@onready var capsule = get_node("/root/Space/Capsule")
+
 @onready var space = get_node("/root/Space")
 
 func _ready():
@@ -72,6 +75,8 @@ func _physics_process(delta):
 			global_position = active_chair.global_position
 
 			active_chair = null
+		if Input.is_action_just_pressed("crouch") && !capsule.landed && not active_chair is RadiationCapsule:
+			NoticeManager.add_notice({"title": "Land the spaceship first"})
 		return
 
 	# handling movement state

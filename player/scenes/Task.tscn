@@ -1,11 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://d4ol56tuww8p"]
+[gd_scene load_steps=2 format=3 uid="uid://d4ol56tuww8p"]
 
-[ext_resource type="Theme" uid="uid://cyp75cmf481l" path="res://ui/themes/default_theme.tres" id="1_cfut6"]
 [ext_resource type="Script" path="res://player/scripts/TaskUI.gd" id="2_ymees"]
 
-[node name="Title" type="Label"]
-offset_right = 70.0
-offset_bottom = 18.0
-theme = ExtResource("1_cfut6")
-text = "test task"
+[node name="HBoxContainer" type="HBoxContainer"]
+modulate = Color(0.443137, 0.443137, 0.443137, 1)
+custom_minimum_size = Vector2(100, 0)
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(1e-05, 1e-05)
 script = ExtResource("2_ymees")
+
+[node name="CheckBox" type="CheckBox" parent="."]
+layout_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "test task"
+fit_content = true
