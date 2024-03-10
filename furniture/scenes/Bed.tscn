@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dks8cf8mi1363"]
+
+[ext_resource type="PackedScene" uid="uid://b7g3y3872lit5" path="res://art/models/bed/bed.glb" id="1_pcemh"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_jgw7d"]
+points = PackedVector3Array(-1.31597, -0.22165, -0.5, -1.31597, -0.22165, 0.499995, -1.31597, 0.0783237, -0.5, 1.31597, -0.22165, -0.5, -1.31597, 0.0783237, 0.499995, 1.31597, -0.22165, 0.499995, -1.27887, 0.190277, -0.463587, 1.31597, 0.0783237, -0.5, -1.27887, 0.190277, 0.461722, 1.31597, 0.0783237, 0.499995, -1.2696, 0.21245, -0.454581, 1.27861, 0.190277, -0.463587, -1.2696, 0.21245, 0.452325, 1.27861, 0.190277, 0.461722, -1.24744, 0.22165, -0.432557, 1.26934, 0.21245, -0.454581, 1.26934, 0.21245, 0.452325, -1.24744, 0.22165, 0.430105, 1.24718, 0.22165, -0.432557, 1.24718, 0.22165, 0.430105)
+
+[node name="Bed" type="Node3D"]
+
+[node name="bed" parent="." instance=ExtResource("1_pcemh")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="bed/Bed" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="bed/Bed/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_jgw7d")
+
+[editable path="bed"]

@@ -276,6 +276,7 @@ viewport_path = NodePath("Model/ControlStation/SubViewport4")
 [node name="Capsule" type="RigidBody3D"]
 collision_layer = 9
 collision_mask = 9
+mass = 100.0
 gravity_scale = 0.0
 center_of_mass_mode = 1
 script = ExtResource("15_mpx1u")

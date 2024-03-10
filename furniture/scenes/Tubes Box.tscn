@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7ojmlono28yt"]
+
+[ext_resource type="PackedScene" uid="uid://bjkcd8uxsojht" path="res://art/models/furniture/tubes_box.glb" id="1_x8g8s"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ylclo"]
+points = PackedVector3Array(0.700481, -0.134715, 0.952105, -0.13421, -0.134715, 0.952105, 0.637955, -0.594314, 0.952105, 0.700481, -0.134715, -0.572881, 0.345288, 1.10827, 0.392923, 0.293744, 1.18208, 0.444572, 0.20713, 1.30543, 0.444572, -0.574519, -0.594314, 0.952105, 0.155586, 1.37924, 0.392923, 0.575428, -1.05359, 0.952105, 0.637955, -0.594314, -0.572881, 0.20713, 1.30543, -0.065498, 0.293744, 1.18208, -0.065498, 0.345288, 1.10827, -0.0138491, -0.13421, -0.134715, -0.572881, -0.574519, -0.594314, -0.572881, -0.574519, -1.97213, 0.952105, 0.155586, 1.37924, -0.0138491, 0.0597363, -1.97213, 0.952105, 0.575428, -1.05359, -0.572881, -0.574519, -1.97213, -0.572881, 0.0597363, -1.97213, -0.572881)
+
+[node name="TubesBox" type="Node3D"]
+
+[node name="tubes_box" parent="." instance=ExtResource("1_x8g8s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="tubes_box/Tubes Box_001" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tubes_box/Tubes Box_001/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_ylclo")
+
+[editable path="tubes_box"]

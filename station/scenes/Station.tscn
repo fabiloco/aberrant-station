@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://brvhjrhhnweeo"]
+[gd_scene load_steps=25 format=3 uid="uid://brvhjrhhnweeo"]
 
 [ext_resource type="Script" path="res://station/scripts/Station.gd" id="1_0307d"]
 [ext_resource type="PackedScene" uid="uid://cfidjs41r6a7x" path="res://station/scenes/Door.tscn" id="2_8ulwo"]
@@ -11,10 +11,18 @@
 [ext_resource type="PackedScene" uid="uid://bpcn0tgwimnfe" path="res://items/scenes/KeyPhysicsItem.tscn" id="7_7ad8h"]
 [ext_resource type="PackedScene" uid="uid://ct210yfirqi4d" path="res://furniture/scenes/TableMonitor.tscn" id="7_ki32k"]
 [ext_resource type="PackedScene" uid="uid://jlaloj1ue0f7" path="res://furniture/scenes/RoofMonitor.tscn" id="8_6qahr"]
+[ext_resource type="PackedScene" uid="uid://p3n2s1g1g1nu" path="res://interactable/scenes/RadiationCapsule.tscn" id="8_qlwca"]
 [ext_resource type="PackedScene" uid="uid://brg2do3oo0bq6" path="res://enemy/scenes/Enemy.tscn" id="8_sr3dp"]
 [ext_resource type="PackedScene" uid="uid://cqta5wy3ksjb8" path="res://station/scenes/Light.tscn" id="8_tovdn"]
+[ext_resource type="PackedScene" uid="uid://b7ojmlono28yt" path="res://furniture/scenes/Tubes Box.tscn" id="9_ds18t"]
 [ext_resource type="PackedScene" uid="uid://cjpdqfo6xvq6d" path="res://furniture/scenes/LargeTable.tscn" id="9_owet4"]
+[ext_resource type="PackedScene" uid="uid://qhle2ppb32mh" path="res://furniture/scenes/SmallTable.tscn" id="10_e1jbi"]
 [ext_resource type="PackedScene" uid="uid://l1uxm4lyrkd4" path="res://furniture/scenes/OxygenFillingStation.tscn" id="11_sjryr"]
+[ext_resource type="PackedScene" uid="uid://dks8cf8mi1363" path="res://furniture/scenes/Bed.tscn" id="12_bn4lx"]
+[ext_resource type="PackedScene" uid="uid://ccgwar2o2bxi0" path="res://station/scenes/modules/small_station_module.tscn" id="16_hwmfy"]
+[ext_resource type="PackedScene" uid="uid://ds7olvsutvj11" path="res://station/scenes/modules/small_four_way_station.tscn" id="17_l33fl"]
+[ext_resource type="PackedScene" uid="uid://bigjtp8wq7qdd" path="res://station/scenes/StationWindow.tscn" id="17_m7wgc"]
+[ext_resource type="PackedScene" uid="uid://dvncccn65mtm2" path="res://furniture/scenes/OxygenStant.tscn" id="18_7t4sn"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_70jk5"]
 height = 0.198537
@@ -51,22 +59,88 @@ random_amount = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.82251, -0.317125, -10.8692)
 random_amount = false
 
-[node name="DoorOpener1" parent="Model" instance=ExtResource("2_fawf2")]
-transform = Transform3D(0.778155, 0.114576, -0.617533, 2.80301e-08, 0.98322, 0.182424, 0.628072, -0.141954, 0.765098, 1.93474, -0.432591, -3.39206)
-
-[node name="Door1" parent="Model" instance=ExtResource("2_8ulwo")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.3, -4.2)
-
 [node name="DoorOpenerWithKey" parent="Model" instance=ExtResource("5_262wk")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.4, -0.3, -2.2)
 
-[node name="Door2" parent="Model" instance=ExtResource("2_8ulwo")]
-transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -2.8, 0.3, -0.5)
-
 [node name="station_module_lander" parent="Model" instance=ExtResource("4_3vren")]
+
+[node name="station_module_lander2" parent="Model" instance=ExtResource("4_3vren")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.2, 0, 0.0492024)
 
 [node name="station_module1_1" parent="Model" instance=ExtResource("5_vq4en")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.6, 0.2, -0.399999)
+
+[node name="station_module1_3" parent="Model" instance=ExtResource("5_vq4en")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.5, 0.2, -35.1522)
+
+[node name="station_module1_4" parent="Model" instance=ExtResource("5_vq4en")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 10.5, 0.2, -35.1522)
+
+[node name="Light" parent="Model/station_module1_4" instance=ExtResource("8_tovdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3645, 0)
+
+[node name="RadiationCapsule" parent="Model/station_module1_4" instance=ExtResource("8_qlwca")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.4, -1.3, -2.7)
+
+[node name="RadiationCapsule2" parent="Model/station_module1_4" instance=ExtResource("8_qlwca")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.4, -1.3, 1.1)
+
+[node name="RadiationCapsule3" parent="Model/station_module1_4" instance=ExtResource("8_qlwca")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.40002, -1.3, 4.9)
+
+[node name="OxygenTank" parent="Model/station_module1_4" instance=ExtResource("2_yomvn")]
+transform = Transform3D(-1, 0, 9.93477e-08, 0, 1, 0, -9.93477e-08, 0, -1, -1.4, -0.9, -1.1)
+
+[node name="OxygenTank2" parent="Model/station_module1_4" instance=ExtResource("2_yomvn")]
+transform = Transform3D(-0.984808, 0, 0.173648, 0, 1, 0, -0.173648, 0, -0.984808, -1.40003, -0.9, 2.6)
+
+[node name="TubesBox" parent="Model/station_module1_4" instance=ExtResource("9_ds18t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9, -1.8, -1.2)
+
+[node name="SmallTable" parent="Model/station_module1_4" instance=ExtResource("10_e1jbi")]
+transform = Transform3D(-2.73122e-08, 0, 1, 0, 1, 0, -1, 0, -2.73122e-08, 2, -1.2, 1.4)
+
+[node name="TableMonitor" parent="Model/station_module1_4" instance=ExtResource("7_ki32k")]
+transform = Transform3D(0.34202, 0, -0.939693, 0, 1, 0, 0.939693, 0, 0.34202, 1.99813, -0.448262, 1.1)
+
+[node name="Key" parent="Model/station_module1_4" instance=ExtResource("7_7ad8h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.80694, -0.683283, 1.99998)
+
+[node name="station_module1_6" parent="Model" instance=ExtResource("5_vq4en")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.5, 0.2, -56.2522)
+
+[node name="station_module1_7" parent="Model" instance=ExtResource("5_vq4en")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 10.5, 0.2, -56.2522)
+
+[node name="Key" parent="Model/station_module1_7" instance=ExtResource("7_7ad8h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.57918, -0.878332, -0.295437)
+
+[node name="TableMonitor" parent="Model/station_module1_7" instance=ExtResource("7_ki32k")]
+transform = Transform3D(-0.348687, 0, -0.937239, 0, 1, 0, 0.937239, 0, -0.348687, 1.96163, -0.557506, 0.485154)
+
+[node name="TubesBox" parent="Model/station_module1_7" instance=ExtResource("9_ds18t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.89996, -1.73852, 5)
+
+[node name="SmallTable" parent="Model/station_module1_7" instance=ExtResource("10_e1jbi")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.7, -1.3, 0.300004)
+
+[node name="Bed" parent="Model/station_module1_7" instance=ExtResource("12_bn4lx")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.6, -1.5, -2.1)
+
+[node name="Bed2" parent="Model/station_module1_7" instance=ExtResource("12_bn4lx")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.59998, -1.5, 2.8)
+
+[node name="SmallTable2" parent="Model/station_module1_7" instance=ExtResource("10_e1jbi")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -1.73335, -1.3, 0.366666)
+
+[node name="Bed3" parent="Model/station_module1_7" instance=ExtResource("12_bn4lx")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -1.63338, -1.5, 2.76667)
+
+[node name="Bed4" parent="Model/station_module1_7" instance=ExtResource("12_bn4lx")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.63332, -1.5, -2.13333)
+
+[node name="station_module1_5" parent="Model" instance=ExtResource("5_vq4en")]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 20.1289, 0.2, -26.4522)
 
 [node name="station_module1_2" parent="Model" instance=ExtResource("5_vq4en")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.87038e-07, 0.2, -11.9)
@@ -97,7 +171,70 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.8, -
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.6, 0.029029, -0.400001)
 
 [node name="station_solar_panel_module" parent="Model" instance=ExtResource("6_86qhq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.12437e-06, 0.029029, -24.3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1506e-06, 0.029029, -24.6)
+
+[node name="station_solar_panel_module3" parent="Model" instance=ExtResource("6_86qhq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.99522e-06, 0.029029, -45.7)
+
+[node name="station_solar_panel_module4" parent="Model" instance=ExtResource("6_86qhq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.83984e-06, 0.029029, -66.8)
+
+[node name="station_solar_panel_module5" parent="Model" instance=ExtResource("6_86qhq")]
+transform = Transform3D(5.76205e-08, 0, 1, 0, 1, 0, -1, 0, 5.76205e-08, -23.1, 0.029029, -56.2687)
+
+[node name="station_solar_panel_module6" parent="Model" instance=ExtResource("6_86qhq")]
+transform = Transform3D(2.98023e-08, 0, -1, 0, 1, 0, 1, 0, 2.98023e-08, 23.1, 0.029029, -56.2321)
+
+[node name="OxygenTank" parent="Model/station_solar_panel_module6" instance=ExtResource("2_yomvn")]
+transform = Transform3D(-0.995903, 0, 0.0904239, 0, 1, 0, -0.0904239, 0, -0.995903, -1.67796, -0.563991, 0.407597)
+
+[node name="OxygenTank2" parent="Model/station_solar_panel_module6" instance=ExtResource("2_yomvn")]
+transform = Transform3D(-0.995903, 0, 0.0904239, 0, 1, 0, -0.0904239, 0, -0.995903, -1.67796, -0.563991, 0.964083)
+
+[node name="OxygenTank3" parent="Model/station_solar_panel_module6" instance=ExtResource("2_yomvn")]
+transform = Transform3D(-0.995903, 0, 0.0904239, 0, 1, 0, -0.0904239, 0, -0.995903, -1.67796, -0.563991, 1.73047)
+
+[node name="OxygenTank4" parent="Model/station_solar_panel_module6" instance=ExtResource("2_yomvn")]
+transform = Transform3D(-0.995903, 0, 0.0904239, 0, 1, 0, -0.0904239, 0, -0.995903, -1.67796, -0.563991, -1.11231)
+
+[node name="OxygenTank5" parent="Model/station_solar_panel_module6" instance=ExtResource("2_yomvn")]
+transform = Transform3D(-0.995903, 0, 0.0904239, 0, 1, 0, -0.0904239, 0, -0.995903, -1.67796, -0.563991, -1.75662)
+
+[node name="OxygenTank6" parent="Model/station_solar_panel_module6" instance=ExtResource("2_yomvn")]
+transform = Transform3D(-0.995903, 0, 0.0904239, 0, 1, 0, -0.0904239, 0, -0.995903, -1.67796, -0.563991, -2.4393)
+
+[node name="OxygenStant" parent="Model/station_solar_panel_module6" instance=ExtResource("18_7t4sn")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.9, -1, -1.80002)
+
+[node name="OxygenStant2" parent="Model/station_solar_panel_module6" instance=ExtResource("18_7t4sn")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.9, -1, 1.19997)
+
+[node name="TubesBox" parent="Model/station_solar_panel_module6" instance=ExtResource("9_ds18t")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.89443, -1.6, 3.79998)
+
+[node name="small_station_module" parent="Model" instance=ExtResource("16_hwmfy")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 20.1, 0, -0.413164)
+
+[node name="station_module1" parent="Model" instance=ExtResource("5_vq4en")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -29.7, 0.2, -0.400003)
+
+[node name="station_module2" parent="Model" instance=ExtResource("5_vq4en")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.2145, 0.2, -11.8855)
+
+[node name="station_module3" parent="Model" instance=ExtResource("5_vq4en")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.2145, 0.2, -25.4855)
+
+[node name="small_four_way_station" parent="Model" instance=ExtResource("17_l33fl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.2, -0.0169322, -35)
+
+[node name="small_four_way_station3" parent="Model" instance=ExtResource("17_l33fl")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 20.3, -0.0169322, -35.1478)
+
+[node name="small_four_way_station2" parent="Model" instance=ExtResource("17_l33fl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0598e-06, 0, -35)
+
+[node name="small_four_way_station4" parent="Model" instance=ExtResource("17_l33fl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.90442e-06, 0, -56.1)
 
 [node name="Area3D" type="Area3D" parent="Model"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.256191, 4.21698)
@@ -108,5 +245,75 @@ collision_mask = 16
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.0477867, -0.445093)
 shape = SubResource("CylinderShape3D_70jk5")
 
-[connection signal="interacted" from="Model/DoorOpener1" to="Model/Door1" method="toggle_door"]
-[connection signal="interacted" from="Model/DoorOpenerWithKey" to="Model/Door2" method="toggle_door"]
+[node name="windows" type="Node3D" parent="Model"]
+
+[node name="StationWindow" parent="Model/windows" instance=ExtResource("17_m7wgc")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 24.2, 0.2, -0.399998)
+
+[node name="StationWindow2" parent="Model/windows" instance=ExtResource("17_m7wgc")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -35.9, 0.2, -0.400003)
+
+[node name="StationWindow3" parent="Model/windows" instance=ExtResource("17_m7wgc")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -22.643, 0.2, -35.2)
+
+[node name="StationWindow4" parent="Model/windows" instance=ExtResource("17_m7wgc")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -19.143, 0.2, -39.2669)
+
+[node name="StationWindow5" parent="Model/windows" instance=ExtResource("17_m7wgc")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 20.157, 0.2, -38.5968)
+
+[node name="StationWindow6" parent="Model/windows" instance=ExtResource("17_m7wgc")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 24.3, 0.2, -35.0968)
+
+[node name="StationWindow8" parent="Model/windows" instance=ExtResource("17_m7wgc")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 30.2, 0.2, -56.2348)
+
+[node name="StationWindow9" parent="Model/windows" instance=ExtResource("17_m7wgc")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.1688e-06, 0.2, -73.9348)
+
+[node name="StationWindow10" parent="Model/windows" instance=ExtResource("17_m7wgc")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -30.2177, 0.2, -56.2701)
+
+[node name="StationWindow7" parent="Model/windows" instance=ExtResource("17_m7wgc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.1361, 0.2, -18.3968)
+
+[node name="Doors" type="Node3D" parent="Model"]
+
+[node name="DoorPack1" type="Node3D" parent="Model/Doors"]
+
+[node name="DoorOpener1-1" parent="Model/Doors/DoorPack1" instance=ExtResource("2_fawf2")]
+transform = Transform3D(0.778155, 0.114576, -0.617533, 2.80301e-08, 0.98322, 0.182424, 0.628072, -0.141954, 0.765098, 1.93474, -0.432591, -3.39206)
+
+[node name="Door1" parent="Model/Doors/DoorPack1" instance=ExtResource("2_8ulwo")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.3, -4.2)
+
+[node name="DoorOpener1-2" parent="Model/Doors/DoorPack1" instance=ExtResource("2_fawf2")]
+transform = Transform3D(-0.753655, 0.119902, -0.646241, 3.38278e-08, 0.98322, 0.182424, 0.65727, 0.137485, -0.741009, 1.93474, -0.432591, -4.99206)
+
+[node name="DoorPack2" type="Node3D" parent="Model/Doors"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.18895e-06, 0, -13.6)
+
+[node name="DoorOpener1-1" parent="Model/Doors/DoorPack2" instance=ExtResource("2_fawf2")]
+transform = Transform3D(0.778155, 0.114576, -0.617533, 2.80301e-08, 0.98322, 0.182424, 0.628072, -0.141954, 0.765098, 1.93474, -0.432591, -3.39206)
+
+[node name="Door1" parent="Model/Doors/DoorPack2" instance=ExtResource("2_8ulwo")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.3, -4.2)
+
+[node name="DoorOpener1-2" parent="Model/Doors/DoorPack2" instance=ExtResource("2_fawf2")]
+transform = Transform3D(-0.753655, 0.119902, -0.646241, 3.38278e-08, 0.98322, 0.182424, 0.65727, 0.137485, -0.741009, 1.93474, -0.432591, -4.99206)
+
+[node name="Door2" parent="Model/Doors" instance=ExtResource("2_8ulwo")]
+transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -2.8, 0.3, -0.5)
+
+[node name="DoorOpenerWithKey2" parent="Model/Doors" instance=ExtResource("5_262wk")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.4, -0.3, -33.3277)
+
+[node name="Door3" parent="Model/Doors" instance=ExtResource("2_8ulwo")]
+transform = Transform3D(-6.55671e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.55671e-08, 2.8, 0.3, -35.2)
+
+[connection signal="interacted" from="Model/DoorOpenerWithKey" to="Model/Doors/Door2" method="toggle_door"]
+[connection signal="interacted" from="Model/Doors/DoorPack1/DoorOpener1-1" to="Model/Doors/DoorPack1/Door1" method="toggle_door"]
+[connection signal="interacted" from="Model/Doors/DoorPack1/DoorOpener1-2" to="Model/Doors/DoorPack1/Door1" method="toggle_door"]
+[connection signal="interacted" from="Model/Doors/DoorPack2/DoorOpener1-1" to="Model/Doors/DoorPack2/Door1" method="toggle_door"]
+[connection signal="interacted" from="Model/Doors/DoorPack2/DoorOpener1-2" to="Model/Doors/DoorPack2/Door1" method="toggle_door"]
+[connection signal="interacted" from="Model/Doors/DoorOpenerWithKey2" to="Model/Doors/Door2" method="toggle_door"]

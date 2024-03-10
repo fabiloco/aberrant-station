@@ -22,6 +22,7 @@ TasksManager="*res://singletons/scripts/TasksManager.gd"
 StationEvents="*res://singletons/scripts/StationEvents.gd"
 DeathScreen="*res://ui/scenes/DeathScreen.tscn"
 NoticeManager="*res://singletons/scripts/NoticeManager.gd"
+RepairObjectives="*res://singletons/scripts/RepairObjectives.gd"
 
 [display]
 

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvncccn65mtm2"]
+
+[ext_resource type="PackedScene" uid="uid://d3f62dlqcp33l" path="res://art/models/furniture/oxygen_stant.glb" id="1_1la0e"]
+
+[node name="OxygenStant" type="Node3D"]
+
+[node name="oxygen_stant" parent="." instance=ExtResource("1_1la0e")]

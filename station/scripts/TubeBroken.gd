@@ -11,8 +11,6 @@ var is_repaired = false
 var repair_per_hit = 10
 var repair_amount = 0
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	tubes.visible = false
 	tubes_broken.visible = true
@@ -29,8 +27,7 @@ func repair():
 		gpu_particles_3d.emitting = false
 		get_tree().create_timer(3).timeout.connect(func (): gpu_particles_3d.queue_free())
 		is_repaired = true
-		
-
+		RepairObjectives.repaired()
 
 func _on_area_3d_area_entered(area):
 	if not is_repaired: repair()

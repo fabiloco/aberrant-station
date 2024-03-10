@@ -43,7 +43,7 @@ func _on_area_3d_area_entered(area):
 		slots[pos_index] = body
 
 		if oxygen_in_station <= 0 and body.oxygen_amount > 0:
-			TasksManager.add_task({"title": "Oxygen in station reestablished."})
+			NoticeManager.add_notice({"title": "Oxygen in station reestablished."})
 			
 		set_oxygen_in_station(oxygen_in_station + body.oxygen_amount)
 

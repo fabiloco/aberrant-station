@@ -14,7 +14,7 @@ var station_rotation_speed = 0
 var is_on_landing_area = false
 var landed = false
 
-var rotation_force = 1
+var rotation_force = 50
 
 var angular_vel = 0
 var angular_acc = 0

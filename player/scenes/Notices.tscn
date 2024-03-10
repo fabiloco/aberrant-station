@@ -26,3 +26,8 @@ theme_override_constants/separation = 16
 
 [node name="HBoxContainer" parent="VBoxContainer" instance=ExtResource("2_8xqth")]
 layout_mode = 2
+
+[node name="Text" parent="VBoxContainer/HBoxContainer" index="1"]
+text = "Object repaired. 1/12 remaning."
+
+[editable path="VBoxContainer/HBoxContainer"]
