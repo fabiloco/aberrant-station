@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bbnnnmcgf1078"]
+[gd_scene load_steps=19 format=3 uid="uid://bbnnnmcgf1078"]
 
 [ext_resource type="Script" path="res://station/scripts/TubeBroken.gd" id="1_4hejl"]
 [ext_resource type="Texture2D" uid="uid://b4hrohf7og5rm" path="res://art/models/details/tubes_rust_coarse_01_diff_1k.jpg" id="1_metxy"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://de5kmaacluajj" path="res://assets/smoke_01.png" id="3_e6xsn"]
 [ext_resource type="Theme" uid="uid://cyp75cmf481l" path="res://ui/themes/default_theme.tres" id="5_0mpyp"]
 [ext_resource type="AudioStream" uid="uid://cqql262ia3bcu" path="res://assets/sounds/repair_hit.ogg" id="6_kkxdy"]
+[ext_resource type="AudioStream" uid="uid://c2kc1bm0yr5hr" path="res://assets/sounds/tubes_broken.wav" id="7_tqbc1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d750l"]
 resource_name = "Rusty Red Metal"
@@ -186,6 +187,12 @@ shape = SubResource("BoxShape3D_h6mb0")
 
 [node name="RepairHit" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("6_kkxdy")
+bus = &"SFX"
+
+[node name="AirSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_tqbc1")
+autoplay = true
+max_distance = 7.0
 bus = &"SFX"
 
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

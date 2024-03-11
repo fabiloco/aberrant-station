@@ -1,6 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://brg2do3oo0bq6"]
+[gd_scene load_steps=15 format=3 uid="uid://brg2do3oo0bq6"]
 
 [ext_resource type="PackedScene" uid="uid://ch72fgnn0bd8l" path="res://art/models/enemy/enemy.glb" id="1_5fqrk"]
+[ext_resource type="Script" path="res://enemy/scripts/Enemy.gd" id="1_abgg2"]
+[ext_resource type="Texture2D" uid="uid://dsau6n2oi6xgg" path="res://assets/light_03.png" id="3_nqjg1"]
+[ext_resource type="AudioStream" uid="uid://b5hf785y341h6" path="res://assets/sounds/tension1.ogg" id="4_vdu2d"]
+[ext_resource type="AudioStream" uid="uid://cmf4ybhf5gof4" path="res://assets/sounds/chase_player.ogg" id="5_lnsfm"]
+[ext_resource type="AudioStream" uid="uid://dw4ip3qx4dubt" path="res://assets/sounds/enemy_idle.ogg" id="6_u86ax"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5qond"]
 shading_mode = 0
@@ -11,12 +16,101 @@ emission_enabled = true
 emission = Color(1, 1, 1, 1)
 emission_energy_multiplier = 5.56
 
-[node name="Enemy" type="Node3D"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_o8kpv"]
+radius = 8.41538
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ge0x0"]
+size = Vector3(8.43658, 6.69, 12.4883)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xtdn0"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
+spread = 180.0
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+gravity = Vector3(0, 0, 0)
+scale_over_velocity_min = 1.0
+scale_over_velocity_max = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bac4l"]
+transparency = 1
+albedo_color = Color(0.207843, 0.0431373, 0.254902, 1)
+albedo_texture = ExtResource("3_nqjg1")
+albedo_texture_msdf = true
+billboard_mode = 1
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_pjx30"]
+material = SubResource("StandardMaterial3D_bac4l")
+size = Vector2(0.1, 0.1)
+orientation = 2
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_rpbsn"]
+height = 0.972318
+radius = 0.317246
+
+[node name="Enemy" type="CharacterBody3D"]
+collision_layer = 1025
+collision_mask = 1025
+script = ExtResource("1_abgg2")
+
+[node name="EyesPos" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.99378, -0.706425)
 
 [node name="enemy" parent="." instance=ExtResource("1_5fqrk")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="Cube_005" parent="enemy" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_5qond")
 surface_material_override/1 = SubResource("StandardMaterial3D_iew78")
+
+[node name="PlayerDetector" type="Area3D" parent="."]
+collision_layer = 256
+collision_mask = 256
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00142341, 1.06061, 0.0242629)
+shape = SubResource("SphereShape3D_o8kpv")
+
+[node name="LightDetector" type="Area3D" parent="."]
+collision_layer = 512
+collision_mask = 512
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LightDetector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.362701, 2.845, 0.0621996)
+shape = SubResource("BoxShape3D_ge0x0")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22448, 0.119678)
+emitting = false
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_xtdn0")
+draw_pass_1 = SubResource("PlaneMesh_pjx30")
+
+[node name="Tension1" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_vdu2d")
+max_distance = 100.0
+
+[node name="ChasePlayer" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_lnsfm")
+max_distance = 100.0
+bus = &"SFX"
+
+[node name="IdleSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_u86ax")
+autoplay = true
+max_distance = 5.0
+bus = &"SFX"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25961, 0)
+shape = SubResource("CylinderShape3D_rpbsn")
+
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_area_3d_body_entered"]
+[connection signal="area_entered" from="LightDetector" to="." method="_on_light_detector_area_entered"]
 
 [editable path="enemy"]

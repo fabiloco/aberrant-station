@@ -1,21 +1,35 @@
-[gd_scene load_steps=3 format=3 uid="uid://cqta5wy3ksjb8"]
+[gd_scene load_steps=5 format=3 uid="uid://cqta5wy3ksjb8"]
 
 [ext_resource type="PackedScene" uid="uid://c75u82tjou0wx" path="res://art/models/details/light.glb" id="1_gv27k"]
+[ext_resource type="Script" path="res://station/scripts/Light.gd" id="1_uvm75"]
+[ext_resource type="Material" uid="uid://cddnx48r5jjf6" path="res://station/res/LightOff.tres" id="3_f8qbu"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dal8n"]
-emission_enabled = true
-emission = Color(1, 1, 1, 1)
-emission_energy_multiplier = 16.0
+[sub_resource type="BoxShape3D" id="BoxShape3D_e477d"]
+size = Vector3(7.58771, 6.27502, 14.2771)
 
 [node name="Light" type="Node3D"]
+script = ExtResource("1_uvm75")
 
 [node name="light" parent="." instance=ExtResource("1_gv27k")]
 
 [node name="Cylinder_001" parent="light" index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_dal8n")
+surface_material_override/0 = ExtResource("3_f8qbu")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 light_energy = 0.5
 omni_range = 7.91063
+
+[node name="FlickerTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="LightArea" type="Area3D" parent="."]
+collision_layer = 512
+collision_mask = 512
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LightArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.277618, -2.63751, 0.748413)
+shape = SubResource("BoxShape3D_e477d")
+
+[connection signal="timeout" from="FlickerTimer" to="." method="_on_flicker_timer_timeout"]
 
 [editable path="light"]

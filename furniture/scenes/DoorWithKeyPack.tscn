@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7nyija4a0g7f"]
+
+[ext_resource type="PackedScene" uid="uid://cfidjs41r6a7x" path="res://station/scenes/Door.tscn" id="1_mm8ij"]
+[ext_resource type="PackedScene" uid="uid://cpu6xgbb71cdv" path="res://furniture/scenes/DoorOpenerWithKey.tscn" id="2_jyo0b"]
+
+[node name="DoorWithKeyPack" type="Node3D"]
+
+[node name="DoorOpenerWithKey1" parent="." node_paths=PackedStringArray("other_side_opener") instance=ExtResource("2_jyo0b")]
+transform = Transform3D(0.642788, 0, 0.766044, 0, 1, 0, -0.766044, 0, 0.642788, 0.8, -0.3, -2.4)
+other_side_opener = NodePath("../DoorOpenerWithKey2")
+
+[node name="Door2" parent="." instance=ExtResource("1_mm8ij")]
+transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, 0, 0.3, -0.5)
+
+[node name="DoorOpenerWithKey2" parent="." node_paths=PackedStringArray("other_side_opener") instance=ExtResource("2_jyo0b")]
+transform = Transform3D(0.642788, 0, -0.766044, 0, 1, 0, 0.766044, 0, 0.642788, -0.8, -0.3, -2.4)
+other_side_opener = NodePath("../DoorOpenerWithKey1")
+
+[connection signal="interacted" from="DoorOpenerWithKey1" to="Door2" method="toggle_door"]
+[connection signal="interacted" from="DoorOpenerWithKey2" to="Door2" method="toggle_door"]

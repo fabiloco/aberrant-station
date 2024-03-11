@@ -22,3 +22,6 @@ func _on_try_again_button_pressed():
 func _on_main_menu_button_pressed():
 	visible = false
 	get_tree().change_scene_to_file("res://ui/scenes/MainMenu.tscn")
+
+func delete_scene():
+	get_tree().get_root().get_node("Space").queue_free()

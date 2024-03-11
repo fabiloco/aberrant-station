@@ -5,6 +5,7 @@ extends Node
 
 @onready var progress_bar = $SubViewport/VBoxContainer/ProgressBar
 @onready var repair_hit = $RepairHit
+@onready var air_sound = $AirSound
 
 var is_repaired = false
 
@@ -22,6 +23,7 @@ func repair():
 	repair_hit.pitch_scale = randf_range(0.8, 1)
 	repair_hit.play()
 	if repair_amount >= 100:
+		air_sound.stop()
 		tubes_broken.visible = false
 		tubes.visible = true
 		gpu_particles_3d.emitting = false

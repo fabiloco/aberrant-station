@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c4hpel84a8gbr"]
+[gd_scene load_steps=19 format=3 uid="uid://c4hpel84a8gbr"]
 
 [ext_resource type="Script" path="res://player/scripts/Player.gd" id="1_urbe1"]
 [ext_resource type="Script" path="res://player/scripts/PlayerInteractRay.gd" id="2_d28u2"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b14ul84gtqlit" path="res://player/scenes/Tasks.tscn" id="5_s3se3"]
 [ext_resource type="AudioStream" uid="uid://bxw2goyekhseu" path="res://assets/sounds/step1.ogg" id="7_jnfne"]
 [ext_resource type="PackedScene" uid="uid://b2t1b6pp5chdp" path="res://player/scenes/Notices.tscn" id="9_gp1my"]
+[ext_resource type="Shader" path="res://vhs.gdshader" id="11_16dg4"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6h5fd"]
 
@@ -22,9 +23,20 @@ height = 1.2
 
 [sub_resource type="Theme" id="Theme_1a6u2"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_83v7g"]
+shader = ExtResource("11_16dg4")
+shader_parameter/shake = 0.0
+shader_parameter/noiseQuality = 0.1
+shader_parameter/noiseIntensity = 0.0
+shader_parameter/offsetIntensity = 0.0
+shader_parameter/colorOffsetIntensity = 0.1
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_frb6q"]
+radius = 4.21666
+
 [node name="Player" type="CharacterBody3D"]
-collision_layer = 201
-collision_mask = 201
+collision_layer = 457
+collision_mask = 457
 script = ExtResource("1_urbe1")
 inventory = ExtResource("2_gb7ir")
 
@@ -147,7 +159,6 @@ text = "Radiation
 autostart = true
 
 [node name="IncreaseRadiationTimer" type="Timer" parent="CanvasLayer/Vitals"]
-wait_time = 10.0
 autostart = true
 
 [node name="Tasks" parent="CanvasLayer" instance=ExtResource("5_s3se3")]
@@ -158,5 +169,33 @@ autostart = true
 stream = ExtResource("7_jnfne")
 bus = &"SFX"
 
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+material = SubResource("ShaderMaterial_83v7g")
+custom_minimum_size = Vector2(0.09, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RadiationArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+collision_layer = 1024
+collision_mask = 1024
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RadiationArea"]
+shape = SubResource("SphereShape3D_frb6q")
+
 [connection signal="timeout" from="CanvasLayer/Vitals/ConsumeOxygenTimer" to="CanvasLayer/Vitals" method="_on_consume_oxygen_timer_timeout"]
 [connection signal="timeout" from="CanvasLayer/Vitals/IncreaseRadiationTimer" to="CanvasLayer/Vitals" method="_on_increase_radiation_timer_timeout"]
+[connection signal="body_entered" from="RadiationArea" to="CanvasLayer/Vitals" method="_on_radiation_area_body_entered"]
+[connection signal="body_exited" from="RadiationArea" to="CanvasLayer/Vitals" method="_on_radiation_area_body_exited"]

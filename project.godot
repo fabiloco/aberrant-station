@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Station Project"
-run/main_scene="res://level/scenes/Stage1.tscn"
+run/main_scene="res://level/scenes/Stage2.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -118,6 +118,9 @@ drop_item={
 3d_physics/layer_6="oxygen_filling_station"
 3d_physics/layer_7="death_area"
 3d_physics/layer_8="station"
+3d_physics/layer_9="enemy_vision"
+3d_physics/layer_10="light_area"
+3d_physics/layer_11="enemy_radiation"
 
 [physics]
 

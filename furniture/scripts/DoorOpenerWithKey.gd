@@ -9,6 +9,9 @@ class_name DoorOpenerWithKey
 @onready var aproved = $Aproved
 @onready var denied = $Denied
 
+@export var other_side_opener: DoorOpenerWithKey
+
+
 var authorized = false
 
 func get_prompt():
@@ -29,9 +32,14 @@ func interact(body):
 		denied.play()
 
 func _on_area_3d_area_entered(area):
-	authorized = true
-	aproved.play()
 	area.get_owner().dropped.emit()
 	area.get_owner().queue_free()
+	
+	authorize()
+	other_side_opener.authorize()
+
+func authorize():
+	authorized = true
+	aproved.play()
 	label.text = "Permission to open:\nGranted"
 	cube.set_surface_override_material(3, access_mat)

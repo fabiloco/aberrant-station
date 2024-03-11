@@ -9,30 +9,30 @@ data = PackedVector3Array(-0.044, -1.7629, -5.4347, 0.0302, -1.7359, -5.4347, -0
 
 [node name="station_module1" instance=ExtResource("1_08t0c")]
 
-[node name="Node3D" type="Node3D" parent="." index="0"]
+[node name="Tubes" type="Node3D" parent="." index="0"]
 
-[node name="TubesLong" parent="Node3D" index="0" instance=ExtResource("2_e0334")]
+[node name="TubesLong" parent="Tubes" index="0" instance=ExtResource("2_e0334")]
 transform = Transform3D(0.192522, -4.28937e-08, 0.981293, -0.981293, -8.4154e-09, 0.192522, -8.57914e-16, -1, -4.37114e-08, -2.31923, -0.510618, -1.23067)
 
-[node name="TubesLong4" parent="Node3D" index="1" instance=ExtResource("2_e0334")]
+[node name="TubesLong4" parent="Tubes" index="1" instance=ExtResource("2_e0334")]
 transform = Transform3D(0.192522, -4.28937e-08, 0.981293, -0.981293, -8.4154e-09, 0.192522, -8.57914e-16, -1, -4.37114e-08, -2.31923, -0.510618, 0.245944)
 
-[node name="TubesLong6" parent="Node3D" index="2" instance=ExtResource("2_e0334")]
+[node name="TubesLong6" parent="Tubes" index="2" instance=ExtResource("2_e0334")]
 transform = Transform3D(0.192522, -4.28937e-08, 0.981293, -0.981293, -8.4154e-09, 0.192522, -8.57914e-16, -1, -4.37114e-08, -2.31923, -0.510618, 3.21871)
 
-[node name="TubesLong7" parent="Node3D" index="3" instance=ExtResource("2_e0334")]
+[node name="TubesLong7" parent="Tubes" index="3" instance=ExtResource("2_e0334")]
 transform = Transform3D(0.192522, -4.28937e-08, 0.981293, -0.981293, -8.4154e-09, 0.192522, -8.57914e-16, -1, -4.37114e-08, -2.31923, -0.510618, 4.7043)
 
-[node name="TubesLong8" parent="Node3D" index="4" instance=ExtResource("2_e0334")]
+[node name="TubesLong8" parent="Tubes" index="4" instance=ExtResource("2_e0334")]
 transform = Transform3D(0.192522, -4.28937e-08, 0.981293, -0.981293, -8.4154e-09, 0.192522, -8.57914e-16, -1, -4.37114e-08, -2.31923, -0.510618, 6.18684)
 
-[node name="TubesLong2" parent="Node3D" index="5" instance=ExtResource("2_e0334")]
+[node name="TubesLong2" parent="Tubes" index="5" instance=ExtResource("2_e0334")]
 transform = Transform3D(0.192522, -4.28937e-08, 0.981293, -0.981293, -8.4154e-09, 0.192522, -8.57914e-16, -1, -4.37114e-08, -2.31923, -0.510618, -2.71391)
 
-[node name="TubesLong3" parent="Node3D" index="6" instance=ExtResource("2_e0334")]
+[node name="TubesLong3" parent="Tubes" index="6" instance=ExtResource("2_e0334")]
 transform = Transform3D(0.192522, -4.28937e-08, 0.981293, -0.981293, -8.4154e-09, 0.192522, -8.57914e-16, -1, -4.37114e-08, -2.31923, -0.510618, -4.18795)
 
-[node name="TubesBroken" parent="Node3D" index="7" instance=ExtResource("3_1yc1h")]
+[node name="TubesBroken" parent="Tubes" index="7" instance=ExtResource("3_1yc1h")]
 transform = Transform3D(0.192522, -5.82464e-08, 0.981293, -0.981293, 7.40855e-08, 0.192522, -8.39133e-08, -1, -4.28937e-08, -2.31923, -0.510618, 1.72466)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Station Module 1" index="0"]

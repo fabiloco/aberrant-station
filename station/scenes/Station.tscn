@@ -1,11 +1,8 @@
-[gd_scene load_steps=25 format=3 uid="uid://brvhjrhhnweeo"]
+[gd_scene load_steps=28 format=3 uid="uid://brvhjrhhnweeo"]
 
 [ext_resource type="Script" path="res://station/scripts/Station.gd" id="1_0307d"]
-[ext_resource type="PackedScene" uid="uid://cfidjs41r6a7x" path="res://station/scenes/Door.tscn" id="2_8ulwo"]
-[ext_resource type="PackedScene" uid="uid://bx5nyscrgtgsn" path="res://furniture/scenes/DoorOpener.tscn" id="2_fawf2"]
 [ext_resource type="PackedScene" uid="uid://0o0kxc5kofq3" path="res://items/scenes/OxygenTank.tscn" id="2_yomvn"]
 [ext_resource type="PackedScene" uid="uid://yu60w237vnvg" path="res://station/scenes/modules/station_module_lander.tscn" id="4_3vren"]
-[ext_resource type="PackedScene" uid="uid://cpu6xgbb71cdv" path="res://furniture/scenes/DoorOpenerWithKey.tscn" id="5_262wk"]
 [ext_resource type="PackedScene" uid="uid://b3pfg4h2xlh4j" path="res://station/scenes/modules/station_module_1.tscn" id="5_vq4en"]
 [ext_resource type="PackedScene" uid="uid://b2drf50a1381v" path="res://station/scenes/modules/station_solar_panel_module.tscn" id="6_86qhq"]
 [ext_resource type="PackedScene" uid="uid://bpcn0tgwimnfe" path="res://items/scenes/KeyPhysicsItem.tscn" id="7_7ad8h"]
@@ -19,10 +16,16 @@
 [ext_resource type="PackedScene" uid="uid://qhle2ppb32mh" path="res://furniture/scenes/SmallTable.tscn" id="10_e1jbi"]
 [ext_resource type="PackedScene" uid="uid://l1uxm4lyrkd4" path="res://furniture/scenes/OxygenFillingStation.tscn" id="11_sjryr"]
 [ext_resource type="PackedScene" uid="uid://dks8cf8mi1363" path="res://furniture/scenes/Bed.tscn" id="12_bn4lx"]
+[ext_resource type="PackedScene" uid="uid://bylxb00jn6eco" path="res://art/models/furniture/roof_monitor.glb" id="13_ydvuc"]
+[ext_resource type="PackedScene" uid="uid://rfli7wnrn24w" path="res://art/models/chair/chair.glb" id="14_gt8ao"]
+[ext_resource type="PackedScene" uid="uid://buk7f8l82t2vt" path="res://art/models/furniture/table_monitor.glb" id="15_ytu7h"]
 [ext_resource type="PackedScene" uid="uid://ccgwar2o2bxi0" path="res://station/scenes/modules/small_station_module.tscn" id="16_hwmfy"]
 [ext_resource type="PackedScene" uid="uid://ds7olvsutvj11" path="res://station/scenes/modules/small_four_way_station.tscn" id="17_l33fl"]
 [ext_resource type="PackedScene" uid="uid://bigjtp8wq7qdd" path="res://station/scenes/StationWindow.tscn" id="17_m7wgc"]
+[ext_resource type="PackedScene" uid="uid://dupw580q7yfav" path="res://art/models/furniture/small_table.glb" id="17_n5eoo"]
 [ext_resource type="PackedScene" uid="uid://dvncccn65mtm2" path="res://furniture/scenes/OxygenStant.tscn" id="18_7t4sn"]
+[ext_resource type="PackedScene" uid="uid://t5sm0qa1y0v8" path="res://furniture/scenes/DoorPack.tscn" id="26_cujtk"]
+[ext_resource type="PackedScene" uid="uid://b7nyija4a0g7f" path="res://furniture/scenes/DoorWithKeyPack.tscn" id="26_x0eyp"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_70jk5"]
 height = 0.198537
@@ -34,6 +37,10 @@ rotation_speed = 0.9
 
 [node name="Model" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.2, 0)
+
+[node name="Enemy" parent="Model" node_paths=PackedStringArray("spawn_positions") instance=ExtResource("8_sr3dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.90823e-07, -1.5, -11.3337)
+spawn_positions = [NodePath("../station_module1_1/EnemySpawn"), NodePath("../station_module1_3/EnemySpawn"), NodePath("../station_module1_4/EnemySpawn"), NodePath("../station_module1_6/EnemySpawn"), NodePath("../station_module1_7/EnemySpawn"), NodePath("../station_module1_5/EnemySpawn"), NodePath("../station_module1_2/EnemySpawn"), NodePath("../station_solar_panel_module2/EnemySpawn"), NodePath("../station_solar_panel_module/EnemySpawn"), NodePath("../station_solar_panel_module3/EnemySpawn"), NodePath("../station_solar_panel_module4/EnemySpawn"), NodePath("../station_solar_panel_module5/EnemySpawn"), NodePath("../station_solar_panel_module6/EnemySpawn"), NodePath("../small_station_module/EnemySpawn"), NodePath("../station_module1/EnemySpawn"), NodePath("../station_module2/EnemySpawn"), NodePath("../station_module3/EnemySpawn")]
 
 [node name="OxygenTank" parent="Model" instance=ExtResource("2_yomvn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.97234, -0.271915, 0.859099)
@@ -59,9 +66,6 @@ random_amount = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.82251, -0.317125, -10.8692)
 random_amount = false
 
-[node name="DoorOpenerWithKey" parent="Model" instance=ExtResource("5_262wk")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.4, -0.3, -2.2)
-
 [node name="station_module_lander" parent="Model" instance=ExtResource("4_3vren")]
 
 [node name="station_module_lander2" parent="Model" instance=ExtResource("4_3vren")]
@@ -70,8 +74,80 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.2, 0, 0.0492024)
 [node name="station_module1_1" parent="Model" instance=ExtResource("5_vq4en")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.6, 0.2, -0.399999)
 
+[node name="EnemySpawn" type="Marker3D" parent="Model/station_module1_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
+
+[node name="Key2" parent="Model/station_module1_1" instance=ExtResource("7_7ad8h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.55221, -0.778938, 0.299994)
+
+[node name="roof_monitor2" parent="Model/station_module1_1" instance=ExtResource("13_ydvuc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.11482, 0, -1.20001)
+
+[node name="LargeTable2" parent="Model/station_module1_1" instance=ExtResource("9_owet4")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.75221, -1.2, -1)
+
+[node name="chair4" parent="Model/station_module1_1" instance=ExtResource("14_gt8ao")]
+transform = Transform3D(-0.34202, 0, 0.939693, 0, 1, 0, -0.939693, 0, -0.34202, 0.75221, -1, -0.600003)
+
+[node name="chair5" parent="Model/station_module1_1" instance=ExtResource("14_gt8ao")]
+transform = Transform3D(0.500106, 0, 0.865964, 0, 1, 0, -0.865964, 0, 0.500106, 0.752206, -1, -1.70001)
+
+[node name="chair6" parent="Model/station_module1_1" instance=ExtResource("14_gt8ao")]
+transform = Transform3D(0.500106, 0, 0.865964, 0, 1, 0, -0.865964, 0, 0.500106, 0.752207, -1, 3.3)
+
+[node name="table_monitor4" parent="Model/station_module1_1" instance=ExtResource("15_ytu7h")]
+transform = Transform3D(-0.422618, 0, -0.906308, 0, 1, 0, 0.906308, 0, -0.422618, 1.95221, -0.442979, -0.100003)
+
+[node name="table_monitor5" parent="Model/station_module1_1" instance=ExtResource("15_ytu7h")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 1.8957, -0.442979, -2.08637)
+
+[node name="table_monitor6" parent="Model/station_module1_1" instance=ExtResource("15_ytu7h")]
+transform = Transform3D(-0.0871557, 0, -0.996195, 0, 1, 0, 0.996195, 0, -0.0871557, 1.89569, -0.442979, 3.61363)
+
+[node name="small_table2" parent="Model/station_module1_1" instance=ExtResource("17_n5eoo")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.75221, -1.2, 3.49999)
+
+[node name="Light" parent="Model/station_module1_1" instance=ExtResource("8_tovdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.35525, 0)
+
 [node name="station_module1_3" parent="Model" instance=ExtResource("5_vq4en")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.5, 0.2, -35.1522)
+
+[node name="EnemySpawn" type="Marker3D" parent="Model/station_module1_3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
+
+[node name="Light2" parent="Model/station_module1_3" instance=ExtResource("8_tovdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8147e-06, 2.4, -1.90735e-06)
+
+[node name="Key2" parent="Model/station_module1_3" instance=ExtResource("7_7ad8h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, -0.778938, -1.90735e-06)
+
+[node name="roof_monitor2" parent="Model/station_module1_3" instance=ExtResource("13_ydvuc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.16261, 0, -1.5)
+
+[node name="LargeTable2" parent="Model/station_module1_3" instance=ExtResource("9_owet4")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.80001, -1.2, -1.3)
+
+[node name="chair4" parent="Model/station_module1_3" instance=ExtResource("14_gt8ao")]
+transform = Transform3D(-0.34202, 0, 0.939693, 0, 1, 0, -0.939693, 0, -0.34202, 0.800003, -1, -0.900002)
+
+[node name="chair5" parent="Model/station_module1_3" instance=ExtResource("14_gt8ao")]
+transform = Transform3D(0.500106, 0, 0.865964, 0, 1, 0, -0.865964, 0, 0.500106, 0.800003, -1, -2)
+
+[node name="chair6" parent="Model/station_module1_3" instance=ExtResource("14_gt8ao")]
+transform = Transform3D(0.500106, 0, 0.865964, 0, 1, 0, -0.865964, 0, 0.500106, 0.800003, -1, 3)
+
+[node name="table_monitor4" parent="Model/station_module1_3" instance=ExtResource("15_ytu7h")]
+transform = Transform3D(-0.422618, 0, -0.906308, 0, 1, 0, 0.906308, 0, -0.422618, 2, -0.442979, -0.400002)
+
+[node name="table_monitor5" parent="Model/station_module1_3" instance=ExtResource("15_ytu7h")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 1.94349, -0.442979, -2.38637)
+
+[node name="table_monitor6" parent="Model/station_module1_3" instance=ExtResource("15_ytu7h")]
+transform = Transform3D(-0.0871557, 0, -0.996195, 0, 1, 0, 0.996195, 0, -0.0871557, 1.94349, -0.442979, 3.31363)
+
+[node name="small_table2" parent="Model/station_module1_3" instance=ExtResource("17_n5eoo")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.8, -1.2, 3.2)
 
 [node name="station_module1_4" parent="Model" instance=ExtResource("5_vq4en")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 10.5, 0.2, -35.1522)
@@ -106,8 +182,47 @@ transform = Transform3D(0.34202, 0, -0.939693, 0, 1, 0, 0.939693, 0, 0.34202, 1.
 [node name="Key" parent="Model/station_module1_4" instance=ExtResource("7_7ad8h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.80694, -0.683283, 1.99998)
 
+[node name="EnemySpawn" type="Marker3D" parent="Model/station_module1_4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
+
 [node name="station_module1_6" parent="Model" instance=ExtResource("5_vq4en")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.5, 0.2, -56.2522)
+
+[node name="EnemySpawn" type="Marker3D" parent="Model/station_module1_6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
+
+[node name="Light" parent="Model/station_module1_6" instance=ExtResource("8_tovdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4, 0)
+
+[node name="Key" parent="Model/station_module1_6" instance=ExtResource("7_7ad8h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, -0.778938, 0)
+
+[node name="roof_monitor" parent="Model/station_module1_6" instance=ExtResource("13_ydvuc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.16261, 0, -1.5)
+
+[node name="LargeTable" parent="Model/station_module1_6" instance=ExtResource("9_owet4")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.8, -1.2, -1.3)
+
+[node name="chair" parent="Model/station_module1_6" instance=ExtResource("14_gt8ao")]
+transform = Transform3D(-0.34202, 0, 0.939693, 0, 1, 0, -0.939693, 0, -0.34202, 0.799999, -1, -0.900001)
+
+[node name="chair2" parent="Model/station_module1_6" instance=ExtResource("14_gt8ao")]
+transform = Transform3D(0.500106, 0, 0.865964, 0, 1, 0, -0.865964, 0, 0.500106, 0.799999, -1, -2)
+
+[node name="chair3" parent="Model/station_module1_6" instance=ExtResource("14_gt8ao")]
+transform = Transform3D(0.500106, 0, 0.865964, 0, 1, 0, -0.865964, 0, 0.500106, 0.799999, -1, 3)
+
+[node name="table_monitor" parent="Model/station_module1_6" instance=ExtResource("15_ytu7h")]
+transform = Transform3D(-0.422618, 0, -0.906308, 0, 1, 0, 0.906308, 0, -0.422618, 2, -0.442979, -0.4)
+
+[node name="table_monitor2" parent="Model/station_module1_6" instance=ExtResource("15_ytu7h")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 1.94349, -0.442979, -2.38637)
+
+[node name="table_monitor3" parent="Model/station_module1_6" instance=ExtResource("15_ytu7h")]
+transform = Transform3D(-0.0871557, 0, -0.996195, 0, 1, 0, 0.996195, 0, -0.0871557, 1.94349, -0.442979, 3.31363)
+
+[node name="small_table" parent="Model/station_module1_6" instance=ExtResource("17_n5eoo")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.8, -1.2, 3.2)
 
 [node name="station_module1_7" parent="Model" instance=ExtResource("5_vq4en")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 10.5, 0.2, -56.2522)
@@ -139,14 +254,20 @@ transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -1.63338
 [node name="Bed4" parent="Model/station_module1_7" instance=ExtResource("12_bn4lx")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.63332, -1.5, -2.13333)
 
+[node name="EnemySpawn" type="Marker3D" parent="Model/station_module1_7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
+
+[node name="Light" parent="Model/station_module1_7" instance=ExtResource("8_tovdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.33196, 0)
+
 [node name="station_module1_5" parent="Model" instance=ExtResource("5_vq4en")]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 20.1289, 0.2, -26.4522)
 
+[node name="EnemySpawn" type="Marker3D" parent="Model/station_module1_5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
+
 [node name="station_module1_2" parent="Model" instance=ExtResource("5_vq4en")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.87038e-07, 0.2, -11.9)
-
-[node name="Enemy" parent="Model/station_module1_2" instance=ExtResource("8_sr3dp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.870213, -1.68483, -6.60596)
 
 [node name="Light" parent="Model/station_module1_2" instance=ExtResource("8_tovdn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.34723, 0)
@@ -167,20 +288,58 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.7283
 [node name="OxygenFillingStation" parent="Model/station_module1_2" instance=ExtResource("11_sjryr")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.8, -0.8, 1.3)
 
+[node name="EnemySpawn" type="Marker3D" parent="Model/station_module1_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
+
 [node name="station_solar_panel_module2" parent="Model" instance=ExtResource("6_86qhq")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.6, 0.029029, -0.400001)
+
+[node name="EnemySpawn" type="Marker3D" parent="Model/station_solar_panel_module2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
+
+[node name="Light" parent="Model/station_solar_panel_module2" instance=ExtResource("8_tovdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
 
 [node name="station_solar_panel_module" parent="Model" instance=ExtResource("6_86qhq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1506e-06, 0.029029, -24.6)
 
+[node name="EnemySpawn" type="Marker3D" parent="Model/station_solar_panel_module"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
+
 [node name="station_solar_panel_module3" parent="Model" instance=ExtResource("6_86qhq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.99522e-06, 0.029029, -45.7)
+
+[node name="EnemySpawn" type="Marker3D" parent="Model/station_solar_panel_module3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
 
 [node name="station_solar_panel_module4" parent="Model" instance=ExtResource("6_86qhq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.83984e-06, 0.029029, -66.8)
 
+[node name="EnemySpawn" type="Marker3D" parent="Model/station_solar_panel_module4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
+
+[node name="OxygenTank2" parent="Model/station_solar_panel_module4" instance=ExtResource("2_yomvn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.456538, 0, -2.02869)
+
+[node name="OxygenTank3" parent="Model/station_solar_panel_module4" instance=ExtResource("2_yomvn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.535525, 0, -2.02869)
+
+[node name="OxygenTank" parent="Model/station_solar_panel_module4" instance=ExtResource("2_yomvn")]
+
 [node name="station_solar_panel_module5" parent="Model" instance=ExtResource("6_86qhq")]
 transform = Transform3D(5.76205e-08, 0, 1, 0, 1, 0, -1, 0, 5.76205e-08, -23.1, 0.029029, -56.2687)
+
+[node name="OxygenTank2" parent="Model/station_solar_panel_module5" instance=ExtResource("2_yomvn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.233078, 0, 0)
+
+[node name="OxygenTank3" parent="Model/station_solar_panel_module5" instance=ExtResource("2_yomvn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.788418, 0, 0)
+
+[node name="OxygenTank" parent="Model/station_solar_panel_module5" instance=ExtResource("2_yomvn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.053783, -1.17818)
+
+[node name="EnemySpawn" type="Marker3D" parent="Model/station_solar_panel_module5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
 
 [node name="station_solar_panel_module6" parent="Model" instance=ExtResource("6_86qhq")]
 transform = Transform3D(2.98023e-08, 0, -1, 0, 1, 0, 1, 0, 2.98023e-08, 23.1, 0.029029, -56.2321)
@@ -212,17 +371,119 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.9, 
 [node name="TubesBox" parent="Model/station_solar_panel_module6" instance=ExtResource("9_ds18t")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.89443, -1.6, 3.79998)
 
+[node name="EnemySpawn" type="Marker3D" parent="Model/station_solar_panel_module6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
+
 [node name="small_station_module" parent="Model" instance=ExtResource("16_hwmfy")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 20.1, 0, -0.413164)
+
+[node name="EnemySpawn" type="Marker3D" parent="Model/small_station_module"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
 
 [node name="station_module1" parent="Model" instance=ExtResource("5_vq4en")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -29.7, 0.2, -0.400003)
 
+[node name="EnemySpawn" type="Marker3D" parent="Model/station_module1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
+
+[node name="TableMonitor2" parent="Model/station_module1" instance=ExtResource("7_ki32k")]
+transform = Transform3D(-0.348687, 0, -0.937239, 0, 1, 0, 0.937239, 0, -0.348687, 1.97173, -0.557506, 0.247202)
+
+[node name="TubesBox2" parent="Model/station_module1" instance=ExtResource("9_ds18t")]
+transform = Transform3D(1, 0, 1.74845e-07, 0, 1, 0, -1.74845e-07, 0, 1, 1.91006, -1.73852, 4.76205)
+
+[node name="SmallTable3" parent="Model/station_module1" instance=ExtResource("10_e1jbi")]
+transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 1.7101, -1.3, 0.0620518)
+
+[node name="Bed5" parent="Model/station_module1" instance=ExtResource("12_bn4lx")]
+transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 1.6101, -1.5, -2.33795)
+
+[node name="Bed6" parent="Model/station_module1" instance=ExtResource("12_bn4lx")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 1.61008, -1.5, 2.56205)
+
+[node name="SmallTable4" parent="Model/station_module1" instance=ExtResource("10_e1jbi")]
+transform = Transform3D(3.05979e-07, 0, -1, 0, 1, 0, 1, 0, 3.05979e-07, -1.72325, -1.3, 0.128717)
+
+[node name="Bed7" parent="Model/station_module1" instance=ExtResource("12_bn4lx")]
+transform = Transform3D(3.05979e-07, 0, -1, 0, 1, 0, 1, 0, 3.05979e-07, -1.62328, -1.5, 2.52872)
+
+[node name="Bed8" parent="Model/station_module1" instance=ExtResource("12_bn4lx")]
+transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -1.62322, -1.5, -2.37128)
+
+[node name="Light2" parent="Model/station_module1" instance=ExtResource("8_tovdn")]
+transform = Transform3D(1, 0, 1.74845e-07, 0, 1, 0, -1.74845e-07, 0, 1, 0.0100966, 2.33196, -0.237951)
+
 [node name="station_module2" parent="Model" instance=ExtResource("5_vq4en")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.2145, 0.2, -11.8855)
 
+[node name="EnemySpawn" type="Marker3D" parent="Model/station_module2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
+
+[node name="Key3" parent="Model/station_module2" instance=ExtResource("7_7ad8h")]
+transform = Transform3D(1, 0, 1.74845e-07, 0, 1, 0, -1.74845e-07, 0, 1, 1.64064, -0.878332, -0.547042)
+
+[node name="TableMonitor3" parent="Model/station_module2" instance=ExtResource("7_ki32k")]
+transform = Transform3D(-0.348687, 0, -0.937239, 0, 1, 0, 0.937239, 0, -0.348687, 2.02309, -0.557506, 0.233548)
+
+[node name="TubesBox3" parent="Model/station_module2" instance=ExtResource("9_ds18t")]
+transform = Transform3D(1, 0, 1.74845e-07, 0, 1, 0, -1.74845e-07, 0, 1, 1.96141, -1.73852, 4.7484)
+
+[node name="SmallTable5" parent="Model/station_module2" instance=ExtResource("10_e1jbi")]
+transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 1.76146, -1.3, 0.048398)
+
+[node name="Bed9" parent="Model/station_module2" instance=ExtResource("12_bn4lx")]
+transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 1.66146, -1.5, -2.35161)
+
+[node name="Bed10" parent="Model/station_module2" instance=ExtResource("12_bn4lx")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 1.66143, -1.5, 2.5484)
+
+[node name="SmallTable6" parent="Model/station_module2" instance=ExtResource("10_e1jbi")]
+transform = Transform3D(3.05979e-07, 0, -1, 0, 1, 0, 1, 0, 3.05979e-07, -1.67189, -1.3, 0.115064)
+
+[node name="Bed11" parent="Model/station_module2" instance=ExtResource("12_bn4lx")]
+transform = Transform3D(3.05979e-07, 0, -1, 0, 1, 0, 1, 0, 3.05979e-07, -1.57193, -1.5, 2.51507)
+
+[node name="Bed12" parent="Model/station_module2" instance=ExtResource("12_bn4lx")]
+transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -1.57186, -1.5, -2.38493)
+
+[node name="Light3" parent="Model/station_module2" instance=ExtResource("8_tovdn")]
+transform = Transform3D(1, 0, 1.74845e-07, 0, 1, 0, -1.74845e-07, 0, 1, 0.0614624, 2.33196, -0.251605)
+
 [node name="station_module3" parent="Model" instance=ExtResource("5_vq4en")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.2145, 0.2, -25.4855)
+
+[node name="EnemySpawn" type="Marker3D" parent="Model/station_module3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
+
+[node name="Key2" parent="Model/station_module3" instance=ExtResource("7_7ad8h")]
+transform = Transform3D(1, 0, 1.74845e-07, 0, 1, 0, -1.74845e-07, 0, 1, 1.64065, -0.878332, -0.347042)
+
+[node name="TableMonitor2" parent="Model/station_module3" instance=ExtResource("7_ki32k")]
+transform = Transform3D(-0.348687, 0, -0.937239, 0, 1, 0, 0.937239, 0, -0.348687, 2.0231, -0.557506, 0.433548)
+
+[node name="TubesBox2" parent="Model/station_module3" instance=ExtResource("9_ds18t")]
+transform = Transform3D(1, 0, 1.74845e-07, 0, 1, 0, -1.74845e-07, 0, 1, 1.96142, -1.73852, 4.9484)
+
+[node name="SmallTable3" parent="Model/station_module3" instance=ExtResource("10_e1jbi")]
+transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 1.76147, -1.3, 0.248398)
+
+[node name="Bed5" parent="Model/station_module3" instance=ExtResource("12_bn4lx")]
+transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 1.66146, -1.5, -2.15161)
+
+[node name="Bed6" parent="Model/station_module3" instance=ExtResource("12_bn4lx")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 1.66144, -1.5, 2.7484)
+
+[node name="SmallTable4" parent="Model/station_module3" instance=ExtResource("10_e1jbi")]
+transform = Transform3D(3.05979e-07, 0, -1, 0, 1, 0, 1, 0, 3.05979e-07, -1.67188, -1.3, 0.315063)
+
+[node name="Bed7" parent="Model/station_module3" instance=ExtResource("12_bn4lx")]
+transform = Transform3D(3.05979e-07, 0, -1, 0, 1, 0, 1, 0, 3.05979e-07, -1.57192, -1.5, 2.71507)
+
+[node name="Bed8" parent="Model/station_module3" instance=ExtResource("12_bn4lx")]
+transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -1.57186, -1.5, -2.18493)
+
+[node name="Light2" parent="Model/station_module3" instance=ExtResource("8_tovdn")]
+transform = Transform3D(1, 0, 1.74845e-07, 0, 1, 0, -1.74845e-07, 0, 1, 0.0614719, 2.33196, -0.0516052)
 
 [node name="small_four_way_station" parent="Model" instance=ExtResource("17_l33fl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.2, -0.0169322, -35)
@@ -279,41 +540,124 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.1361, 0.2, -18.3968)
 
 [node name="Doors" type="Node3D" parent="Model"]
 
-[node name="DoorPack1" type="Node3D" parent="Model/Doors"]
+[node name="DoorPack1" parent="Model/Doors" instance=ExtResource("26_cujtk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.67176e-07, 0, -4.2)
 
-[node name="DoorOpener1-1" parent="Model/Doors/DoorPack1" instance=ExtResource("2_fawf2")]
-transform = Transform3D(0.778155, 0.114576, -0.617533, 2.80301e-08, 0.98322, 0.182424, 0.628072, -0.141954, 0.765098, 1.93474, -0.432591, -3.39206)
+[node name="DoorPack2" parent="Model/Doors" instance=ExtResource("26_cujtk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.55613e-06, 0, -17.8)
 
-[node name="Door1" parent="Model/Doors/DoorPack1" instance=ExtResource("2_8ulwo")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.3, -4.2)
+[node name="DoorPack3" parent="Model/Doors" instance=ExtResource("26_cujtk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.74508e-06, 0, -31.4)
 
-[node name="DoorOpener1-2" parent="Model/Doors/DoorPack1" instance=ExtResource("2_fawf2")]
-transform = Transform3D(-0.753655, 0.119902, -0.646241, 3.38278e-08, 0.98322, 0.182424, 0.65727, 0.137485, -0.741009, 1.93474, -0.432591, -4.99206)
+[node name="DoorPack4" parent="Model/Doors" instance=ExtResource("26_cujtk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5897e-06, 0, -52.5)
 
-[node name="DoorPack2" type="Node3D" parent="Model/Doors"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.18895e-06, 0, -13.6)
+[node name="DoorPack5" parent="Model/Doors" instance=ExtResource("26_cujtk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.24537e-06, 0, -60)
 
-[node name="DoorOpener1-1" parent="Model/Doors/DoorPack2" instance=ExtResource("2_fawf2")]
-transform = Transform3D(0.778155, 0.114576, -0.617533, 2.80301e-08, 0.98322, 0.182424, 0.628072, -0.141954, 0.765098, 1.93474, -0.432591, -3.39206)
+[node name="DoorPack9" parent="Model/Doors" instance=ExtResource("26_cujtk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.2, 0, -17.8)
 
-[node name="Door1" parent="Model/Doors/DoorPack2" instance=ExtResource("2_8ulwo")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.3, -4.2)
+[node name="DoorPack10" parent="Model/Doors" instance=ExtResource("26_cujtk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.2, 0, -4.2)
 
-[node name="DoorOpener1-2" parent="Model/Doors/DoorPack2" instance=ExtResource("2_fawf2")]
-transform = Transform3D(-0.753655, 0.119902, -0.646241, 3.38278e-08, 0.98322, 0.182424, 0.65727, 0.137485, -0.741009, 1.93474, -0.432591, -4.99206)
+[node name="DoorPack11" parent="Model/Doors" instance=ExtResource("26_cujtk")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -22.0472, 0, -0.300005)
 
-[node name="Door2" parent="Model/Doors" instance=ExtResource("2_8ulwo")]
-transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -2.8, 0.3, -0.5)
+[node name="DoorOpener1-1" parent="Model/Doors/DoorPack11" index="0"]
+transform = Transform3D(0.999818, -0.00347598, 0.0187379, 1.3889e-08, 0.98322, 0.182424, -0.0190574, -0.182391, 0.983042, 1.83474, -0.432591, 0.459188)
 
-[node name="DoorOpenerWithKey2" parent="Model/Doors" instance=ExtResource("5_262wk")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.4, -0.3, -33.3277)
+[node name="DoorPack12" parent="Model/Doors" instance=ExtResource("26_cujtk")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -16.3472, 0, -0.300004)
 
-[node name="Door3" parent="Model/Doors" instance=ExtResource("2_8ulwo")]
-transform = Transform3D(-6.55671e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.55671e-08, 2.8, 0.3, -35.2)
+[node name="DoorOpener1-1" parent="Model/Doors/DoorPack12" index="0"]
+transform = Transform3D(0.790411, 0.111749, -0.602297, -3.23318e-10, 0.98322, 0.182424, 0.612576, -0.14419, 0.777149, 1.91224, -0.432591, 0.644487)
 
-[connection signal="interacted" from="Model/DoorOpenerWithKey" to="Model/Doors/Door2" method="toggle_door"]
-[connection signal="interacted" from="Model/Doors/DoorPack1/DoorOpener1-1" to="Model/Doors/DoorPack1/Door1" method="toggle_door"]
-[connection signal="interacted" from="Model/Doors/DoorPack1/DoorOpener1-2" to="Model/Doors/DoorPack1/Door1" method="toggle_door"]
-[connection signal="interacted" from="Model/Doors/DoorPack2/DoorOpener1-1" to="Model/Doors/DoorPack2/Door1" method="toggle_door"]
-[connection signal="interacted" from="Model/Doors/DoorPack2/DoorOpener1-2" to="Model/Doors/DoorPack2/Door1" method="toggle_door"]
-[connection signal="interacted" from="Model/Doors/DoorOpenerWithKey2" to="Model/Doors/Door2" method="toggle_door"]
+[node name="DoorOpener1-2" parent="Model/Doors/DoorPack12" index="2"]
+transform = Transform3D(-0.999818, 0.0034766, -0.018738, 2.96489e-08, 0.98322, 0.182424, 0.0190579, 0.182391, -0.983042, 1.93474, -0.432591, -0.514828)
+
+[node name="DoorPack6" parent="Model/Doors" instance=ExtResource("26_cujtk")]
+transform = Transform3D(6.50711e-08, 0, 1, 0, 1, 0, -1, 0, 6.50711e-08, -2.9, 0, -56.3)
+
+[node name="DoorOpener1-1" parent="Model/Doors/DoorPack6" index="0"]
+transform = Transform3D(0.999818, -0.00347597, 0.0187378, 1.51808e-08, 0.98322, 0.182424, -0.0190574, -0.182391, 0.983042, 1.83474, -0.432591, 0.50794)
+
+[node name="DoorPack8" parent="Model/Doors" instance=ExtResource("26_cujtk")]
+transform = Transform3D(6.50711e-08, 0, 1, 0, 1, 0, -1, 0, 6.50711e-08, -2.9, 0, -35.2)
+
+[node name="DoorOpener1-1" parent="Model/Doors/DoorPack8" index="0"]
+transform = Transform3D(0.999818, -0.00347597, 0.0187378, 1.51808e-08, 0.98322, 0.182424, -0.0190574, -0.182391, 0.983042, 1.83474, -0.432591, 0.50794)
+
+[node name="DoorPack7" parent="Model/Doors" instance=ExtResource("26_cujtk")]
+transform = Transform3D(6.50711e-08, 0, 1, 0, 1, 0, -1, 0, 6.50711e-08, -16.3531, 0, -56.3)
+
+[node name="DoorOpener1-1" parent="Model/Doors/DoorPack7" index="0"]
+transform = Transform3D(0.778155, 0.114576, -0.617533, 1.54136e-08, 0.98322, 0.182424, 0.628072, -0.141954, 0.765098, 1.83474, -0.432591, 0.707927)
+
+[node name="DoorWithKeyPack" parent="Model/Doors" instance=ExtResource("26_x0eyp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8, 0, -2.44784e-07)
+
+[node name="DoorOpenerWithKey1" parent="Model/Doors/DoorWithKeyPack" index="0"]
+transform = Transform3D(5.76205e-08, 0, 1, 0, 1, 0, -1, 0, 5.76205e-08, 0.4, -0.3, -2.4)
+
+[node name="DoorWithKeyPack2" parent="Model/Doors" instance=ExtResource("26_x0eyp")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.8, 0, -0.9)
+
+[node name="DoorOpenerWithKey1" parent="Model/Doors/DoorWithKeyPack2" index="0" node_paths=PackedStringArray("other_side_opener")]
+transform = Transform3D(5.76205e-08, 0, 1, 0, 1, 0, -1, 0, 5.76205e-08, 0.4, -0.3, -2.4)
+other_side_opener = NodePath("../../DoorWithKeyPack/DoorOpenerWithKey2")
+
+[node name="DoorOpenerWithKey2" parent="Model/Doors/DoorWithKeyPack2" index="2" node_paths=PackedStringArray("other_side_opener")]
+other_side_opener = NodePath("../../DoorWithKeyPack/DoorOpenerWithKey1")
+
+[node name="DoorWithKeyPack4" parent="Model/Doors" instance=ExtResource("26_x0eyp")]
+transform = Transform3D(1.28644e-07, 0, -1, 0, 1, 0, 1, 0, 1.28644e-07, -0.499997, 0, -38.9)
+
+[node name="DoorOpenerWithKey1" parent="Model/Doors/DoorWithKeyPack4" index="0" node_paths=PackedStringArray("other_side_opener")]
+transform = Transform3D(0.573577, 0, 0.819152, 0, 1, 0, -0.819152, 0, 0.573577, 0.700001, -0.3, -2.4)
+other_side_opener = NodePath("../../DoorWithKeyPack/DoorOpenerWithKey2")
+
+[node name="DoorOpenerWithKey2" parent="Model/Doors/DoorWithKeyPack4" index="2" node_paths=PackedStringArray("other_side_opener")]
+other_side_opener = NodePath("../../DoorWithKeyPack/DoorOpenerWithKey1")
+
+[node name="DoorWithKeyPack6" parent="Model/Doors" instance=ExtResource("26_x0eyp")]
+transform = Transform3D(1.28644e-07, 0, -1, 0, 1, 0, 1, 0, 1.28644e-07, -19.7, 0, -31.3335)
+
+[node name="DoorOpenerWithKey1" parent="Model/Doors/DoorWithKeyPack6" index="0" node_paths=PackedStringArray("other_side_opener")]
+transform = Transform3D(0.573577, 0, 0.819152, 0, 1, 0, -0.819152, 0, 0.573577, 0.700001, -0.3, -2.4)
+other_side_opener = NodePath("../../DoorWithKeyPack/DoorOpenerWithKey2")
+
+[node name="DoorOpenerWithKey2" parent="Model/Doors/DoorWithKeyPack6" index="2" node_paths=PackedStringArray("other_side_opener")]
+other_side_opener = NodePath("../../DoorWithKeyPack/DoorOpenerWithKey1")
+
+[node name="DoorWithKeyPack3" parent="Model/Doors" instance=ExtResource("26_x0eyp")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.8, 0, -35.7)
+
+[node name="DoorOpenerWithKey1" parent="Model/Doors/DoorWithKeyPack3" index="0" node_paths=PackedStringArray("other_side_opener")]
+transform = Transform3D(5.76205e-08, 0, 1, 0, 1, 0, -1, 0, 5.76205e-08, 0.4, -0.3, -2.4)
+other_side_opener = NodePath("../../DoorWithKeyPack/DoorOpenerWithKey2")
+
+[node name="DoorOpenerWithKey2" parent="Model/Doors/DoorWithKeyPack3" index="2" node_paths=PackedStringArray("other_side_opener")]
+other_side_opener = NodePath("../../DoorWithKeyPack/DoorOpenerWithKey1")
+
+[node name="DoorWithKeyPack5" parent="Model/Doors" instance=ExtResource("26_x0eyp")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.8, 0, -56.8)
+
+[node name="DoorOpenerWithKey1" parent="Model/Doors/DoorWithKeyPack5" index="0" node_paths=PackedStringArray("other_side_opener")]
+transform = Transform3D(5.76205e-08, 0, 1, 0, 1, 0, -1, 0, 5.76205e-08, 0.4, -0.3, -2.4)
+other_side_opener = NodePath("../../DoorWithKeyPack/DoorOpenerWithKey2")
+
+[node name="DoorOpenerWithKey2" parent="Model/Doors/DoorWithKeyPack5" index="2" node_paths=PackedStringArray("other_side_opener")]
+other_side_opener = NodePath("../../DoorWithKeyPack/DoorOpenerWithKey1")
+
+[editable path="Model/Doors/DoorPack11"]
+[editable path="Model/Doors/DoorPack12"]
+[editable path="Model/Doors/DoorPack6"]
+[editable path="Model/Doors/DoorPack8"]
+[editable path="Model/Doors/DoorPack7"]
+[editable path="Model/Doors/DoorWithKeyPack"]
+[editable path="Model/Doors/DoorWithKeyPack2"]
+[editable path="Model/Doors/DoorWithKeyPack4"]
+[editable path="Model/Doors/DoorWithKeyPack6"]
+[editable path="Model/Doors/DoorWithKeyPack3"]
+[editable path="Model/Doors/DoorWithKeyPack5"]

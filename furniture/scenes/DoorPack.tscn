@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://t5sm0qa1y0v8"]
+
+[ext_resource type="PackedScene" uid="uid://bx5nyscrgtgsn" path="res://furniture/scenes/DoorOpener.tscn" id="1_42nk7"]
+[ext_resource type="PackedScene" uid="uid://cfidjs41r6a7x" path="res://station/scenes/Door.tscn" id="2_isoum"]
+
+[node name="DoorPack1" type="Node3D"]
+
+[node name="DoorOpener1-1" parent="." instance=ExtResource("1_42nk7")]
+transform = Transform3D(0.778155, 0.114576, -0.617533, 2.80301e-08, 0.98322, 0.182424, 0.628072, -0.141954, 0.765098, 1.93474, -0.432591, 0.80794)
+
+[node name="Door1" parent="." instance=ExtResource("2_isoum")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.3, 4.76837e-07)
+
+[node name="DoorOpener1-2" parent="." instance=ExtResource("1_42nk7")]
+transform = Transform3D(-0.753655, 0.119902, -0.646241, 3.38278e-08, 0.98322, 0.182424, 0.65727, 0.137485, -0.741009, 1.93474, -0.432591, -0.79206)
+
+[connection signal="interacted" from="DoorOpener1-1" to="Door1" method="toggle_door"]
+[connection signal="interacted" from="DoorOpener1-2" to="Door1" method="toggle_door"]
