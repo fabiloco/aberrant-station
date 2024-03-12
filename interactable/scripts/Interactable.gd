@@ -8,6 +8,9 @@ signal interacted(body)
 @export var prompt_action = "interact"
 
 func get_prompt():
+	if prompt_action == "":
+		return prompt_message
+		
 	var key_name = ""
 
 	for action in InputMap.action_get_events(prompt_action):

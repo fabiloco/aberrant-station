@@ -14,11 +14,7 @@ extends Node3D
 var oxygen_consumed_per_second = 1
 var oxygen_in_station = 0
 
-var slots: Array[OxygenTank] = [null, null, null, null]
-
-func _ready():
-	if Globals.stage == "Stage2":
-		TasksManager.add_task({"title": "You're consuming your oxygen. Reestore the oxygen levels of the station."})
+var slots: Array[OxygenTank] = [null, null, null, null]		
 
 func set_oxygen_in_station(val: int):
 	oxygen_in_station = val
@@ -28,14 +24,20 @@ func set_oxygen_in_station(val: int):
 func _on_area_3d_area_entered(area):
 	var body = area.owner
 	if body is OxygenTank:
-		body.sleeping = true
-		body.freeze = true
-		
 		var pos_index = 0
 		for slot in slots:
 			if slot == null:
 				break
 			pos_index += 1
+			
+		if pos_index > positions.size() - 1:
+			print("returning...")
+			print(positions.size())
+			print(pos_index)
+			return
+		
+		body.sleeping = true
+		body.freeze = true
 
 		body.global_position = positions[pos_index].global_position
 		body.rotation = Vector3.ZERO
@@ -43,9 +45,19 @@ func _on_area_3d_area_entered(area):
 		slots[pos_index] = body
 
 		if oxygen_in_station <= 0 and body.oxygen_amount > 0:
-			NoticeManager.add_notice({"title": "Oxygen in station reestablished."})
+			var stimated_time = oxygen_in_station/60
+			var stimated_text = "%.0f minutes" % stimated_time
+			
+			NoticeManager.add_notice({"title": "Oxygen in station reestablished." })
+			
+			TasksManager.add_task({"title": "Repair the objects in the station."})
 			
 		set_oxygen_in_station(oxygen_in_station + body.oxygen_amount)
+		
+		if oxygen_in_station > 0:
+			var stimated_time = oxygen_in_station/60
+			var stimated_text = "%.0f minutes" % stimated_time
+			NoticeManager.add_notice({"title": "You have %s minutes of oxygen." % stimated_text })
 
 func _on_area_3d_area_exited(area):
 	var body = area.owner

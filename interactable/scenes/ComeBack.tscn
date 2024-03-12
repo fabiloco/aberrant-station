@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://be417gk4eo1bj"]
+
+[ext_resource type="Script" path="res://interactable/scripts/ReturnToShip.gd" id="1_d1nbn"]
+[ext_resource type="Script" path="res://interactable/scripts/Interactable.gd" id="1_oyqsb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_amfa6"]
+size = Vector3(1, 1, 0.0456543)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_mwkg3"]
+viewport_path = NodePath("SubViewport")
+
+[node name="ReturnToShip" type="Node3D"]
+script = ExtResource("1_d1nbn")
+
+[node name="Area3D" type="StaticBody3D" parent="."]
+script = ExtResource("1_oyqsb")
+prompt_message = "Return to the spaceship"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.477173)
+shape = SubResource("BoxShape3D_amfa6")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+
+[node name="Label" type="Label" parent="SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "Exit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.5)
+billboard = 1
+texture = SubResource("ViewportTexture_mwkg3")
+
+[connection signal="interacted" from="Area3D" to="." method="on_press"]

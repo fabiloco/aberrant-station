@@ -8,12 +8,15 @@ class_name Chair
 
 var can_stand_up = false
 
+signal lading_started
+
 func _ready():
 	interactable.interacted.connect(move_player)
 
 
 func move_player(body):
 	if body is Player:
+		lading_started.emit()
 		body.is_sitting = true 
 		body.active_chair = self
 		

@@ -13,7 +13,7 @@ var consume_oxygen = false
 
 var oxygen = 100
 var oxygen_per_seconds = 1
-var radiation = 50
+var radiation = 20
 
 var increase_radiation = false
 var radiation_per_seconds = 5
@@ -32,9 +32,13 @@ func on_oxygen_change(oxygen: int):
 	
 func set_radiation(val: int):
 	radiation = val
+	
 	if radiation < 0:
 		radiation = 0
 	radiation_bar.value = radiation
+	
+	if radiation > 50:
+		NoticeManager.add_notice({"title": "Your radiation levels are above 50%. Find a radiation capsule to recover."})
 	
 	if radiation >= 100:
 		DeathScreen.show_screen("You died by radiation.", "Stage2")

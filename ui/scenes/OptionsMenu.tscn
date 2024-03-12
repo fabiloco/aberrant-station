@@ -5,13 +5,8 @@
 [node name="OptionsMenu" type="Control"]
 process_mode = 3
 layout_mode = 3
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -728.0
-grow_horizontal = 0
-grow_vertical = 2
+anchors_preset = 0
+offset_right = 728.0
 script = ExtResource("1_ds7i1")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -20,8 +15,9 @@ anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -718.0
-offset_right = -369.0
+offset_left = -273.0
+offset_right = 76.0
+offset_bottom = 350.0
 grow_horizontal = 0
 grow_vertical = 2
 
@@ -110,14 +106,21 @@ columns = 2
 layout_mode = 2
 text = "Fullscreen:"
 
-[node name="FullscreenCheck" type="CheckBox" parent="VBoxContainer/VideoSettings/VBoxContainer2/GridContainer"]
+[node name="FullscreenCheck" type="CheckButton" parent="VBoxContainer/VideoSettings/VBoxContainer2/GridContainer"]
 layout_mode = 2
 
 [node name="Label3" type="Label" parent="VBoxContainer/VideoSettings/VBoxContainer2/GridContainer"]
 layout_mode = 2
 text = "V-Sync:"
 
-[node name="VSyncCheck" type="CheckBox" parent="VBoxContainer/VideoSettings/VBoxContainer2/GridContainer"]
+[node name="VSyncCheck" type="CheckButton" parent="VBoxContainer/VideoSettings/VBoxContainer2/GridContainer"]
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="VBoxContainer/VideoSettings/VBoxContainer2/GridContainer"]
+layout_mode = 2
+text = "Glow:"
+
+[node name="GlowCheck" type="CheckButton" parent="VBoxContainer/VideoSettings/VBoxContainer2/GridContainer"]
 layout_mode = 2
 
 [connection signal="value_changed" from="VBoxContainer/SoundSettings/VBoxContainer/GridContainer/MasterSoundSlider" to="." method="_on_master_sound_slider_value_changed"]
@@ -125,3 +128,4 @@ layout_mode = 2
 [connection signal="value_changed" from="VBoxContainer/SoundSettings/VBoxContainer/GridContainer/FXSoundSlider" to="." method="_on_fx_sound_slider_value_changed"]
 [connection signal="toggled" from="VBoxContainer/VideoSettings/VBoxContainer2/GridContainer/FullscreenCheck" to="." method="_on_fullscreen_check_toggled"]
 [connection signal="toggled" from="VBoxContainer/VideoSettings/VBoxContainer2/GridContainer/VSyncCheck" to="." method="_on_v_sync_check_toggled"]
+[connection signal="toggled" from="VBoxContainer/VideoSettings/VBoxContainer2/GridContainer/GlowCheck" to="." method="_on_glow_check_toggled"]

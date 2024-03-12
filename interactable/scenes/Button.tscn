@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://cm4b6u7ykhqwi"]
+[gd_scene load_steps=18 format=3 uid="uid://cm4b6u7ykhqwi"]
 
 [ext_resource type="Script" path="res://interactable/scripts/Button.gd" id="1_x7wes"]
 [ext_resource type="Texture2D" uid="uid://c7ivhnsbnh3ph" path="res://art/models/furniture/button_1K-brushed_metal_1-diffuse.jpg" id="2_j3n26"]
 [ext_resource type="Texture2D" uid="uid://ccy2gedsup20u" path="res://art/models/furniture/button_1K-brushed_metal_1-normal.jpg" id="3_oo2so"]
 [ext_resource type="Texture2D" uid="uid://donfpv027c8l4" path="res://art/models/furniture/button_green_metal_rust_diff_1k.jpg" id="4_am81v"]
 [ext_resource type="Texture2D" uid="uid://gagdqv7uh065" path="res://art/models/furniture/button_green_metal_rust_nor_gl_1k.png" id="5_fjto6"]
+[ext_resource type="AudioStream" uid="uid://dfq61kywd2iix" path="res://assets/sounds/click.ogg" id="6_sjwpu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o11c7"]
 resource_name = "Gray Metal"
@@ -154,6 +155,20 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(0, 0.0823285, 0), Vector3(0, 0.0383686, 0), Vector3(0, 0.0823285, 0)]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Click")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yy0eo"]
 _data = {
@@ -184,3 +199,7 @@ shape = SubResource("BoxShape3D_c15xp")
 libraries = {
 "": SubResource("AnimationLibrary_yy0eo")
 }
+
+[node name="Click" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_sjwpu")
+bus = &"SFX"

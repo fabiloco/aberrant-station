@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://b2t1b6pp5chdp"]
+[gd_scene load_steps=2 format=3 uid="uid://b2t1b6pp5chdp"]
 
 [ext_resource type="Script" path="res://player/scripts/NoticesUI.gd" id="1_85ct6"]
-[ext_resource type="PackedScene" uid="uid://cdhfd0cd0b7l4" path="res://player/scenes/Notice.tscn" id="2_8xqth"]
 
 [node name="Notices" type="Control"]
 layout_mode = 3
@@ -23,11 +22,3 @@ offset_right = -30.0
 offset_bottom = 116.0
 grow_horizontal = 0
 theme_override_constants/separation = 16
-
-[node name="HBoxContainer" parent="VBoxContainer" instance=ExtResource("2_8xqth")]
-layout_mode = 2
-
-[node name="Text" parent="VBoxContainer/HBoxContainer" index="1"]
-text = "Object repaired. 1/12 remaning."
-
-[editable path="VBoxContainer/HBoxContainer"]

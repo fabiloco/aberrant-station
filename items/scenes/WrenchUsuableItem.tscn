@@ -158,5 +158,6 @@ shape = SubResource("BoxShape3D_po3g8")
 transform = Transform3D(1, -4.24683e-07, 7.84897e-09, 5.96046e-08, 1, -8.62085e-08, -7.15062e-09, 5.69888e-08, 1, -0.41568, 0.0267543, 0.00217231)
 stream = ExtResource("3_d2njp")
 volume_db = -10.0
+bus = &"SFX"
 
 [editable path="wrench"]

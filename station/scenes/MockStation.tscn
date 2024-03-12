@@ -21,7 +21,6 @@ radius = 0.572457
 
 [node name="Station" type="Node3D"]
 script = ExtResource("1_j6ubg")
-rotation_speed = 0.9
 
 [node name="Model" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.2, 0)

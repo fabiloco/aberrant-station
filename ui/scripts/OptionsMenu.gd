@@ -32,3 +32,7 @@ func _on_v_sync_check_toggled(toggled_on):
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
 	else:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
+
+
+func _on_glow_check_toggled(toggled_on):
+	Graphics.world_environment.environment.glow_enabled = toggled_on

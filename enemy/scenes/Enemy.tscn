@@ -1,8 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://brg2do3oo0bq6"]
+[gd_scene load_steps=14 format=3 uid="uid://brg2do3oo0bq6"]
 
 [ext_resource type="PackedScene" uid="uid://ch72fgnn0bd8l" path="res://art/models/enemy/enemy.glb" id="1_5fqrk"]
 [ext_resource type="Script" path="res://enemy/scripts/Enemy.gd" id="1_abgg2"]
-[ext_resource type="Texture2D" uid="uid://dsau6n2oi6xgg" path="res://assets/light_03.png" id="3_nqjg1"]
+[ext_resource type="Texture2D" uid="uid://dih844w2c1nna" path="res://assets/dirt_03.png" id="3_31quo"]
 [ext_resource type="AudioStream" uid="uid://b5hf785y341h6" path="res://assets/sounds/tension1.ogg" id="4_vdu2d"]
 [ext_resource type="AudioStream" uid="uid://cmf4ybhf5gof4" path="res://assets/sounds/chase_player.ogg" id="5_lnsfm"]
 [ext_resource type="AudioStream" uid="uid://dw4ip3qx4dubt" path="res://assets/sounds/enemy_idle.ogg" id="6_u86ax"]
@@ -17,34 +17,27 @@ emission = Color(1, 1, 1, 1)
 emission_energy_multiplier = 5.56
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_o8kpv"]
-radius = 8.41538
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ge0x0"]
-size = Vector3(8.43658, 6.69, 12.4883)
+radius = 15.0
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xtdn0"]
-emission_shape = 6
-emission_ring_axis = Vector3(0, 0, 1)
-emission_ring_height = 1.0
-emission_ring_radius = 1.0
-emission_ring_inner_radius = 0.0
-spread = 180.0
+inherit_velocity_ratio = 10.0
+direction = Vector3(0, 0, -1)
+spread = 40.0
 initial_velocity_min = 1.0
 initial_velocity_max = 2.0
-gravity = Vector3(0, 0, 0)
 scale_over_velocity_min = 1.0
 scale_over_velocity_max = 2.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bac4l"]
 transparency = 1
-albedo_color = Color(0.207843, 0.0431373, 0.254902, 1)
-albedo_texture = ExtResource("3_nqjg1")
+albedo_color = Color(0.0392157, 0.00392157, 0.054902, 1)
+albedo_texture = ExtResource("3_31quo")
 albedo_texture_msdf = true
 billboard_mode = 1
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_pjx30"]
 material = SubResource("StandardMaterial3D_bac4l")
-size = Vector2(0.1, 0.1)
+size = Vector2(0.3, 0.3)
 orientation = 2
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_rpbsn"]
@@ -80,12 +73,14 @@ collision_mask = 512
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LightDetector"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.362701, 2.845, 0.0621996)
-shape = SubResource("BoxShape3D_ge0x0")
+shape = SubResource("SphereShape3D_o8kpv")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="ChangePositionTimer" type="Timer" parent="."]
+wait_time = 20.0
+autostart = true
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22448, 0.119678)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0285574, 1.74462, -0.626258)
 emitting = false
 amount = 16
 process_material = SubResource("ParticleProcessMaterial_xtdn0")
@@ -110,7 +105,13 @@ bus = &"SFX"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25961, 0)
 shape = SubResource("CylinderShape3D_rpbsn")
 
+[node name="DropTrace" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_area_3d_body_entered"]
 [connection signal="area_entered" from="LightDetector" to="." method="_on_light_detector_area_entered"]
+[connection signal="timeout" from="ChangePositionTimer" to="." method="_on_change_position_timer_timeout"]
+[connection signal="timeout" from="DropTrace" to="." method="_on_drop_trace_timeout"]
 
 [editable path="enemy"]

@@ -30,4 +30,6 @@ func toggle_options_menu():
 		options_menu.visible = true
 
 func main_menu():
+	get_tree().paused = false
+	Globals.stage = "Stage1"
 	get_tree().change_scene_to_file("res://ui/scenes/MainMenu.tscn")

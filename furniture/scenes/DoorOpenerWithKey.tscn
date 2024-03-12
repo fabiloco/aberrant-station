@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cpu6xgbb71cdv"]
+[gd_scene load_steps=19 format=3 uid="uid://cpu6xgbb71cdv"]
 
 [ext_resource type="Script" path="res://furniture/scripts/DoorOpenerWithKey.gd" id="1_mo17d"]
 [ext_resource type="Texture2D" uid="uid://cnoxerdddmens" path="res://art/models/furniture/door_opener_1K-metal_1-normal.jpg" id="2_smcl5"]
@@ -8,6 +8,7 @@
 [ext_resource type="Material" uid="uid://3q1rhlvp8dxh" path="res://furniture/res/DeniedMaterial.tres" id="6_4jofq"]
 [ext_resource type="AudioStream" uid="uid://degfwna5qdanc" path="res://assets/sounds/aproved.ogg" id="7_8e16o"]
 [ext_resource type="AudioStream" uid="uid://duagxiu6fktdv" path="res://assets/sounds/error.ogg" id="8_elrlt"]
+[ext_resource type="AudioStream" uid="uid://dvow7vv5rh6bx" path="res://assets/sounds/door_opener.ogg" id="9_qtxv8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mlog8"]
 resource_name = "White Metal"
@@ -209,6 +210,12 @@ bus = &"SFX"
 [node name="Denied" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("8_elrlt")
 volume_db = -10.0
+bus = &"SFX"
+
+[node name="OpenDoor" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("9_qtxv8")
+volume_db = -18.0
+pitch_scale = 0.7
 bus = &"SFX"
 
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

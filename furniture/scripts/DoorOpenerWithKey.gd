@@ -8,6 +8,7 @@ class_name DoorOpenerWithKey
 @onready var access_mat = preload("res://furniture/res/AccessMaterial.tres")
 @onready var aproved = $Aproved
 @onready var denied = $Denied
+@onready var open_door = $OpenDoor
 
 @export var other_side_opener: DoorOpenerWithKey
 
@@ -28,6 +29,7 @@ func get_prompt():
 func interact(body):
 	if authorized:
 		interacted.emit(body)
+		open_door.play()
 	else:
 		denied.play()
 

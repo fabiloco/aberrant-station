@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://3ibqkjhnw7w5"]
+[gd_scene load_steps=40 format=3 uid="uid://3ibqkjhnw7w5"]
 
 [ext_resource type="PackedScene" uid="uid://rvdp4svur2m8" path="res://interactable/scenes/Chair.tscn" id="2_hvgha"]
 [ext_resource type="PackedScene" uid="uid://p3n2s1g1g1nu" path="res://interactable/scenes/RadiationCapsule.tscn" id="2_jlstc"]
@@ -17,6 +17,12 @@
 [ext_resource type="Script" path="res://capsule/scripts/Capsule.gd" id="15_mpx1u"]
 [ext_resource type="PackedScene" uid="uid://ge5io00mw5lv" path="res://furniture/scenes/RoundMonitor.tscn" id="16_geuos"]
 [ext_resource type="PackedScene" uid="uid://du60ow3enhrk6" path="res://furniture/scenes/Monitor.tscn" id="16_h4sbp"]
+[ext_resource type="AudioStream" uid="uid://bomwnnnbwyvy4" path="res://assets/sounds/eject.ogg" id="18_7ho2x"]
+[ext_resource type="AudioStream" uid="uid://bqi21bj347r5t" path="res://assets/sounds/scream.ogg" id="18_umgjy"]
+[ext_resource type="AudioStream" uid="uid://ctocrjfdmrjmi" path="res://assets/sounds/capsule_engine.ogg" id="19_4x6ei"]
+[ext_resource type="Script" path="res://capsule/scripts/AudioFadeIn.gd" id="20_302ii"]
+[ext_resource type="AudioStream" uid="uid://d1iyn6fl7k262" path="res://assets/sounds/thursters.ogg" id="21_ro1fi"]
+[ext_resource type="AudioStream" uid="uid://17r7i44crq6i" path="res://assets/sounds/land_sound.ogg" id="22_q8mpu"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_2ko58"]
 height = 0.00445988
@@ -261,12 +267,6 @@ shadow_mesh = SubResource("ArrayMesh_ubgjv")
 [sub_resource type="ViewportTexture" id="ViewportTexture_4mrxe"]
 viewport_path = NodePath("Model/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_dkooc"]
-viewport_path = NodePath("Model/ControlStation/SubViewport2")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_36x7o"]
-viewport_path = NodePath("Model/ControlStation/SubViewport")
-
 [sub_resource type="ViewportTexture" id="ViewportTexture_7aqhh"]
 viewport_path = NodePath("Model/ControlStation/SubViewport3")
 
@@ -276,6 +276,9 @@ viewport_path = NodePath("Model/ControlStation/SubViewport4")
 [node name="Capsule" type="RigidBody3D"]
 collision_layer = 9
 collision_mask = 9
+axis_lock_linear_y = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
 mass = 100.0
 gravity_scale = 0.0
 center_of_mass_mode = 1
@@ -360,12 +363,7 @@ transform = Transform3D(0.999992, 9.6916e-05, -0.00403524, 0.00162557, 0.905388,
 
 [node name="Joystick" parent="Model/ControlStation" instance=ExtResource("13_4k8t1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0635271, 0.20184)
-
-[node name="RightRotButton" parent="Model/ControlStation" instance=ExtResource("14_tlnte")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.607645, -0.137896, 0)
-
-[node name="LeftRotButton" parent="Model/ControlStation" instance=ExtResource("14_tlnte")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.907645, -0.137896, 0)
+prompt_message = "Accelerate"
 
 [node name="EnterStation" parent="Model/ControlStation" instance=ExtResource("14_tlnte")]
 transform = Transform3D(0.907602, 0, -0.419832, 0, 1, 0, 0.419832, 0, 0.907602, -1.26026, -0.137896, -0.168109)
@@ -373,7 +371,7 @@ prompt_message = "Enter landed station"
 
 [node name="ReestartMission" parent="Model/ControlStation" instance=ExtResource("14_tlnte")]
 transform = Transform3D(0.866679, 0, -0.498866, 0, 1, 0, 0.498866, 0, 0.866679, -2.03741, -0.137896, -0.581014)
-prompt_message = "Eject spaceship (reestart mission)"
+prompt_message = "Eject from spaceship (reestart mission)"
 
 [node name="Monitor" parent="Model/ControlStation" instance=ExtResource("16_h4sbp")]
 transform = Transform3D(-0.392773, -0.059269, 0.0259395, -0.00134673, 0.167055, 0.361312, -0.0646829, 0.35642, -0.165035, -0.57422, -0.0908858, 0.118166)
@@ -386,26 +384,10 @@ transform = Transform3D(0.765, -1.3411e-07, 0, -4.47035e-08, 1, 2.98023e-08, 2.9
 flip_h = false
 texture = SubResource("ViewportTexture_4mrxe")
 
-[node name="Monitor3" parent="Model/ControlStation" instance=ExtResource("16_geuos")]
-transform = Transform3D(0.391048, 0.0693877, 0.0268976, 0.00506584, -0.168361, 0.360672, 0.0742462, -0.353971, -0.166276, -1.02249, -0.0243262, 0.191131)
-
-[node name="Sprite3D" parent="Model/ControlStation/Monitor3" index="2"]
-transform = Transform3D(0.1076, -1.11759e-08, 1.86265e-09, -1.11759e-08, 0.1076, 7.45058e-09, 5.58794e-09, -3.35276e-08, 0.1076, -9.53674e-07, 3.8147e-06, 0.0287589)
-flip_v = true
-texture = SubResource("ViewportTexture_dkooc")
-
-[node name="Monitor4" parent="Model/ControlStation" instance=ExtResource("16_geuos")]
-transform = Transform3D(0.396134, -0.0387185, -0.00595036, -0.0104304, -0.162535, 0.363221, -0.037759, -0.361302, -0.16276, 0.259668, -0.191047, -0.0381184)
-prompt_message = "Rotation speed"
-prompt_action = ""
-
-[node name="Sprite3D" parent="Model/ControlStation/Monitor4" index="2"]
-transform = Transform3D(0.1076, -1.11759e-08, 1.86265e-09, -3.72529e-09, 0.1076, 7.45058e-09, 6.51926e-09, -1.49012e-08, 0.1076, -1.01328e-06, 5.24521e-06, 0.0286751)
-flip_v = true
-texture = SubResource("ViewportTexture_36x7o")
-
 [node name="Monitor5" parent="Model/ControlStation" instance=ExtResource("16_geuos")]
-transform = Transform3D(0.396134, -0.0387185, -0.00595036, -0.0104304, -0.162535, 0.363221, -0.037759, -0.361302, -0.16276, 0.280694, -0.102781, 0.15809)
+transform = Transform3D(0.594201, -0.0580777, -0.00892554, -0.0156456, -0.243802, 0.544832, -0.0566385, -0.541953, -0.24414, 0.265068, -0.168376, 0.0122778)
+prompt_message = "X speed"
+prompt_action = ""
 
 [node name="Sprite3D" parent="Model/ControlStation/Monitor5" index="2"]
 transform = Transform3D(0.1076, -1.11759e-08, 1.86265e-09, -3.72529e-09, 0.1076, 7.45058e-09, 6.51926e-09, -1.49012e-08, 0.1076, -1.01328e-06, 5.24521e-06, 0.0286751)
@@ -413,7 +395,9 @@ flip_v = true
 texture = SubResource("ViewportTexture_7aqhh")
 
 [node name="Monitor6" parent="Model/ControlStation" instance=ExtResource("16_geuos")]
-transform = Transform3D(0.396134, -0.0387185, -0.00595036, -0.0104304, -0.162535, 0.363221, -0.037759, -0.361302, -0.16276, 0.295104, -0.0422928, 0.29255)
+transform = Transform3D(0.713041, -0.0696933, -0.0107106, -0.0187747, -0.292563, 0.653798, -0.0679662, -0.650344, -0.292968, 0.291054, -0.059294, 0.254758)
+prompt_message = "Z speed"
+prompt_action = ""
 
 [node name="Sprite3D" parent="Model/ControlStation/Monitor6" index="2"]
 transform = Transform3D(0.1076, -1.11759e-08, 1.86265e-09, -3.72529e-09, 0.1076, 7.45058e-09, 6.51926e-09, -1.49012e-08, 0.1076, -1.01328e-06, 5.24521e-06, 0.0286751)
@@ -438,7 +422,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 78
-text = "10 m/s"
+text = "0 m/s"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -460,7 +444,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 78
-text = "10 m/s"
+text = "0 m/s"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -482,7 +466,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 78
-text = "10 m/s"
+text = "0 m/s"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -504,9 +488,20 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 78
-text = "10 m/s"
+text = "0 m/s"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="EjectSound" type="AudioStreamPlayer3D" parent="Model/ControlStation"]
+stream = ExtResource("18_7ho2x")
+max_distance = 1000.0
+bus = &"SFX"
+
+[node name="ScreamSound" type="AudioStreamPlayer3D" parent="Model/ControlStation"]
+stream = ExtResource("18_umgjy")
+attenuation_model = 3
+max_distance = 1000.0
+bus = &"SFX"
 
 [node name="SubViewport" type="SubViewport" parent="Model"]
 size = Vector2i(192, 108)
@@ -519,15 +514,27 @@ fov = 40.757
 [node name="CameraPosition" type="Marker3D" parent="Model"]
 transform = Transform3D(-1, 3.51394e-08, -8.00498e-08, 0, 0.915663, 0.401948, 8.74228e-08, 0.401948, -0.915663, 0, 5.72541, 4.57995)
 
+[node name="Engine" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("19_4x6ei")
+volume_db = -30.0
+bus = &"SFX"
+script = ExtResource("20_302ii")
+
+[node name="Thursters" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -3)
+stream = ExtResource("21_ro1fi")
+bus = &"SFX"
+
+[node name="LandSound" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+stream = ExtResource("22_q8mpu")
+
 [connection signal="area_entered" from="Model/Area3D" to="." method="_on_area_3d_area_entered"]
 [connection signal="area_exited" from="Model/Area3D" to="." method="_on_area_3d_area_exited"]
-[connection signal="interacted" from="Model/ControlStation/RightRotButton" to="." method="_on_right_rot_button_interacted"]
-[connection signal="interacted" from="Model/ControlStation/LeftRotButton" to="." method="_on_left_rot_button_interacted"]
+[connection signal="lading_started" from="Model/Chair" to="." method="_on_chair_lading_started"]
 [connection signal="interacted" from="Model/ControlStation/EnterStation" to="." method="enter_station"]
 [connection signal="interacted" from="Model/ControlStation/ReestartMission" to="." method="eject"]
 
 [editable path="Model/ControlStation/Monitor"]
-[editable path="Model/ControlStation/Monitor3"]
-[editable path="Model/ControlStation/Monitor4"]
 [editable path="Model/ControlStation/Monitor5"]
 [editable path="Model/ControlStation/Monitor6"]

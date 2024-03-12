@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bx5nyscrgtgsn"]
+[gd_scene load_steps=16 format=3 uid="uid://bx5nyscrgtgsn"]
 
 [ext_resource type="Script" path="res://interactable/scripts/Interactable.gd" id="1_k25sb"]
 [ext_resource type="Texture2D" uid="uid://cnoxerdddmens" path="res://art/models/furniture/door_opener_1K-metal_1-normal.jpg" id="1_r580q"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bmn0tyf22e50g" path="res://art/models/furniture/door_opener_1K-metal_5-normal.jpg" id="3_wbmtt"]
 [ext_resource type="Material" uid="uid://b5x1qyf6c8b8n" path="res://furniture/materials/ScreenMaterial.tres" id="5_piwwp"]
 [ext_resource type="Material" uid="uid://dd6c2r1lw3i7h" path="res://furniture/res/AccessMaterial.tres" id="6_30101"]
+[ext_resource type="AudioStream" uid="uid://dvow7vv5rh6bx" path="res://assets/sounds/door_opener.ogg" id="7_1f1yl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mlog8"]
 resource_name = "White Metal"
@@ -185,3 +186,11 @@ vertical_alignment = 1
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(0.120319, 0, 0, 0, 0.120319, 0, 0, 0, 0.120319, 0.12412, -0.0355448, 0.0518254)
 texture = SubResource("ViewportTexture_k4wlg")
+
+[node name="OpenDoor" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_1f1yl")
+volume_db = -18.0
+pitch_scale = 0.7
+bus = &"SFX"
+
+[connection signal="interacted" from="." to="OpenDoor" method="play"]

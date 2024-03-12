@@ -1,8 +1,10 @@
-[gd_scene load_steps=36 format=3 uid="uid://beau3abvjmjbe"]
+[gd_scene load_steps=38 format=3 uid="uid://beau3abvjmjbe"]
 
 [ext_resource type="PackedScene" uid="uid://c3kp4ij2152tm" path="res://ui/scenes/PauseMenu.tscn" id="1_bgcpe"]
 [ext_resource type="Texture2D" uid="uid://qk5f5ojlip5c" path="res://assets/hdri/full earth.hdr" id="1_um5pk"]
+[ext_resource type="Script" path="res://level/scripts/Stage2.gd" id="1_xb2gc"]
 [ext_resource type="PackedScene" uid="uid://brvhjrhhnweeo" path="res://station/scenes/Station.tscn" id="3_2cglh"]
+[ext_resource type="Script" path="res://level/scripts/WorldEnviroment.gd" id="3_f4si7"]
 [ext_resource type="PackedScene" uid="uid://b7g3y3872lit5" path="res://art/models/bed/bed.glb" id="3_uisso"]
 [ext_resource type="PackedScene" uid="uid://c4hpel84a8gbr" path="res://player/scenes/Player.tscn" id="4_lb5g1"]
 [ext_resource type="Texture2D" uid="uid://bfp5muaklwln2" path="res://art/models/capsule/capsule_1K-metal_1-normal.jpg" id="4_led4i"]
@@ -273,12 +275,13 @@ viewport_path = NodePath("Model/ControlStation/SubViewport2")
 viewport_path = NodePath("Model/ControlStation/SubViewport")
 
 [node name="Space" type="Node3D"]
+script = ExtResource("1_xb2gc")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_upsu4")
+script = ExtResource("3_f4si7")
 
 [node name="Station" parent="." instance=ExtResource("3_2cglh")]
-rotation_speed = 1.1
 landed = true
 
 [node name="Player" parent="Station" instance=ExtResource("4_lb5g1")]

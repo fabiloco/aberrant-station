@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bn0a04pyd7q5f"]
+
+[ext_resource type="Texture2D" uid="uid://dih844w2c1nna" path="res://assets/dirt_03.png" id="1_2cyt8"]
+[ext_resource type="Texture2D" uid="uid://746geu0wuqtf" path="res://assets/dirt_normal_map.png" id="2_hp2j6"]
+
+[node name="BloodTrace" type="Node3D"]
+
+[node name="Decal" type="Decal" parent="."]
+size = Vector3(2, 0.7, 2)
+texture_albedo = ExtResource("1_2cyt8")
+texture_normal = ExtResource("2_hp2j6")
+emission_energy = 0.0
+modulate = Color(0.45098, 0.054902, 0.0980392, 1)

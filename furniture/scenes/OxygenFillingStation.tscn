@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://l1uxm4lyrkd4"]
+[gd_scene load_steps=10 format=3 uid="uid://l1uxm4lyrkd4"]
 
 [ext_resource type="PackedScene" uid="uid://wx3gdmg7apdi" path="res://art/models/furniture/oxygen_filling_station.glb" id="1_vyay6"]
 [ext_resource type="Script" path="res://furniture/scripts/OxygenFillingStation.gd" id="2_6qdfh"]
 [ext_resource type="PackedScene" uid="uid://bjkcd8uxsojht" path="res://art/models/furniture/tubes_box.glb" id="3_uw6xg"]
+[ext_resource type="Theme" uid="uid://cyp75cmf481l" path="res://ui/themes/default_theme.tres" id="4_n6n4t"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6g0ow"]
 size = Vector3(2.18994, 1.25854, 0.561157)
@@ -14,6 +15,9 @@ points = PackedVector3Array(0.700481, -0.134715, 0.952105, -0.13421, -0.134715, 
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_fujb6"]
 viewport_path = NodePath("tubes_box/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_grrm0"]
+viewport_path = NodePath("SubViewport")
 
 [node name="OxygenFillingStation" instance=ExtResource("1_vyay6")]
 script = ExtResource("2_6qdfh")
@@ -71,6 +75,41 @@ show_percentage = false
 [node name="Sprite3D" type="Sprite3D" parent="tubes_box" index="2"]
 transform = Transform3D(0.0458334, 8.85694e-10, -0.0476229, 0.0476229, -2.08166e-09, 0.0458334, -8.85694e-10, -0.0660957, -2.08166e-09, -0.338631, -0.362286, -0.288158)
 texture = SubResource("ViewportTexture_fujb6")
+
+[node name="SubViewport" type="SubViewport" parent="." index="9"]
+transparent_bg = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SubViewport" index="0"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Label" type="Label" parent="SubViewport/VBoxContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+text = "Oxygen Control"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="SubViewport/VBoxContainer" index="1"]
+layout_mode = 2
+theme = ExtResource("4_n6n4t")
+text = "Drop oxygen tanks here to 
+reestablish oxygen in the station"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite3D" type="Sprite3D" parent="." index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.112961, 1.23249, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_grrm0")
 
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
 [connection signal="area_exited" from="Area3D" to="." method="_on_area_3d_area_exited"]
