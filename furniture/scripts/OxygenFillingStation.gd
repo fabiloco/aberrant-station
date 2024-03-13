@@ -57,7 +57,7 @@ func _on_area_3d_area_entered(area):
 		if oxygen_in_station > 0:
 			var stimated_time = oxygen_in_station/60
 			var stimated_text = "%.0f minutes" % stimated_time
-			NoticeManager.add_notice({"title": "You have %s minutes of oxygen." % stimated_text })
+			NoticeManager.add_notice({"title": "You have %s of oxygen." % stimated_text })
 
 func _on_area_3d_area_exited(area):
 	var body = area.owner
