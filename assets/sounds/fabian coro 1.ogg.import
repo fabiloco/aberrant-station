@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://65nkyubvxegn"
+path="res://.godot/imported/fabian coro 1.ogg-b7ccf564ad74abb273b5551dad405abd.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sounds/fabian coro 1.ogg"
+dest_files=["res://.godot/imported/fabian coro 1.ogg-b7ccf564ad74abb273b5551dad405abd.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

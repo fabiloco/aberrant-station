@@ -12,8 +12,8 @@ config_version=5
 
 config/name="Aberrant Station"
 config/description="Uncover the thruth behind the station downfall."
-config/version="1.0"
-run/main_scene="res://ui/scenes/MainMenu.tscn"
+config/version="1.0.1"
+run/main_scene="res://level/scenes/Stage2.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/bg_color=Color(0.533333, 0.294118, 0.168627, 1)
 boot_splash/image="res://assets/skeleton_profile_picture.png"

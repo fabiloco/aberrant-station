@@ -2,6 +2,7 @@ extends RayCast3D
 
 @onready var prompt_label = $Prompt
 @onready var hand: Marker3D = $Hand
+@onready var player = $"../.."
 
 @onready var capsule = get_node("/root/Space/Capsule")
 
@@ -15,7 +16,10 @@ func _ready():
 
 func _physics_process(_delta):
 	prompt_label.text = ""
-
+	
+	if not player.can_move:
+		return
+	
 	if is_colliding():
 		var detected = get_collider()
 

@@ -50,6 +50,8 @@ var crouching_depth = 0.5
 var is_sitting = false
 var active_chair: Chair
 
+@export var can_move = true
+
 @onready var capsule = get_node("/root/Space/Capsule")
 
 @onready var space = get_node("/root/Space")
@@ -65,6 +67,8 @@ func _input(event):
 		mouse_input = event.relative
 
 func _physics_process(delta):
+	if not can_move:
+		return
 	if is_sitting: 
 		if active_chair.can_stand_up && Input.is_action_just_pressed("crouch"):
 			is_sitting = false
